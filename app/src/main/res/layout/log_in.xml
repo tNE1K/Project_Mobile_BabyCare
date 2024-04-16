@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,48 +17,50 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
+    <ImageView
+        android:id="@+id/IVlogoBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle"
+        app:layout_constraintTop_toTopOf="@id/IVappLogo"
+        app:layout_constraintBottom_toBottomOf="@id/IVappLogo"
+        app:layout_constraintLeft_toLeftOf="@id/IVappLogo"
+        app:layout_constraintRight_toRightOf="@id/IVappLogo"/>
+
+    <ImageView
+        android:id="@+id/IVappLogo"
+        android:layout_width="@dimen/logo_standard"
+        android:layout_height="@dimen/logo_standard"
+        android:src="@drawable/logo_babycare"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="@dimen/margin_large"
+        app:layout_constraintTop_toBottomOf="@id/IVprojectName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
     <EditText
         android:id="@+id/ETusername"
         android:layout_width="@dimen/view_width_large"
         android:layout_height="@dimen/view_height_standard"
-        android:background="@drawable/rounded_textbox"
-        android:backgroundTint="@color/white"
-        android:hint="Nhập tên đăng ký"
-        android:inputType="textLongMessage"
-        android:paddingStart="@dimen/padding_standard"
-        android:paddingEnd="@dimen/padding_standard"
-        android:textColor="@color/black"
-        android:textColorHint="@color/grey"
-        android:textSize="@dimen/text_standard"
         android:layout_marginTop="@dimen/margin_large"
-        app:layout_constraintTop_toBottomOf="@id/IVprojectName"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="132dp" />
-
-    <EditText
-        android:id="@+id/ETemail"
-        android:layout_width="@dimen/view_width_large"
-        android:layout_height="@dimen/view_height_standard"
-        android:layout_marginTop="@dimen/margin_standard"
         android:background="@drawable/rounded_textbox"
         android:backgroundTint="@color/white"
-        android:hint="Nhập địa chỉ email"
-        android:inputType="textLongMessage"
+        android:hint="Nhập tên đăng nhập"
         android:textColorHint="@color/grey"
         android:textColor="@color/black"
+        android:inputType="textLongMessage"
         android:paddingStart="@dimen/padding_standard"
         android:paddingEnd="@dimen/padding_standard"
         android:textSize="@dimen/text_standard"
+        app:layout_constraintTop_toBottomOf="@id/IVlogoBackground"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ETusername"/>
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <EditText
         android:id="@+id/ETpassword"
         android:layout_width="@dimen/view_width_large"
         android:layout_height="@dimen/view_height_standard"
-        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_marginTop="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
         android:backgroundTint="@color/white"
         android:hint="Nhập mật khẩu"
@@ -69,44 +70,37 @@
         android:paddingStart="@dimen/padding_standard"
         android:paddingEnd="@dimen/padding_standard"
         android:textSize="@dimen/text_standard"
+        app:layout_constraintTop_toBottomOf="@id/ETusername"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ETemail"/>
+        app:layout_constraintRight_toRightOf="parent"/>
 
-    <EditText
-        android:id="@+id/ETcheckPassword"
-        android:layout_width="@dimen/view_width_large"
-        android:layout_height="@dimen/view_height_standard"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:background="@drawable/rounded_textbox"
-        android:backgroundTint="@color/white"
-        android:hint="Nhập lại mật khẩu"
-        android:textColorHint="@color/grey"
+    <TextView
+        android:id="@+id/TXTforgetPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quên mật khẩu"
+        android:textStyle="bold"
         android:textColor="@color/black"
-        android:inputType="textPassword"
-        android:paddingStart="@dimen/padding_standard"
-        android:paddingEnd="@dimen/padding_standard"
-        android:textSize="@dimen/text_standard"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ETpassword"/>
+        android:textSize="@dimen/text_small"
+        app:layout_constraintRight_toRightOf="@id/ETpassword"
+        app:layout_constraintTop_toTopOf="@id/TXTnoAccount"/>
 
     <TextView
         android:id="@+id/TXTnoAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đã có tài khoản?"
+        android:text="Chưa có tài khoản?"
         android:textColor="@color/black"
         android:textSize="@dimen/text_small"
         android:layout_marginTop="@dimen/margin_standard"
-        app:layout_constraintLeft_toLeftOf="@id/ETcheckPassword"
-        app:layout_constraintTop_toBottomOf="@id/ETcheckPassword"/>
+        app:layout_constraintLeft_toLeftOf="@id/ETpassword"
+        app:layout_constraintTop_toBottomOf="@id/ETpassword"/>
 
     <TextView
         android:id="@+id/TXTlogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đăng nhập"
+        android:text="Đăng ký"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="@dimen/text_small"
@@ -117,7 +111,7 @@
         android:id="@+id/BTNsignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đăng ký"
+        android:text="Đăng nhập"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="@drawable/rounded_button"

@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey">#DEDEDE</color>
-    <color name="btnColor">#329DFF</color>
+    <color name="grey">#677182</color>
+    <color name="blue">#329DFF</color>
+    <color name="light_blue">#DDEFFF</color>
+    <color name="red">#FF3232</color>
 </resources>
