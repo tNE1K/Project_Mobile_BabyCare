@@ -6,4 +6,6 @@
     <color name="blue">#329DFF</color>
     <color name="light_blue">#DDEFFF</color>
     <color name="red">#FF3232</color>
+    <color name="pink">#FFA5A5</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>
