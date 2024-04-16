@@ -9,9 +9,12 @@
 
     <ImageView
         android:id="@+id/IVprojectName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:src="@drawable/babycare"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_super_large"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
@@ -38,7 +41,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <EditText
-        android:id="@+id/ETusername"
+        android:id="@+id/ETname"
         android:layout_width="@dimen/view_width_large"
         android:layout_height="@dimen/view_height_standard"
         android:layout_marginTop="@dimen/margin_large"
@@ -69,7 +72,7 @@
         android:paddingStart="@dimen/padding_standard"
         android:paddingEnd="@dimen/padding_standard"
         android:textSize="@dimen/text_standard"
-        app:layout_constraintTop_toBottomOf="@id/ETusername"
+        app:layout_constraintTop_toBottomOf="@id/ETname"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
@@ -95,26 +98,37 @@
         app:layout_constraintLeft_toLeftOf="@id/ETpassword"
         app:layout_constraintTop_toBottomOf="@id/ETpassword"/>
 
-    <TextView
-        android:id="@+id/TXTlogIn"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đăng ký"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_small"
+        android:id="@+id/containerSignUp"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintTop_toBottomOf="@id/TXTnoAccount"
-        app:layout_constraintLeft_toLeftOf="@id/TXTnoAccount"/>
+        app:layout_constraintLeft_toLeftOf="@id/TXTnoAccount">
+        <TextView
+            android:id="@+id/TXTsignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintTop_toBottomOf="@id/TXTnoAccount"
+            app:layout_constraintLeft_toLeftOf="@id/TXTnoAccount"/>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/BTNsignUp"
+        android:id="@+id/BTNsignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
         android:text="Đăng nhập"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="@drawable/rounded_button"
-        app:layout_constraintTop_toBottomOf="@id/TXTlogIn"
+        app:layout_constraintTop_toBottomOf="@id/containerSignUp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="@dimen/margin_large"
