@@ -43,12 +43,15 @@ class signUp : AppCompatActivity() {
                     // Sign up with email and password
                     auth.createUserWithEmailAndPassword(email_, password_).addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(baseContext,"Đăng ký thành công. Hãy đăng nhập vào ứng dụng!", Toast.LENGTH_SHORT,).show()
+                            Toast.makeText(this,"Đăng ký thành công. Hãy đăng nhập vào ứng dụng!", Toast.LENGTH_SHORT,).show()
                             val user = auth.currentUser
+                            Firebase.auth.signOut()
                             navigateToLogIn()
                             sendEmailVerification()
                         } else {
-                            Toast.makeText(baseContext,"Đăng ký thất bại!", Toast.LENGTH_SHORT,).show()
+                            Toast.makeText(this,"Đăng ký thất bại!\n", Toast.LENGTH_SHORT,).show()
+                            val errorMessage = task.exception?.message
+                            Toast.makeText(baseContext, "$errorMessage", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -70,10 +73,10 @@ class signUp : AppCompatActivity() {
         user?.sendEmailVerification()
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(baseContext, "Email xác thực đã được gửi đến địa chỉ email của bạn. Vui lòng kiểm tra hộp thư đến và xác thực email trước khi đăng nhập!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Email xác thực đã được gửi đến địa chỉ email của bạn.\nVui lòng kiểm tra hộp thư!", Toast.LENGTH_SHORT).show()
                     navigateToLogIn()
                 } else {
-                    Toast.makeText(baseContext, "Gửi email xác thực thất bại!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Gửi email xác thực thất bại!", Toast.LENGTH_SHORT).show()
                 }
             }
     }
