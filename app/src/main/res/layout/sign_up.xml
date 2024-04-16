@@ -74,8 +74,8 @@
 
     <EditText
         android:id="@+id/ETcheckPassword"
-        android:layout_width="317dp"
-        android:layout_height="85dp"
+        android:layout_width="@dimen/view_width_large"
+        android:layout_height="@dimen/view_height_standard"
         android:layout_marginTop="@dimen/margin_standard"
         android:background="@drawable/rounded_textbox"
         android:backgroundTint="@color/white"
