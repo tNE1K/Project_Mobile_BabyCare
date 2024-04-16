@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/babycare"
-        android:layout_marginTop="@dimen/margin_super_large"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
@@ -81,15 +80,15 @@
         android:background="@drawable/rounded_textbox"
         android:backgroundTint="@color/white"
         android:hint="Nhập lại mật khẩu"
-        android:textColorHint="@color/grey"
-        android:textColor="@color/black"
         android:inputType="textPassword"
         android:paddingStart="@dimen/padding_standard"
         android:paddingEnd="@dimen/padding_standard"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
         android:textSize="@dimen/text_standard"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ETpassword"/>
+        app:layout_constraintTop_toBottomOf="@id/ETpassword" />
 
     <TextView
         android:id="@+id/TXTnoAccount"
