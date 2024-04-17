@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/text_large"
         android:layout_marginRight="@dimen/text_large"
-        android:background="@color/white"
+        android:background="@color/transparent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/IVprojectName" />

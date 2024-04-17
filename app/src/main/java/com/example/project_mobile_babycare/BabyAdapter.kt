@@ -19,8 +19,12 @@ class BabyAdapter(val context:Activity, val list: ArrayList<Baby>) : ArrayAdapte
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-
-        return initView(position, convertView, parent)
+        val context = context.layoutInflater
+        val rowView = context.inflate(R.layout.baby_selected, parent, false)
+        val name = rowView.findViewById<TextView>(R.id.tv_selectedBaby)
+        val iv_more = rowView.findViewById<ImageView>(R.id.iv_more)
+        name.text = "Xin chào bé " + list[position].name
+        return rowView
     }
 
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
