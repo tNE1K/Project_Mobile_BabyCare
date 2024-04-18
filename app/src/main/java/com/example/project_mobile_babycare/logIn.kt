@@ -19,9 +19,10 @@ class logIn : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.log_in)
         enableEdgeToEdge()
+
         auth = Firebase.auth
 
-        checkUserLogedIn()
+        checkUserLoggedIn()
 
         val button: Button = findViewById(R.id.BTNsignIn)
         val username: EditText = findViewById(R.id.ETname)
@@ -36,6 +37,7 @@ class logIn : AppCompatActivity() {
         button.setOnClickListener {
             val username_ = username.text.toString()
             val password_ = password.text.toString()
+
             if (username_.isNotEmpty() && password_.isNotEmpty()) {
                 // Sign in with email and password
                 auth.signInWithEmailAndPassword(username_, password_).addOnCompleteListener(this) { task ->
@@ -57,22 +59,24 @@ class logIn : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-    public fun navigateToSignUp() {
-         val intent = Intent(this, signUp::class.java)
-         startActivity(intent)
+    private fun navigateToSignUp() {
+        val intent = Intent(this, signUp::class.java)
+        startActivity(intent)
     }
 
-//    Check user is loged in or not
-    public fun checkUserLogedIn() {
+    //    Check user is loged in or not
+    private fun checkUserLoggedIn() {
         // Check if user is signed in on start of app
         val currentUser = auth.currentUser
         if (currentUser != null) {
+            // Check if user email is still existed on Firebase Auth
+            checkUserExistence()
             navigateToMainActivity()
             finish()
         }
     }
 
-    public fun checkUserVerified() {
+    private fun checkUserVerified() {
         val user = auth.currentUser
         if (user?.isEmailVerified == true){
             navigateToMainActivity()
@@ -83,7 +87,7 @@ class logIn : AppCompatActivity() {
         }
     }
 
-    public fun reSendEmailVerification() {
+    private fun reSendEmailVerification() {
         val user = auth.currentUser
         user?.sendEmailVerification()
             ?.addOnCompleteListener { task ->
@@ -91,10 +95,26 @@ class logIn : AppCompatActivity() {
                     Toast.makeText(this, "Email xác thực đã được gửi lại!", Toast.LENGTH_SHORT).show()
                     return@addOnCompleteListener
                 } else {
-                    val errorMessage = task.exception?.message
-                    Toast.makeText(baseContext, "$errorMessage", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Vui lòng kiểm tra hộp thư của bạn!", Toast.LENGTH_SHORT).show()
                     return@addOnCompleteListener
                 }
             }
     }
+    private fun checkUserExistence() {
+        val currentUser = auth.currentUser
+
+        Firebase.auth.fetchSignInMethodsForEmail(currentUser?.email ?: "")
+            .addOnCompleteListener { task ->
+                if (!task.isSuccessful || task.result?.signInMethods?.isEmpty() == true) {
+                    // Sign out the user if they're already signed in
+                    if (currentUser != null) {
+                        Firebase.auth.signOut()
+                    }
+                    return@addOnCompleteListener
+                }
+            }
+    }
+
+
+
 }
