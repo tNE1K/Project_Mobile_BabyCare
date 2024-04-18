@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-
 class logIn : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
@@ -22,13 +21,8 @@ class logIn : AppCompatActivity() {
         enableEdgeToEdge()
 
         auth = Firebase.auth
-        val listener = FirebaseAuth.AuthStateListener(){
-            auth.addAuthStateListener {
 
-            }
-
-        }
-
+        checkUserLoggedIn()
 
         val button: Button = findViewById(R.id.BTNsignIn)
         val username: EditText = findViewById(R.id.ETname)
@@ -66,8 +60,20 @@ class logIn : AppCompatActivity() {
         finish()
     }
     private fun navigateToSignUp() {
-         val intent = Intent(this, signUp::class.java)
-         startActivity(intent)
+        val intent = Intent(this, signUp::class.java)
+        startActivity(intent)
+    }
+
+    //    Check user is loged in or not
+    private fun checkUserLoggedIn() {
+        // Check if user is signed in on start of app
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // Check if user email is still existed on Firebase Auth
+            checkUserExistence()
+            navigateToMainActivity()
+            finish()
+        }
     }
 
     private fun checkUserVerified() {
@@ -94,4 +100,21 @@ class logIn : AppCompatActivity() {
                 }
             }
     }
+    private fun checkUserExistence() {
+        val currentUser = auth.currentUser
+
+        Firebase.auth.fetchSignInMethodsForEmail(currentUser?.email ?: "")
+            .addOnCompleteListener { task ->
+                if (!task.isSuccessful || task.result?.signInMethods?.isEmpty() == true) {
+                    // Sign out the user if they're already signed in
+                    if (currentUser != null) {
+                        Firebase.auth.signOut()
+                    }
+                    return@addOnCompleteListener
+                }
+            }
+    }
+
+
+
 }
