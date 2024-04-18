@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-
 class logIn : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
@@ -20,15 +19,9 @@ class logIn : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.log_in)
         enableEdgeToEdge()
-
         auth = Firebase.auth
-        val listener = FirebaseAuth.AuthStateListener(){
-            auth.addAuthStateListener {
 
-            }
-
-        }
-
+        checkUserLogedIn()
 
         val button: Button = findViewById(R.id.BTNsignIn)
         val username: EditText = findViewById(R.id.ETname)
@@ -43,7 +36,6 @@ class logIn : AppCompatActivity() {
         button.setOnClickListener {
             val username_ = username.text.toString()
             val password_ = password.text.toString()
-
             if (username_.isNotEmpty() && password_.isNotEmpty()) {
                 // Sign in with email and password
                 auth.signInWithEmailAndPassword(username_, password_).addOnCompleteListener(this) { task ->
@@ -65,12 +57,22 @@ class logIn : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-    private fun navigateToSignUp() {
+    public fun navigateToSignUp() {
          val intent = Intent(this, signUp::class.java)
          startActivity(intent)
     }
 
-    private fun checkUserVerified() {
+//    Check user is loged in or not
+    public fun checkUserLogedIn() {
+        // Check if user is signed in on start of app
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            navigateToMainActivity()
+            finish()
+        }
+    }
+
+    public fun checkUserVerified() {
         val user = auth.currentUser
         if (user?.isEmailVerified == true){
             navigateToMainActivity()
@@ -81,7 +83,7 @@ class logIn : AppCompatActivity() {
         }
     }
 
-    private fun reSendEmailVerification() {
+    public fun reSendEmailVerification() {
         val user = auth.currentUser
         user?.sendEmailVerification()
             ?.addOnCompleteListener { task ->
@@ -89,7 +91,8 @@ class logIn : AppCompatActivity() {
                     Toast.makeText(this, "Email xác thực đã được gửi lại!", Toast.LENGTH_SHORT).show()
                     return@addOnCompleteListener
                 } else {
-                    Toast.makeText(baseContext, "Vui lòng kiểm tra hộp thư của bạn!", Toast.LENGTH_SHORT).show()
+                    val errorMessage = task.exception?.message
+                    Toast.makeText(baseContext, "$errorMessage", Toast.LENGTH_SHORT).show()
                     return@addOnCompleteListener
                 }
             }
