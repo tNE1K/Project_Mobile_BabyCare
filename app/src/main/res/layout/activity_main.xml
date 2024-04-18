@@ -15,16 +15,15 @@
         android:src="@drawable/babycare"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="@dimen/text_standard"/>
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <Spinner
-        android:id="@+id/SPNlistBaby"
+        android:id="@+id/BTNlistBaby"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/text_large"
         android:layout_marginRight="@dimen/text_large"
-        android:background="@color/transparent"
+        android:background="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/IVprojectName" />
@@ -41,7 +40,7 @@
         android:textSize="20dp"
         android:textAlignment="center"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/SPNlistBaby"
+        app:layout_constraintTop_toBottomOf="@id/BTNlistBaby"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="@dimen/text_small"
         android:layout_marginLeft="@dimen/text_large"/>
@@ -58,7 +57,7 @@
         android:textSize="20dp"
         android:textAlignment="center"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/SPNlistBaby"
+        app:layout_constraintTop_toBottomOf="@id/BTNlistBaby"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="@dimen/text_small"
         android:layout_marginRight="@dimen/text_large"/>
@@ -86,7 +85,7 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         android:layout_marginTop="@dimen/text_small"
-        android:layout_marginLeft="@dimen/text_large"/>
+        android:layout_marginLeft="@dimen/text_small"/>
 
     <ImageView
         android:id="@+id/IVbabyInfo"
@@ -113,7 +112,6 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Thông tin con yêu"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/TVbabyInfo_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyInfo_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyInfo_background"
@@ -129,7 +127,7 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         android:layout_marginTop="@dimen/text_small"
-        android:layout_marginRight="@dimen/text_large"/>
+        android:layout_marginRight="@dimen/text_small"/>
 
     <ImageView
         android:id="@+id/IVbabyWH"
@@ -156,7 +154,6 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Chiều cao &amp; cân nặng"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/TVbabyWH_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyWH_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyWH_background"
@@ -170,7 +167,7 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         android:layout_marginTop="@dimen/text_large"
-        android:layout_marginLeft="@dimen/text_large"/>
+        android:layout_marginLeft="@dimen/text_small"/>
 
     <ImageView
         android:id="@+id/IVbabyMedicalHistory"
@@ -197,7 +194,6 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Tiền sử bệnh lý"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/TVbabyMedicalHistory_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMedicalHistory_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMedicalHistory_background"
@@ -211,7 +207,7 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         android:layout_marginTop="@dimen/text_large"
-        android:layout_marginRight="@dimen/text_large"/>
+        android:layout_marginRight="@dimen/text_small"/>
 
     <ImageView
         android:id="@+id/IVbabyInjection"
@@ -238,7 +234,6 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Sổ tiêm chủng"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/TVbabyInjection_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyInjection_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyInjection_background"
@@ -252,7 +247,7 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         android:layout_marginTop="@dimen/text_large"
-        android:layout_marginLeft="@dimen/text_large"/>
+        android:layout_marginLeft="@dimen/text_small"/>
 
     <ImageView
         android:id="@+id/IVbabyNutrition"
@@ -279,7 +274,6 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Dinh dưỡng"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/TVbabyNutrition_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyNutrition_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyNutrition_background"
@@ -293,7 +287,7 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         android:layout_marginTop="@dimen/text_large"
-        android:layout_marginRight="@dimen/text_large"/>
+        android:layout_marginRight="@dimen/text_small"/>
 
     <ImageView
         android:id="@+id/IVbabyMemory"
@@ -320,7 +314,6 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Lưu giữ khoảnh khắc"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/TVbabyMemory_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMemory_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMemory_background"
@@ -334,7 +327,7 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         android:layout_marginTop="@dimen/text_large"
-        android:layout_marginLeft="@dimen/text_large"/>
+        android:layout_marginLeft="@dimen/text_small"/>
 
     <ImageView
         android:id="@+id/IVbabyMilestone"
@@ -361,7 +354,6 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Cột mốc phát triển"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/TVbabyMilestone_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMilestone_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMilestone_background"
@@ -375,7 +367,7 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         android:layout_marginTop="@dimen/text_large"
-        android:layout_marginRight="@dimen/text_large"/>
+        android:layout_marginRight="@dimen/text_small"/>
 
     <ImageView
         android:id="@+id/IVlogout"
@@ -402,7 +394,6 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Đăng xuất"
-        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/TVlogout_background"
         app:layout_constraintLeft_toLeftOf="@id/TVlogout_background"
         app:layout_constraintRight_toRightOf="@id/TVlogout_background"
