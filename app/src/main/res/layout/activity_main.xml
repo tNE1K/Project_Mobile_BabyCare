@@ -18,12 +18,14 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <Spinner
-        android:id="@+id/BTNlistBaby"
+        android:id="@+id/SPNlistBaby"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:dropDownVerticalOffset = "47dp"
         android:layout_marginLeft="@dimen/text_large"
         android:layout_marginRight="@dimen/text_large"
-        android:background="@color/white"
+        android:background="@color/transparent"
+        android:popupBackground="@drawable/rounded_bot_textbox"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/IVprojectName" />
@@ -40,7 +42,7 @@
         android:textSize="20dp"
         android:textAlignment="center"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/BTNlistBaby"
+        app:layout_constraintTop_toBottomOf="@id/SPNlistBaby"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="@dimen/text_small"
         android:layout_marginLeft="@dimen/text_large"/>
@@ -57,7 +59,7 @@
         android:textSize="20dp"
         android:textAlignment="center"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/BTNlistBaby"
+        app:layout_constraintTop_toBottomOf="@id/SPNlistBaby"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="@dimen/text_small"
         android:layout_marginRight="@dimen/text_large"/>
