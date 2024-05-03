@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pink"
+    tools:context=".Baby_nutrition_weight">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/body"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/view_height_large"
+        app:layout_constraintTop_toTopOf="@id/main"/>
+    <View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/logo_container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintLeft_toLeftOf="@id/body"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/img_border"/>
+    <ImageView
+        android:layout_width="@dimen/view_height_standard"
+        android:layout_height="@dimen/view_height_standard"
+        android:id="@+id/logo"
+        android:src="@drawable/babynutrition"
+        app:layout_constraintTop_toTopOf="@id/logo_container"
+        app:layout_constraintBottom_toBottomOf="@id/logo_container"
+        app:layout_constraintLeft_toLeftOf="@id/logo_container"
+        app:layout_constraintRight_toRightOf="@id/logo_container"/>
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/logo_container"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:fontFamily="@font/itimregular"
+        android:shadowColor="@color/white"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="Dinh dưỡng"
+        android:textColorHighlight="@color/white"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"/>
+
+
+    <TableLayout
+        android:id="@+id/tl_nutritionInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/body"
+        app:layout_constraintLeft_toLeftOf="@id/main"
+        app:layout_constraintBottom_toTopOf="@id/tv_infoSourceHeader"
+        android:stretchColumns="1, 2">
+        <TableRow>
+            <TextView
+                android:text="Cân nặng"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:background="@color/blue"
+                android:layout_marginRight="1dp"/>
+            <TextView
+                android:text="Lượng sữa"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:background="@color/blue"
+                android:layout_marginRight="1dp"/>
+            <TextView
+                android:text="Số cữ/ngày"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:background="@color/blue"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="2,265 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="48,75 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="2,781 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="58,375 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="3,171 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="68,25 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="3,600 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="79,875 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="4,00 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="90 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="4,500 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="100,125 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="5,209 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="112,125 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="5,662 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:background="@drawable/border_textview"
+                android:textAlignment="center"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="122 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="6,115 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="131,625 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="6,704 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="144,375 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="7,300 g"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="160 ml"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+            <TextView
+                android:text="8 cữ"
+                android:textSize="@dimen/text_standard"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"/>
+        </TableRow>
+
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/tv_infoSourceHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Source:"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_standard"
+        android:layout_margin="@dimen/margin_standard"
+        app:layout_constraintTop_toBottomOf="@id/tl_nutritionInfo"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_infoSourceBody"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/view_height_standard"
+        android:text="- https://hellobacsi.com\n- https://vinmec.com\n- Và tham khảo các nguồn trên mạng"
+        android:textSize="@dimen/text_standard"
+        app:layout_constraintTop_toBottomOf="@id/tv_infoSourceHeader"
+        app:layout_constraintLeft_toRightOf="@id/tv_infoSourceHeader"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="130dp"
+        android:layout_height="0dp"
+        android:text="Quay về"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/btn_tinhTheoCanNang"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:backgroundTint="@color/light_blue"
+        android:background="@drawable/rounded_button"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"/>
+    <Button
+        android:id="@+id/btn_tinhTheoCanNang"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Tính theo tuổi bé"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/rounded_button"
+        app:backgroundTint="@color/blue"
+        android:layout_marginRight="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
