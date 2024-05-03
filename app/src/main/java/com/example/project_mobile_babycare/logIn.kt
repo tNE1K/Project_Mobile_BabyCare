@@ -18,7 +18,6 @@ class logIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.log_in)
-        enableEdgeToEdge()
 
         auth = Firebase.auth
 
