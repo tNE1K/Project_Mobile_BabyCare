@@ -17,7 +17,6 @@ class signUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_up)
-        enableEdgeToEdge()
 
         auth = Firebase.auth
 

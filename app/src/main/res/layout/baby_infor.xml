@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
+    android:id="@+id/main"
     android:weightSum="15">
 
     <LinearLayout
@@ -44,7 +45,7 @@
 
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/text_title"
             android:layout_width="0dp"
             android:layout_weight="3"
             android:layout_height="wrap_content"
