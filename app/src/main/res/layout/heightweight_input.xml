@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pink"
-    tools:context=".MedicalHistoryInput">
+    android:background="@color/pink">
 
     <View
-        android:id="@+id/body"
+        android:id="@+id/body_hwinput"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/view_height_large"
@@ -22,22 +20,22 @@
         android:layout_height="100dp"
         android:layout_marginStart="@dimen/margin_small"
         android:background="@drawable/img_border"
-        app:layout_constraintBottom_toTopOf="@id/body"
-        app:layout_constraintLeft_toLeftOf="@id/body"
+        app:layout_constraintBottom_toTopOf="@id/body_hwinput"
+        app:layout_constraintLeft_toLeftOf="@id/body_hwinput"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/img_cccnip"
         android:layout_width="@dimen/view_height_standard"
         android:layout_height="@dimen/view_height_standard"
-        android:src="@drawable/babymedicalhistory"
+        android:src="@drawable/babywh"
         app:layout_constraintBottom_toBottomOf="@id/logo_container"
         app:layout_constraintLeft_toLeftOf="@id/logo_container"
         app:layout_constraintRight_toRightOf="@id/logo_container"
         app:layout_constraintTop_toTopOf="@id/logo_container" />
 
     <TextView
-        android:id="@+id/text_title"
+        android:id="@+id/tv_cccnip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
@@ -46,127 +44,113 @@
         android:shadowDx="6"
         android:shadowDy="6"
         android:shadowRadius="5"
-        android:text="Tiền sử bệnh"
+        android:text="Chiều cao &amp;\ncân nặng"
+        android:textAlignment="center"
         android:textColor="@color/blue"
         android:textColorHighlight="@color/white"
         android:textSize="@dimen/text_large"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintBottom_toTopOf="@id/body_hwinput"
         app:layout_constraintStart_toEndOf="@id/logo_container"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/label_start_date"
+        android:id="@+id/tvCc_hwip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
         android:layout_marginTop="@dimen/margin_standard"
-        android:text="Ngày phát bệnh"
-        android:textColor="@color/black"
+        android:text="Chiều cao"
         android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/body" />
+        app:layout_constraintTop_toTopOf="@id/body_hwinput" />
 
-    <Button
-        android:id="@+id/button_start_date"
+    <EditText
+        android:id="@+id/edtCc_hwip"
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_height_standard"
         android:layout_marginLeft="@dimen/margin_large"
         android:layout_marginTop="12dp"
         android:layout_marginRight="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
-        android:hint="dd/mm/yyyy"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
+        android:inputType="text"
+        android:text="\t\tChiều cao"
+        android:textColor="#959595"
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/label_start_date" />
+        app:layout_constraintTop_toBottomOf="@id/tvCc_hwip" />
 
     <TextView
-        android:id="@+id/label_end_date"
+        android:id="@+id/tvCn_hwip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_large"
-        android:text="Ngày hết bệnh"
-        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Cân nặng"
         android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_start_date" />
-
-    <Button
-        android:id="@+id/button_end_date"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/view_height_standard"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginRight="@dimen/margin_large"
-        android:background="@drawable/rounded_textbox"
-        android:hint="dd/mm/yyyy"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_standard"
-        app:backgroundTint="@color/light_gray"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/label_end_date" />
-
-    <TextView
-        android:id="@+id/label_disease_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_large"
-        android:text="Tên bệnh"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_standard"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_end_date" />
+        app:layout_constraintTop_toBottomOf="@id/edtCc_hwip" />
 
     <EditText
-        android:id="@+id/edit_text_disease_name"
+        android:id="@+id/edt_cannang"
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_height_standard"
         android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
-        android:hint="Tên bệnh"
-        android:inputType="textLongMessage"
-        android:paddingLeft="@dimen/padding_small"
-        android:textColor="@color/black"
+        android:inputType="text"
+        android:text="\t\tCân nặng"
+        android:textColor="#959595"
+        android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/label_disease_name" />
+        app:layout_constraintTop_toBottomOf="@id/tvCn_hwip" />
 
     <TextView
-        android:id="@+id/label_symptoms"
+        android:id="@+id/tv_dateofbirthhwip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_large"
-        android:text="Triệu chứng"
-        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Ngày/Tháng/Năm Sinh"
         android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_disease_name" />
+        app:layout_constraintTop_toBottomOf="@id/edt_cannang" />
 
-    <EditText
-        android:id="@+id/edit_text_symptoms"
+    <Button
+        android:id="@+id/btn_dateinput"
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_height_standard"
         android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginTop="12dp"
         android:layout_marginRight="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
-        android:hint="Triệu chứng"
-        android:inputType="textLongMessage"
-        android:paddingLeft="@dimen/padding_small"
-        android:textColor="@color/black"
+        android:hint="dd/mm/yy"
+        android:inputType="text"
+        android:textAlignment="textStart"
+        android:textColor="#959595"
+        android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/label_symptoms" />
+        app:layout_constraintTop_toBottomOf="@id/tv_dateofbirthhwip" />
+
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_standard"
+        android:layout_marginRight="@dimen/margin_standard"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_dateinput"
+        app:layout_constraintTop_toBottomOf="@+id/btn_dateinput" />
 
     <Button
+        android:id="@+id/btnDelete_hwip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
@@ -179,6 +163,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
+        android:id="@+id/btnSave_hwip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/margin_super_large"
@@ -189,24 +174,4 @@
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-
-    <CalendarView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_standard"
-        android:background="@color/white"
-        android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="@id/button_start_date"
-        app:layout_constraintTop_toBottomOf="@id/button_start_date" />
-
-    <CalendarView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_standard"
-        android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="@id/button_end_date"
-        app:layout_constraintTop_toBottomOf="@id/button_end_date" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
