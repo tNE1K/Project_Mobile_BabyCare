@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Project_Mobile_BabyCare"
         tools:targetApi="31">
         <activity
+            android:name=".medical_history_view"
+            android:exported="false" />
+        <activity
             android:name=".Baby_nutrition_weight"
             android:exported="false" />
         <activity
