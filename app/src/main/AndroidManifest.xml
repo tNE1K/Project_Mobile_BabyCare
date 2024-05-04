@@ -24,6 +24,9 @@
             android:name=".MedicalHistoryInput"
             android:exported="false" />
         <activity
+            android:name=".heightweightActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
