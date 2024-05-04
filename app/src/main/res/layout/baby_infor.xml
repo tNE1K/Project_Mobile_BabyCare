@@ -7,7 +7,7 @@
     android:background="@color/pink">
 
     <View
-        android:id="@+id/body"
+        android:id="@+id/body_bbinfor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/view_height_large"
@@ -20,12 +20,12 @@
         android:layout_height="100dp"
         android:layout_marginStart="@dimen/margin_small"
         android:background="@drawable/img_border"
-        app:layout_constraintBottom_toTopOf="@id/body"
-        app:layout_constraintLeft_toLeftOf="@id/body"
+        app:layout_constraintBottom_toTopOf="@id/body_bbinfor"
+        app:layout_constraintLeft_toLeftOf="@id/body_bbinfor"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_bbinfor"
         android:layout_width="@dimen/view_height_standard"
         android:layout_height="@dimen/view_height_standard"
         android:src="@drawable/baby_inf"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="@id/logo_container" />
 
     <TextView
-        android:id="@+id/text_title"
+        android:id="@+id/tv_ttcy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
@@ -50,12 +50,12 @@
         android:textColorHighlight="@color/white"
         android:textSize="@dimen/text_large"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintBottom_toTopOf="@id/body_bbinfor"
         app:layout_constraintStart_toEndOf="@id/logo_container"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvName_bbinfor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
@@ -64,7 +64,7 @@
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/body" />
+        app:layout_constraintTop_toTopOf="@id/body_bbinfor" />
 
     <EditText
         android:id="@+id/edt_babyname"
@@ -80,10 +80,10 @@
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView2" />
+        app:layout_constraintTop_toBottomOf="@id/tvName_bbinfor" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_dateofbirth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
@@ -109,7 +109,7 @@
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView3" />
+        app:layout_constraintTop_toBottomOf="@id/tv_dateofbirth" />
     <CalendarView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_dateofbirth" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_chieucao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
@@ -146,10 +146,10 @@
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView4" />
+        app:layout_constraintTop_toBottomOf="@id/tv_chieucao" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_cannang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
@@ -174,10 +174,10 @@
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView5" />
+        app:layout_constraintTop_toBottomOf="@id/tv_cannang" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tv_gioitinh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
@@ -195,7 +195,7 @@
         android:layout_marginLeft="@dimen/margin_super_large"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        app:layout_constraintLeft_toRightOf="@id/textView6"
+        app:layout_constraintLeft_toRightOf="@id/tv_gioitinh"
         app:layout_constraintTop_toBottomOf="@+id/edt_cannang">
 
         <RadioButton
@@ -222,7 +222,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/body"
+        app:layout_constraintLeft_toLeftOf="@id/body_bbinfor"
         app:layout_constraintTop_toBottomOf="@+id/rgGT"/>
 
     <Button
@@ -235,6 +235,6 @@
         android:text="Lưu"
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="@id/body"
+        app:layout_constraintRight_toRightOf="@id/body_bbinfor"
         app:layout_constraintTop_toBottomOf="@+id/rgGT"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
