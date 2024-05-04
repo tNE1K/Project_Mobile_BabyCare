@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pink"
+    tools:context=".medical_history_view">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/body"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/view_height_large"
+        app:layout_constraintTop_toTopOf="@id/main"/>
+    <View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/logo_container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintLeft_toLeftOf="@id/body"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/img_border"/>
+    <ImageView
+        android:layout_width="@dimen/view_height_standard"
+        android:layout_height="@dimen/view_height_standard"
+        android:id="@+id/logo"
+        android:src="@drawable/babymedicalhistory"
+        app:layout_constraintTop_toTopOf="@id/logo_container"
+        app:layout_constraintBottom_toBottomOf="@id/logo_container"
+        app:layout_constraintLeft_toLeftOf="@id/logo_container"
+        app:layout_constraintRight_toRightOf="@id/logo_container"/>
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/logo_container"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:fontFamily="@font/itimregular"
+        android:shadowColor="@color/white"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="Tiền sử bệnh"
+        android:textColorHighlight="@color/white"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_small"
+        android:id="@+id/label_start_date"
+        android:text="Ngày phát bệnh"
+        android:textSize="@dimen/text_standard"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@id/body"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/label_end_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_large"
+        android:text="Ngày khỏi bệnh"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_standard"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_start_date"/>
+
+    <ListView
+        android:id="@+id/lv_medical_history"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:divider="@color/transparent"
+        android:dividerHeight="@dimen/margin_small"
+        app:layout_constraintTop_toBottomOf="@id/label_start_date"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        android:layout_marginRight="@dimen/margin_small"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_super_small"
+        android:layout_marginBottom="@dimen/margin_super_small"/>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thêm"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/rounded_button"
+        app:backgroundTint="@color/blue"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
