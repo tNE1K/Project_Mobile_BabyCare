@@ -15,6 +15,7 @@
 
     <dimen name="text_small">16sp</dimen>
     <dimen name="text_standard">20sp</dimen>
+    <dimen name="text_medium">30sp</dimen>
     <dimen name="text_large">40sp</dimen>
     <dimen name="text_super_large">64sp</dimen>
 
