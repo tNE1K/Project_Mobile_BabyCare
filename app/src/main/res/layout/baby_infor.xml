@@ -1,291 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:orientation="vertical"
-    android:id="@+id/main"
-    android:weightSum="15">
+    android:background="@color/pink">
 
-    <LinearLayout
+    <View
+        android:id="@+id/body_bbinfor"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:weightSum="5"
-        android:orientation="horizontal">
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="match_parent">
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="35dp"
-                android:background="@drawable/img_border"
-                android:layout_marginBottom="10dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"/>
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="25dp"
-                android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/baby_inf" />
-        </FrameLayout>
-
-
-        <TextView
-            android:id="@+id/text_title"
-            android:layout_width="0dp"
-            android:layout_weight="3"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/itimregular"
-            android:shadowColor="@color/white"
-            android:shadowDx="0"
-            android:shadowDy="10"
-            android:shadowRadius="10"
-            android:text="Thông tin\ncon yêu"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/blue"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="12"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/view_height_large"
         android:background="@color/white"
-        android:orientation="vertical"
-        android:weightSum="12">
+        app:layout_constraintTop_toTopOf="@id/main" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:weightSum="3">
+    <View
+        android:id="@+id/logo_container"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/img_border"
+        app:layout_constraintBottom_toTopOf="@id/body_bbinfor"
+        app:layout_constraintLeft_toLeftOf="@id/body_bbinfor"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="50dp"
-                android:layout_weight="1"
-                android:text="Tên của bé"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/img_bbinfor"
+        android:layout_width="@dimen/view_height_standard"
+        android:layout_height="@dimen/view_height_standard"
+        android:src="@drawable/baby_inf"
+        app:layout_constraintBottom_toBottomOf="@id/logo_container"
+        app:layout_constraintLeft_toLeftOf="@id/logo_container"
+        app:layout_constraintRight_toRightOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="@id/logo_container" />
 
-            <EditText
-                android:id="@+id/edt_babyname"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="2"
-                android:background="@drawable/border_edittext"
-                android:backgroundTint="#F6F6F6"
-                android:ems="10"
-                android:inputType="text"
-                android:text="\t\tTên của bé"
-                android:textColor="#959595" />
+    <TextView
+        android:id="@+id/tv_ttcy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:fontFamily="@font/itimregular"
+        android:shadowColor="@color/white"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="Thông tin\ncon yêu"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textColorHighlight="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/body_bbinfor"
+        app:layout_constraintStart_toEndOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/tvName_bbinfor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Tên của bé"
+        android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/body_bbinfor" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:weightSum="3">
+    <EditText
+        android:id="@+id/edt_babyname"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_height_standard"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/margin_large"
+        android:background="@drawable/rounded_textbox"
+        android:inputType="text"
+        android:text="\t\tTên của bé"
+        android:textColor="#959595"
+        android:textSize="@dimen/text_standard"
+        app:backgroundTint="@color/light_gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvName_bbinfor" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="Ngày/Tháng/Năm Sinh"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tv_dateofbirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Ngày/Tháng/Năm Sinh"
+        android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_babyname" />
 
-            <EditText
-                android:id="@+id/edt_dateofbirth"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="2"
-                android:background="@drawable/border_edittext"
-                android:backgroundTint="#F6F6F6"
-                android:ems="10"
-                android:inputType="text"
-                android:text="\t\tdd/mm/yy"
-                android:textColor="#959595" />
+    <Button
+        android:id="@+id/btn_dateofbirth"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_height_standard"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/margin_large"
+        android:background="@drawable/rounded_textbox"
+        android:inputType="text"
+        android:hint="dd/mm/yy"
+        android:textAlignment="textStart"
+        android:textColor="#959595"
+        android:textSize="@dimen/text_standard"
+        app:backgroundTint="@color/light_gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_dateofbirth" />
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_standard"
+        android:layout_marginRight="@dimen/margin_standard"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_dateofbirth"
+        app:layout_constraintTop_toBottomOf="@+id/btn_dateofbirth" />
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/tv_chieucao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Chiều cao"
+        android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_dateofbirth" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:weightSum="3">
+    <EditText
+        android:id="@+id/edt_chieucao"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_height_standard"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/margin_large"
+        android:background="@drawable/rounded_textbox"
+        android:inputType="text"
+        android:text="\t\tChiều cao"
+        android:textColor="#959595"
+        android:textSize="@dimen/text_standard"
+        app:backgroundTint="@color/light_gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_chieucao" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="50dp"
-                android:layout_weight="1"
-                android:text="Chiều cao"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tv_cannang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Cân nặng"
+        android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_chieucao" />
 
-            <EditText
-                android:id="@+id/edt_chieucao"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="2"
-                android:background="@drawable/border_edittext"
-                android:backgroundTint="#F6F6F6"
-                android:ems="10"
-                android:inputType="text"
-                android:text="\t\tChiều cao"
-                android:textColor="#959595" />
-        </LinearLayout>
+    <EditText
+        android:id="@+id/edt_cannang"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_height_standard"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="@dimen/margin_large"
+        android:background="@drawable/rounded_textbox"
+        android:inputType="text"
+        android:text="\t\tCân nặng"
+        android:textColor="#959595"
+        android:textSize="@dimen/text_standard"
+        app:backgroundTint="@color/light_gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_cannang" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:weightSum="3">
+    <TextView
+        android:id="@+id/tv_gioitinh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:text="Giới tính"
+        android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_cannang" />
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="50dp"
-                android:layout_weight="1"
-                android:text="Cân nặng"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+    <RadioGroup
+        android:id="@+id/rgGT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@id/tv_gioitinh"
+        app:layout_constraintTop_toBottomOf="@+id/edt_cannang">
 
-            <EditText
-                android:id="@+id/edt_cannang"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="2"
-                android:background="@drawable/border_edittext"
-                android:backgroundTint="#F6F6F6"
-                android:ems="10"
-                android:inputType="text"
-                android:text="\t\tCân nặng"
-                android:textColor="#959595" />
+        <RadioButton
+            android:id="@+id/rbt_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAM" />
 
-        </LinearLayout>
+        <RadioButton
+            android:id="@+id/rbt_female"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_height="wrap_content"
+            android:text="NỮ" />
+    </RadioGroup>
+    <Button
+        android:id="@+id/btn_infback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:backgroundTint="@color/light_blue"
+        android:text="Trở về"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/body_bbinfor"
+        app:layout_constraintTop_toBottomOf="@+id/rgGT"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="Giới tính"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <RadioButton
-                android:id="@+id/rbt_male"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="NAM" />
-
-            <RadioButton
-                android:id="@+id/rbt_female"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:text="NỮ" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <Button
-                android:id="@+id/btn_infback"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="1"
-                android:backgroundTint="#DDEFFF"
-                android:text="Trở về"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btn_infsave"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="40dp"
-                android:layout_weight="1"
-                android:backgroundTint="#329DFF"
-                android:text="Lưu"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-    </LinearLayout>
-</LinearLayout>
+    <Button
+        android:id="@+id/btn_infsave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:backgroundTint="#329DFF"
+        android:text="Lưu"
+        android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="@id/body_bbinfor"
+        app:layout_constraintTop_toBottomOf="@+id/rgGT"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
