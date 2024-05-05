@@ -21,6 +21,12 @@
             android:name=".Baby_nutrition_weight"
             android:exported="false" />
         <activity
+            android:name=".Baby_nutrition_age"
+            android:exported="false" />
+        <activity
+            android:name=".Baby_Info"
+            android:exported="false" />
+        <activity
             android:name=".MedicalHistoryInput"
             android:exported="false" />
         <activity
