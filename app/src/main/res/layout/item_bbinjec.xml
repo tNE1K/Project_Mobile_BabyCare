@@ -28,17 +28,17 @@
         android:id="@+id/rginjec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginRight="@dimen/margin_small"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/body_bjitem"
         app:layout_constraintEnd_toEndOf="@+id/body_bjitem"
         app:layout_constraintTop_toTopOf="@+id/body_bjitem">
 
         <RadioButton
             android:id="@+id/rbt_datiem"
-            android:layout_marginRight="@dimen/margin_hight_large"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_hight_large" />
 
         <RadioButton
             android:id="@+id/rbt_chuatiem"

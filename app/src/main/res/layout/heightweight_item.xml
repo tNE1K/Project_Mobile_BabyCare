@@ -4,6 +4,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <View
         android:id="@+id/body_hwitem"
         android:layout_width="345dp"
@@ -20,9 +21,10 @@
         android:layout_marginLeft="@dimen/margin_small"
         android:text="TextView"
         android:textSize="@dimen/text_medium"
+        app:layout_constraintBottom_toBottomOf="@id/body_hwitem"
         app:layout_constraintStart_toStartOf="@+id/body_hwitem"
-        app:layout_constraintTop_toTopOf="@+id/body_hwitem"
-        app:layout_constraintBottom_toBottomOf="@id/body_hwitem"/>
+        app:layout_constraintTop_toTopOf="@+id/body_hwitem" />
+
     <TextView
         android:id="@+id/txtcccn"
         android:layout_width="wrap_content"
@@ -30,8 +32,8 @@
         android:layout_marginRight="@dimen/margin_small"
         android:text="TextView"
         android:textSize="@dimen/text_medium"
+        app:layout_constraintBottom_toBottomOf="@id/body_hwitem"
         app:layout_constraintEnd_toEndOf="@+id/body_hwitem"
-        app:layout_constraintTop_toTopOf="@+id/body_hwitem"
-        app:layout_constraintBottom_toBottomOf="@id/body_hwitem"/>
+        app:layout_constraintTop_toTopOf="@+id/body_hwitem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

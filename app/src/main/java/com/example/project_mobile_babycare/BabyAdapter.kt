@@ -13,7 +13,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.project_mobile_babycare.Baby
 
-class BabyAdapter(val context:Activity, val list: ArrayList<Baby>) : ArrayAdapter<Baby>(context, R.layout.item_baby) {
+class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
+    ArrayAdapter<Baby>(context, R.layout.item_baby) {
 
     override fun getCount(): Int {
         return list.size
@@ -32,15 +33,14 @@ class BabyAdapter(val context:Activity, val list: ArrayList<Baby>) : ArrayAdapte
         return initView(position, convertView, parent)
     }
 
-    private fun initView(position: Int, convertView: View?, parent: ViewGroup): View{
+    private fun initView(position: Int, convertView: View?, parent: ViewGroup): View {
         val context = context.layoutInflater
         val rowView = context.inflate(R.layout.item_baby, parent, false)
         val name = rowView.findViewById<TextView>(R.id.tv_babyName)
         val btnAdd = rowView.findViewById<Button>(R.id.btnAddBaby)
         val imgIgnore = rowView.findViewById<ImageView>(R.id.IV_babyIgnore)
         name.text = list[position].name
-        if (position == list.size - 1)
-        {
+        if (position == list.size - 1) {
             btnAdd.visibility = View.VISIBLE
             imgIgnore.visibility = View.GONE
         }

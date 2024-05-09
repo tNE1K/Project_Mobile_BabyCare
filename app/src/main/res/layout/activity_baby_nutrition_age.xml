@@ -7,38 +7,39 @@
     android:layout_height="match_parent"
     android:background="@color/pink"
     tools:context=".Baby_nutrition_age">
+
     <View
+        android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/body"
-        android:background="@color/white"
         android:layout_marginTop="@dimen/view_height_large"
-        app:layout_constraintTop_toTopOf="@id/main"/>
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/main" />
+
     <View
+        android:id="@+id/logo_container"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/logo_container"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/img_border"
         app:layout_constraintBottom_toTopOf="@id/body"
         app:layout_constraintLeft_toLeftOf="@id/body"
-        android:layout_marginStart="@dimen/margin_small"
-        android:background="@drawable/img_border"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
+        android:id="@+id/logo"
         android:layout_width="@dimen/view_height_standard"
         android:layout_height="@dimen/view_height_standard"
-        android:id="@+id/logo"
         android:src="@drawable/babynutrition"
-        app:layout_constraintTop_toTopOf="@id/logo_container"
         app:layout_constraintBottom_toBottomOf="@id/logo_container"
         app:layout_constraintLeft_toLeftOf="@id/logo_container"
-        app:layout_constraintRight_toRightOf="@id/logo_container"/>
+        app:layout_constraintRight_toRightOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="@id/logo_container" />
+
     <TextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/logo_container"
-        app:layout_constraintBottom_toTopOf="@id/body"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="@dimen/margin_super_large"
         android:fontFamily="@font/itimregular"
         android:shadowColor="@color/white"
@@ -46,299 +47,348 @@
         android:shadowDy="6"
         android:shadowRadius="5"
         android:text="Dinh dưỡng"
-        android:textColorHighlight="@color/white"
         android:textColor="@color/blue"
+        android:textColorHighlight="@color/white"
         android:textSize="@dimen/text_large"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintStart_toEndOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TableLayout
         android:id="@+id/tl_nutritionInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/body"
-        app:layout_constraintLeft_toLeftOf="@id/main"
+        android:stretchColumns="1, 2"
         app:layout_constraintBottom_toTopOf="@id/tv_infoSourceHeader"
-        android:stretchColumns="1, 2">
+        app:layout_constraintLeft_toLeftOf="@id/main"
+        app:layout_constraintTop_toTopOf="@id/body">
+
         <TableRow>
+
             <TextView
+                android:layout_marginRight="1dp"
+                android:background="@color/blue"
                 android:text="Tuổi con"
-                android:textSize="@dimen/text_standard"
-                android:textStyle="bold"
-                android:textColor="@color/white"
                 android:textAlignment="center"
-                android:background="@color/blue"
-                android:layout_marginRight="1dp"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold" />
+
             <TextView
+                android:layout_marginRight="1dp"
+                android:background="@color/blue"
                 android:text="Lượng sữa"
-                android:textSize="@dimen/text_standard"
-                android:textStyle="bold"
-                android:textColor="@color/white"
                 android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold" />
+
+            <TextView
                 android:background="@color/blue"
-                android:layout_marginRight="1dp"/>
-            <TextView
                 android:text="Số cữ/ngày"
-                android:textSize="@dimen/text_standard"
-                android:textStyle="bold"
+                android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textAlignment="center"
-                android:background="@color/blue"/>
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="1 ngày"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="7 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
-                android:text="10 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
-                android:textAlignment="center"
                 android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:padding="@dimen/padding_super_small"
+                android:text="10 cữ"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
 
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="2 ngày"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="14 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="10 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
+
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="3 ngày"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="38 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="10 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
+
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="4 ngày"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="58 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="10 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
+
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="7 ngày"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="65 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="10 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
+
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="1 - 3 tuần"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="30 - 90 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="10 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
+
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="3 tuần - 3 tháng"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="90 - 120 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="6 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
+
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="3 - 6 tháng"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
-                android:background="@drawable/border_textview"
                 android:textAlignment="center"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="120 - 230 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="5 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
+
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="6 - 9 tháng"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="170 - 240 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="6 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
+
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="9 - 12 tháng"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="200 - 240 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
-                android:text="4 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
-                android:textAlignment="center"
                 android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:padding="@dimen/padding_super_small"
+                android:text="4 cữ"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
+
         <TableRow>
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="12 tháng trở lên"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
+                android:background="@drawable/border_textview"
+                android:padding="@dimen/padding_super_small"
                 android:text="240 - 300 ml"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
                 android:textAlignment="center"
-                android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
+
             <TextView
-                android:text="4 cữ"
-                android:textSize="@dimen/text_standard"
-                android:textColor="@color/black"
-                android:textAlignment="center"
                 android:background="@drawable/border_textview"
-                android:padding="@dimen/padding_super_small"/>
+                android:padding="@dimen/padding_super_small"
+                android:text="4 cữ"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard" />
         </TableRow>
 
 
@@ -348,12 +398,12 @@
         android:id="@+id/tv_infoSourceHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Source:"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_standard"
         android:layout_margin="@dimen/margin_standard"
-        app:layout_constraintTop_toBottomOf="@id/tl_nutritionInfo"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        android:text="Source:"
+        android:textSize="@dimen/text_standard"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tl_nutritionInfo" />
 
     <TextView
         android:id="@+id/tv_infoSourceBody"
@@ -361,39 +411,38 @@
         android:layout_height="@dimen/view_height_standard"
         android:text="- https://hellobacsi.com\n- https://vinmec.com\n- Và tham khảo các nguồn trên mạng"
         android:textSize="@dimen/text_standard"
-        app:layout_constraintTop_toBottomOf="@id/tv_infoSourceHeader"
         app:layout_constraintLeft_toRightOf="@id/tv_infoSourceHeader"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_infoSourceHeader" />
 
 
     <Button
         android:id="@+id/btn_back"
         android:layout_width="130dp"
         android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
         android:text="Quay về"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/btn_tinhTheoCanNang"
+        app:backgroundTint="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:backgroundTint="@color/light_blue"
-        android:background="@drawable/rounded_button"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginBottom="@dimen/margin_large"/>
+        app:layout_constraintTop_toTopOf="@id/btn_tinhTheoCanNang" />
+
     <Button
         android:id="@+id/btn_tinhTheoCanNang"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:text="Tính theo cân nặng"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:background="@drawable/rounded_button"
-        app:backgroundTint="@color/blue"
         android:layout_marginRight="@dimen/margin_super_large"
-        android:layout_marginBottom="@dimen/margin_large"/>
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Tính theo cân nặng"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

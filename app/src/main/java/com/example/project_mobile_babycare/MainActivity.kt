@@ -12,22 +12,22 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
-    lateinit var btnBabyInfo:Button
-    lateinit var btnBabyWnH:Button
-    lateinit var btnBabyMedicalHistory:Button
-    lateinit var btnBabyInjection:Button
-    lateinit var btnBabyNutrition:Button
-    lateinit var btnBabyMemory:Button
-    lateinit var btnBabyMilestone:Button
-    lateinit var btnLogout:Button
-
+    lateinit var btnBabyInfo: Button
+    lateinit var btnBabyWnH: Button
+    lateinit var btnBabyMedicalHistory: Button
+    lateinit var btnBabyInjection: Button
+    lateinit var btnBabyNutrition: Button
+    lateinit var btnBabyMemory: Button
+    lateinit var btnBabyMilestone: Button
+    lateinit var btnLogout: Button
 
     lateinit var hSpinner: Spinner
-    lateinit var baby:Baby
-    lateinit var babyAdapter:BabyAdapter
-    lateinit var babyList:ArrayList<Baby>
+    lateinit var baby: Baby
+    lateinit var babyAdapter: BabyAdapter
+    lateinit var babyList: ArrayList<Baby>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +36,16 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        // listen for auth state change
+        FirebaseAuth.getInstance().addAuthStateListener { firebaseAuth ->
+            val user = firebaseAuth.currentUser
+            if (user == null) {
+                // User is signed out, navigate to login screen
+                val intent = Intent(this, logIn::class.java)
+                startActivity(intent)
+                finish() // Finish MainActivity
+            }
         }
         btnBabyInfo = findViewById(R.id.BTNbabyInfo)
         btnBabyWnH = findViewById(R.id.BTNbabyWH)
@@ -55,7 +65,9 @@ class MainActivity : AppCompatActivity() {
         babyAdapter = BabyAdapter(this, babyList)
         hSpinner.adapter = babyAdapter
         hSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?, view: View?, position: Int, id: Long
+            ) {
 
             }
 
@@ -64,17 +76,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        btnBabyInfo.setOnClickListener{
+        btnBabyInfo.setOnClickListener {
             val intent = Intent(this, Baby_Info::class.java)
             startActivity(intent)
         }
 
-        btnBabyWnH.setOnClickListener{
+        btnBabyWnH.setOnClickListener {
             val intent = Intent(this, heightweightActivity::class.java)
             startActivity(intent)
         }
 
-        btnBabyMedicalHistory.setOnClickListener{
+        btnBabyMedicalHistory.setOnClickListener {
             val intent = Intent(this, medical_history_view::class.java)
             startActivity(intent)
         }
@@ -82,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 //            val intent = Intent(this, heightweightActivity::class.java)
 //            startActivity(intent)
 //        }
-        btnBabyNutrition.setOnClickListener{
+        btnBabyNutrition.setOnClickListener {
             val intent = Intent(this, Baby_nutrition_age::class.java)
             startActivity(intent)
         }
@@ -94,10 +106,10 @@ class MainActivity : AppCompatActivity() {
 //            val intent = Intent(this, heightweightActivity::class.java)
 //            startActivity(intent)
 //        }
-//        btnLogout.setOnClickListener{
-//            val intent = Intent(this, heightweightActivity::class.java)
-//            startActivity(intent)
-//        }
-
+        btnLogout.setOnClickListener {
+            val intent = Intent(this, logIn::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

@@ -67,28 +67,31 @@
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@id/body_bbinjec" />
+
     <TextView
         android:id="@+id/tvDaTiem_bbinjec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/margin_hight_large"
         android:layout_marginTop="@dimen/margin_standard"
+        android:layout_marginRight="@dimen/margin_hight_large"
         android:text="Đã tiêm"
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
         app:layout_constraintRight_toLeftOf="@id/tvChuaTiem_bbinjec"
         app:layout_constraintTop_toTopOf="@id/body_bbinjec" />
+
     <TextView
         android:id="@+id/tvChuaTiem_bbinjec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_standard"
+        android:layout_marginRight="@dimen/margin_hight_large"
         android:text="Chưa tiêm"
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
-        android:layout_marginRight="@dimen/margin_hight_large"
         app:layout_constraintRight_toRightOf="@id/body_bbinjec"
         app:layout_constraintTop_toTopOf="@id/body_bbinjec" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvbbinjec"
         android:layout_width="0dp"
@@ -97,6 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvMui_bbinjec" />
+
     <Button
         android:id="@+id/btnUndo_bbinjec"
         android:layout_width="150dp"
