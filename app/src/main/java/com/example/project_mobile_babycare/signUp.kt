@@ -20,10 +20,10 @@ class signUp : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        val email : EditText = findViewById(R.id.ETemail)
-        val password : EditText = findViewById(R.id.ETpassword)
-        val checkPass : EditText = findViewById(R.id.ETcheckPassword)
-        val button : Button = findViewById(R.id.BTNsignIn)
+        val email: EditText = findViewById(R.id.ETemail)
+        val password: EditText = findViewById(R.id.ETpassword)
+        val checkPass: EditText = findViewById(R.id.ETcheckPassword)
+        val button: Button = findViewById(R.id.BTNsignIn)
         val login: LinearLayout = findViewById(R.id.containerLogIn)
 
         // Go to log in activity when click on the text
@@ -33,37 +33,37 @@ class signUp : AppCompatActivity() {
         }
 
         // Button sign up event
-        button.setOnClickListener{
+        button.setOnClickListener {
             val email_ = email.text.toString()
             val password_ = password.text.toString()
             val checkPass_ = checkPass.text.toString()
 
             // Check if password is the same as checkPass
-            if (checkPass_ != password_)
-            {
+            if (checkPass_ != password_) {
                 Toast.makeText(this, "Hãy kiểm tra lại thông tin!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             // Check if 3 fields it not empty
-            if (email_.isNotEmpty() && password_.isNotEmpty() && checkPass_.isNotEmpty()){
+            if (email_.isNotEmpty() && password_.isNotEmpty() && checkPass_.isNotEmpty()) {
                 // Sign up with email and password
-                auth.createUserWithEmailAndPassword(email_, password_).addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Send verification mail
-                        sendEmailVerification()
-                    } else {
-                        Toast.makeText(this,"Đăng ký thất bại!\n", Toast.LENGTH_SHORT,).show()
-                        val errorMessage = task.exception?.message
-                        Toast.makeText(baseContext, "$errorMessage", Toast.LENGTH_SHORT).show()
+                auth.createUserWithEmailAndPassword(email_, password_)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Send verification mail
+                            sendEmailVerification()
+                        } else {
+                            Toast.makeText(this, "Đăng ký thất bại!\n", Toast.LENGTH_SHORT).show()
+                            val errorMessage = task.exception?.message
+                            Toast.makeText(baseContext, "$errorMessage", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
+            } else {
+                Toast.makeText(this, "Hãy nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show()
             }
-                else {
-                    Toast.makeText(this, "Hãy nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show()
-                }
         }
     }
+
     private fun navigateToLogIn() {
         val intent = Intent(this, logIn::class.java)
         startActivity(intent)
@@ -76,7 +76,11 @@ class signUp : AppCompatActivity() {
             user.sendEmailVerification()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this,"Đăng ký thành công!\nVui lòng xác nhận mail", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Đăng ký thành công!\nVui lòng xác nhận mail",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         // Prevent user automatically sign in to app before verify and sign in
                         auth.signOut()
                         finish()

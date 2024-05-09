@@ -13,18 +13,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/babycare"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/SPNlistBaby"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:dropDownVerticalOffset = "47dp"
         android:layout_marginLeft="@dimen/text_large"
         android:layout_marginRight="@dimen/text_large"
         android:background="@color/transparent"
+        android:dropDownVerticalOffset="47dp"
         android:popupBackground="@drawable/rounded_bot_textbox"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -34,381 +34,396 @@
         android:id="@+id/TVshowMonths"
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:text="0 tháng"
-        android:textColor="@color/black"
+        android:layout_marginLeft="@dimen/text_large"
+        android:layout_marginTop="@dimen/text_small"
         android:background="@drawable/rounded_textbox"
         android:backgroundTint="@color/white"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textAlignment="center"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/SPNlistBaby"
+        android:text="0 tháng"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="@dimen/text_small"
-        android:layout_marginLeft="@dimen/text_large"/>
+        app:layout_constraintTop_toBottomOf="@id/SPNlistBaby" />
 
     <TextView
         android:id="@+id/TVshowDays"
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:text="0 ngày"
-        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/text_small"
+        android:layout_marginRight="@dimen/text_large"
         android:background="@drawable/rounded_textbox"
         android:backgroundTint="@color/white"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textAlignment="center"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/SPNlistBaby"
+        android:text="0 ngày"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="@dimen/text_small"
-        android:layout_marginRight="@dimen/text_large"/>
+        app:layout_constraintTop_toBottomOf="@id/SPNlistBaby" />
 
     <View
         android:id="@+id/Vmenu"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/TVshowDays"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="@dimen/text_small"
         android:layout_marginLeft="@dimen/text_large"
+        android:layout_marginTop="@dimen/text_small"
         android:layout_marginRight="@dimen/text_large"
         android:layout_marginBottom="@dimen/text_small"
         android:background="@drawable/rounded_textbox"
-        android:backgroundTint="@color/pink"/>
+        android:backgroundTint="@color/pink"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TVshowDays" />
+
     <TextView
         android:id="@+id/TVbabyInfo_background"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:layout_constraintLeft_toLeftOf="@id/Vmenu"
-        app:layout_constraintTop_toTopOf="@id/Vmenu"
+        android:layout_marginLeft="@dimen/text_small"
+        android:layout_marginTop="@dimen/text_small"
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
-        android:layout_marginTop="@dimen/text_small"
-        android:layout_marginLeft="@dimen/text_small"/>
+        app:layout_constraintLeft_toLeftOf="@id/Vmenu"
+        app:layout_constraintTop_toTopOf="@id/Vmenu" />
 
     <ImageView
         android:id="@+id/IVbabyInfo"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintTop_toTopOf="@id/TVbabyInfo_background"
+        android:src="@drawable/babyinfo"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyInfo_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyInfo_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyInfo_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyInfo_background"
-        android:src="@drawable/babyinfo"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyInfo_background" />
+
     <Button
         android:id="@+id/BTNbabyInfo"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/rounded_button"
         app:backgroundTint="@color/transparent"
-        app:layout_constraintTop_toTopOf="@id/TVbabyInfo_background"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyInfo_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyInfo_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyInfo_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyInfo_background"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyInfo_background" />
 
     <TextView
         android:id="@+id/TVbabyInfo"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Thông tin con yêu"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyInfo_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyInfo_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyInfo_background"
-        android:textAlignment="center"/>
+        app:layout_constraintTop_toBottomOf="@id/TVbabyInfo_background" />
 
 
     <TextView
         android:id="@+id/TVbabyWH_background"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:layout_constraintRight_toRightOf="@id/Vmenu"
-        app:layout_constraintTop_toTopOf="@id/Vmenu"
+        android:layout_marginTop="@dimen/text_small"
+        android:layout_marginRight="@dimen/text_small"
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
-        android:layout_marginTop="@dimen/text_small"
-        android:layout_marginRight="@dimen/text_small"/>
+        app:layout_constraintRight_toRightOf="@id/Vmenu"
+        app:layout_constraintTop_toTopOf="@id/Vmenu" />
 
     <ImageView
         android:id="@+id/IVbabyWH"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintTop_toTopOf="@id/TVbabyWH_background"
+        android:src="@drawable/babywh"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyWH_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyWH_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyWH_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyWH_background"
-        android:src="@drawable/babywh"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyWH_background" />
+
     <Button
         android:id="@+id/BTNbabyWH"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/rounded_button"
         app:backgroundTint="@color/transparent"
-        app:layout_constraintTop_toTopOf="@id/TVbabyWH_background"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyWH_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyWH_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyWH_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyWH_background"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyWH_background" />
 
     <TextView
         android:id="@+id/TVbabyWH"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:text="Chiều cao &amp; cân nặng"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyWH_background"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyWH_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyWH_background"
-        android:textAlignment="center"/>
+        app:layout_constraintTop_toBottomOf="@id/TVbabyWH_background" />
+
     <TextView
         android:id="@+id/TVbabyMedicalHistory_background"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:layout_constraintLeft_toLeftOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyInfo_background"
+        android:layout_marginLeft="@dimen/text_small"
+        android:layout_marginTop="@dimen/text_large"
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
-        android:layout_marginTop="@dimen/text_large"
-        android:layout_marginLeft="@dimen/text_small"/>
+        app:layout_constraintLeft_toLeftOf="@id/Vmenu"
+        app:layout_constraintTop_toBottomOf="@id/TVbabyInfo_background" />
 
     <ImageView
         android:id="@+id/IVbabyMedicalHistory"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintTop_toTopOf="@id/TVbabyMedicalHistory_background"
+        android:src="@drawable/babymedicalhistory"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyMedicalHistory_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMedicalHistory_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMedicalHistory_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyMedicalHistory_background"
-        android:src="@drawable/babymedicalhistory"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyMedicalHistory_background" />
+
     <Button
         android:id="@+id/BTNbabyMedicalHistory"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/rounded_button"
         app:backgroundTint="@color/transparent"
-        app:layout_constraintTop_toTopOf="@id/TVbabyMedicalHistory_background"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyMedicalHistory_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMedicalHistory_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMedicalHistory_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyMedicalHistory_background"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyMedicalHistory_background" />
 
     <TextView
         android:id="@+id/TVbabyMedicalHistory"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Tiền sử bệnh lý"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyMedicalHistory_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMedicalHistory_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMedicalHistory_background"
-        android:textAlignment="center"/>
+        app:layout_constraintTop_toBottomOf="@id/TVbabyMedicalHistory_background" />
+
     <TextView
         android:id="@+id/TVbabyInjection_background"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:layout_constraintRight_toRightOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyWH_background"
+        android:layout_marginTop="@dimen/text_large"
+        android:layout_marginRight="@dimen/text_small"
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
-        android:layout_marginTop="@dimen/text_large"
-        android:layout_marginRight="@dimen/text_small"/>
+        app:layout_constraintRight_toRightOf="@id/Vmenu"
+        app:layout_constraintTop_toBottomOf="@id/TVbabyWH_background" />
 
     <ImageView
         android:id="@+id/IVbabyInjection"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintTop_toTopOf="@id/TVbabyInjection_background"
+        android:src="@drawable/babyinjection"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyInjection_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyInjection_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyInjection_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyInjection_background"
-        android:src="@drawable/babyinjection"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyInjection_background" />
+
     <Button
         android:id="@+id/BTNbabyInjection"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/rounded_button"
         app:backgroundTint="@color/transparent"
-        app:layout_constraintTop_toTopOf="@id/TVbabyInjection_background"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyInjection_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyInjection_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyInjection_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyInjection_background"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyInjection_background" />
 
     <TextView
         android:id="@+id/TVbabyInjection"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Sổ tiêm chủng"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyInjection_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyInjection_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyInjection_background"
-        android:textAlignment="center"/>
+        app:layout_constraintTop_toBottomOf="@id/TVbabyInjection_background" />
+
     <TextView
         android:id="@+id/TVbabyNutrition_background"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:layout_constraintLeft_toLeftOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyMedicalHistory_background"
+        android:layout_marginLeft="@dimen/text_small"
+        android:layout_marginTop="@dimen/text_large"
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
-        android:layout_marginTop="@dimen/text_large"
-        android:layout_marginLeft="@dimen/text_small"/>
+        app:layout_constraintLeft_toLeftOf="@id/Vmenu"
+        app:layout_constraintTop_toBottomOf="@id/TVbabyMedicalHistory_background" />
 
     <ImageView
         android:id="@+id/IVbabyNutrition"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintTop_toTopOf="@id/TVbabyNutrition_background"
+        android:src="@drawable/babynutrition"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyNutrition_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyNutrition_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyNutrition_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyNutrition_background"
-        android:src="@drawable/babynutrition"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyNutrition_background" />
+
     <Button
         android:id="@+id/BTNbabyNutrition"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/rounded_button"
         app:backgroundTint="@color/transparent"
-        app:layout_constraintTop_toTopOf="@id/TVbabyNutrition_background"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyNutrition_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyNutrition_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyNutrition_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyNutrition_background"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyNutrition_background" />
 
     <TextView
         android:id="@+id/TVbabyNutrition"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Dinh dưỡng"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyNutrition_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyNutrition_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyNutrition_background"
-        android:textAlignment="center"/>
+        app:layout_constraintTop_toBottomOf="@id/TVbabyNutrition_background" />
+
     <TextView
         android:id="@+id/TVbabyMemory_background"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:layout_constraintRight_toRightOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyInjection_background"
+        android:layout_marginTop="@dimen/text_large"
+        android:layout_marginRight="@dimen/text_small"
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
-        android:layout_marginTop="@dimen/text_large"
-        android:layout_marginRight="@dimen/text_small"/>
+        app:layout_constraintRight_toRightOf="@id/Vmenu"
+        app:layout_constraintTop_toBottomOf="@id/TVbabyInjection_background" />
 
     <ImageView
         android:id="@+id/IVbabyMemory"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintTop_toTopOf="@id/TVbabyMemory_background"
+        android:src="@drawable/babymemory"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyMemory_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMemory_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMemory_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyMemory_background"
-        android:src="@drawable/babymemory"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyMemory_background" />
+
     <Button
         android:id="@+id/BTNbabyMemory"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/rounded_button"
         app:backgroundTint="@color/transparent"
-        app:layout_constraintTop_toTopOf="@id/TVbabyMemory_background"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyMemory_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMemory_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMemory_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyMemory_background"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyMemory_background" />
 
     <TextView
         android:id="@+id/TVbabyMemory"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Lưu giữ khoảnh khắc"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyMemory_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMemory_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMemory_background"
-        android:textAlignment="center"/>
+        app:layout_constraintTop_toBottomOf="@id/TVbabyMemory_background" />
+
     <TextView
         android:id="@+id/TVbabyMilestone_background"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyNutrition_background"
-        android:background="@drawable/rounded_textbox"
-        app:backgroundTint="@color/white"
+        android:layout_marginLeft="@dimen/text_small"
         android:layout_marginTop="@dimen/text_large"
-        android:layout_marginLeft="@dimen/text_small"/>
+        android:background="@drawable/rounded_textbox"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:layout_constraintLeft_toLeftOf="@id/Vmenu"
+        app:layout_constraintTop_toBottomOf="@id/TVbabyNutrition_background" />
 
     <ImageView
         android:id="@+id/IVbabyMilestone"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintTop_toTopOf="@id/TVbabyMilestone_background"
+        android:src="@drawable/babymilestone"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyMilestone_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMilestone_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMilestone_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyMilestone_background"
-        android:src="@drawable/babymilestone"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyMilestone_background" />
+
     <Button
         android:id="@+id/BTNbabyMilestone"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/rounded_button"
         app:backgroundTint="@color/transparent"
-        app:layout_constraintTop_toTopOf="@id/TVbabyMilestone_background"
+        app:layout_constraintBottom_toBottomOf="@id/TVbabyMilestone_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMilestone_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMilestone_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVbabyMilestone_background"/>
+        app:layout_constraintTop_toTopOf="@id/TVbabyMilestone_background" />
 
     <TextView
         android:id="@+id/TVbabyMilestone"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Cột mốc phát triển"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyMilestone_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMilestone_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMilestone_background"
-        android:textAlignment="center"/>
+        app:layout_constraintTop_toBottomOf="@id/TVbabyMilestone_background" />
+
     <TextView
         android:id="@+id/TVlogout_background"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:layout_constraintRight_toRightOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyMemory_background"
+        android:layout_marginTop="@dimen/text_large"
+        android:layout_marginRight="@dimen/text_small"
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
-        android:layout_marginTop="@dimen/text_large"
-        android:layout_marginRight="@dimen/text_small"/>
+        app:layout_constraintRight_toRightOf="@id/Vmenu"
+        app:layout_constraintTop_toBottomOf="@id/TVbabyMemory_background" />
 
     <ImageView
         android:id="@+id/IVlogout"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:layout_constraintTop_toTopOf="@id/TVlogout_background"
+        android:src="@drawable/logout"
+        app:layout_constraintBottom_toBottomOf="@id/TVlogout_background"
         app:layout_constraintLeft_toLeftOf="@id/TVlogout_background"
         app:layout_constraintRight_toRightOf="@id/TVlogout_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVlogout_background"
-        android:src="@drawable/logout"/>
+        app:layout_constraintTop_toTopOf="@id/TVlogout_background" />
+
     <Button
         android:id="@+id/BTNlogout"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/rounded_button"
         app:backgroundTint="@color/transparent"
-        app:layout_constraintTop_toTopOf="@id/TVlogout_background"
+        app:layout_constraintBottom_toBottomOf="@id/TVlogout_background"
         app:layout_constraintLeft_toLeftOf="@id/TVlogout_background"
         app:layout_constraintRight_toRightOf="@id/TVlogout_background"
-        app:layout_constraintBottom_toBottomOf="@id/TVlogout_background"/>
+        app:layout_constraintTop_toTopOf="@id/TVlogout_background" />
 
     <TextView
         android:id="@+id/TVlogout"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:text="Đăng xuất"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/TVlogout_background"
         app:layout_constraintLeft_toLeftOf="@id/TVlogout_background"
         app:layout_constraintRight_toRightOf="@id/TVlogout_background"
-        android:textAlignment="center"/>
+        app:layout_constraintTop_toBottomOf="@id/TVlogout_background" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

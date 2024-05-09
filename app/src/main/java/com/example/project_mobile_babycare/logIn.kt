@@ -27,26 +27,29 @@ class logIn : AppCompatActivity() {
         val username: EditText = findViewById(R.id.ETname)
         val password: EditText = findViewById(R.id.ETpassword)
         val signup: LinearLayout = findViewById(R.id.containerSignUp)
-
         // Go to sign up activity
         signup.setOnClickListener {
             navigateToSignUp()
         }
-
         button.setOnClickListener {
             val username_ = username.text.toString()
             val password_ = password.text.toString()
 
             if (username_.isNotEmpty() && password_.isNotEmpty()) {
                 // Sign in with email and password
-                auth.signInWithEmailAndPassword(username_, password_).addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success
-                        checkUserVerified()
-                    } else {
-                        Toast.makeText(this, "Đăng nhập thất bại\nHãy kiểm tra lại thông tin!", Toast.LENGTH_SHORT).show()
+                auth.signInWithEmailAndPassword(username_, password_)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success
+                            checkUserVerified()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "Đăng nhập thất bại\nHãy kiểm tra lại thông tin!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
-                }
             } else {
                 Toast.makeText(this, "Hãy nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show()
             }
@@ -58,6 +61,7 @@ class logIn : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
     private fun navigateToSignUp() {
         val intent = Intent(this, signUp::class.java)
         startActivity(intent)
@@ -77,11 +81,10 @@ class logIn : AppCompatActivity() {
 
     private fun checkUserVerified() {
         val user = auth.currentUser
-        if (user?.isEmailVerified == true){
+        if (user?.isEmailVerified == true) {
             navigateToMainActivity()
             finish()
-        }
-        else{
+        } else {
             reSendEmailVerification()
         }
     }
@@ -91,14 +94,20 @@ class logIn : AppCompatActivity() {
         user?.sendEmailVerification()
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Email xác thực đã được gửi lại!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Email xác thực đã được gửi lại!", Toast.LENGTH_SHORT)
+                        .show()
                     return@addOnCompleteListener
                 } else {
-                    Toast.makeText(baseContext, "Vui lòng kiểm tra hộp thư của bạn!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext,
+                        "Vui lòng kiểm tra hộp thư của bạn!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     return@addOnCompleteListener
                 }
             }
     }
+
     private fun checkUserExistence() {
         val currentUser = auth.currentUser
 
@@ -113,7 +122,4 @@ class logIn : AppCompatActivity() {
                 }
             }
     }
-
-
-
 }

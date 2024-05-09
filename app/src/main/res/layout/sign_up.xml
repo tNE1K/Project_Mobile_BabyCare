@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -12,13 +11,13 @@
         android:id="@+id/IVprojectName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/babycare"
         android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginRight="@dimen/margin_large"
         android:layout_marginTop="@dimen/margin_super_large"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="@dimen/margin_large"
+        android:src="@drawable/babycare"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/ETemail"
@@ -45,15 +44,15 @@
         android:background="@drawable/rounded_textbox"
         android:backgroundTint="@color/white"
         android:hint="Nhập mật khẩu"
-        android:textColorHint="@color/grey"
-        android:textColor="@color/black"
         android:inputType="textPassword"
         android:paddingStart="@dimen/padding_standard"
         android:paddingEnd="@dimen/padding_standard"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
         android:textSize="@dimen/text_standard"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ETemail"/>
+        app:layout_constraintTop_toBottomOf="@id/ETemail" />
 
     <EditText
         android:id="@+id/ETcheckPassword"
@@ -77,12 +76,12 @@
         android:id="@+id/TXTnoAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_standard"
         android:text="Đã có tài khoản?"
         android:textColor="@color/black"
         android:textSize="@dimen/text_small"
-        android:layout_marginTop="@dimen/margin_standard"
         app:layout_constraintLeft_toLeftOf="@id/ETcheckPassword"
-        app:layout_constraintTop_toBottomOf="@id/ETcheckPassword"/>
+        app:layout_constraintTop_toBottomOf="@id/ETcheckPassword" />
 
     <LinearLayout
         android:id="@+id/containerLogIn"
@@ -90,31 +89,32 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        app:layout_constraintTop_toBottomOf="@id/TXTnoAccount"
-        app:layout_constraintLeft_toLeftOf="@id/TXTnoAccount">
+        app:layout_constraintLeft_toLeftOf="@id/TXTnoAccount"
+        app:layout_constraintTop_toBottomOf="@id/TXTnoAccount">
+
         <TextView
             android:id="@+id/TXTsignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đăng nhập"
-            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="@dimen/text_small"
-            />
+            android:textStyle="bold" />
     </LinearLayout>
+
     <Button
         android:id="@+id/BTNsignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đăng ký"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        app:layout_constraintTop_toBottomOf="@id/containerLogIn"
+        android:text="Đăng ký"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:backgroundTint="@color/blue"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="@dimen/margin_large"
-        app:backgroundTint="@color/blue"
-        android:layout_marginTop="@dimen/margin_large"/>
+        app:layout_constraintTop_toBottomOf="@id/containerLogIn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

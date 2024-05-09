@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 
-class MedicalAdapter(val context: Activity, val list: ArrayList<Medical>) : ArrayAdapter<Medical>(context, R.layout.item_medical)  {
+class MedicalAdapter(val context: Activity, val list: ArrayList<Medical>) :
+    ArrayAdapter<Medical>(context, R.layout.item_medical) {
     override fun getCount(): Int {
         return list.size
     }

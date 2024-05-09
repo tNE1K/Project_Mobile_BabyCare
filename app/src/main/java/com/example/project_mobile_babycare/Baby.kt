@@ -1,5 +1,5 @@
 package com.example.project_mobile_babycare
 
-class Baby(val name:String){
+class Baby(val name: String) {
 
 }
