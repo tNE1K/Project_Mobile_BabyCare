@@ -85,10 +85,10 @@
         android:layout_marginLeft="@dimen/margin_super_large"
         android:layout_marginRight="@dimen/margin_super_large"
         android:src="@drawable/folder"
-        app:layout_constraintTop_toTopOf="@id/logo_camera"
+        app:layout_constraintBottom_toBottomOf="@id/logo_camera"
         app:layout_constraintLeft_toRightOf="@id/logo_camera"
         app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toBottomOf="@id/logo_camera"
+        app:layout_constraintTop_toTopOf="@id/logo_camera"
         app:tint="@color/pink" />
 
     <View
@@ -96,9 +96,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginTop="@dimen/margin_standard"
         android:layout_marginRight="@dimen/margin_super_large"
         android:layout_marginBottom="@dimen/margin_standard"
-        android:layout_marginTop="@dimen/margin_standard"
         android:background="@drawable/img_border"
         android:backgroundTint="@color/pink"
         app:layout_constraintBottom_toTopOf="@id/input_field"
@@ -123,33 +123,6 @@
         app:layout_constraintRight_toRightOf="@id/main"
         app:layout_constraintTop_toBottomOf="@id/add" />
 
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:background="@drawable/rounded_button"
-        android:text="Thêm"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/blue"
-        app:layout_constraintBottom_toTopOf="@id/btn_back"
-        app:layout_constraintTop_toBottomOf="@id/input_field"
-        app:layout_constraintLeft_toLeftOf="@id/input_field"
-        app:layout_constraintRight_toRightOf="@id/input_field" />
-
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:background="@drawable/rounded_button"
-        android:text="Quay về"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/grey"
-        app:layout_constraintTop_toBottomOf="@id/btn_save"
-        app:layout_constraintBottom_toBottomOf="@id/main"
-        app:layout_constraintLeft_toLeftOf="@id/input_field"
-        app:layout_constraintRight_toRightOf="@id/input_field" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -161,5 +134,46 @@
         app:layout_constraintLeft_toLeftOf="@id/add"
         app:layout_constraintRight_toRightOf="@id/add"
         app:layout_constraintTop_toTopOf="@id/add" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Lưu"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/blue"
+        android:layout_marginRight="@dimen/margin_standard"
+        app:layout_constraintBottom_toTopOf="@id/btn_back"
+        app:layout_constraintLeft_toLeftOf="@id/input_field"
+        app:layout_constraintRight_toLeftOf="@id/btn_del" />
+
+    <Button
+        android:id="@+id/btn_del"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Xoá"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/red"
+        android:layout_marginLeft="@dimen/margin_standard"
+        app:layout_constraintTop_toTopOf="@id/btn_save"
+        app:layout_constraintLeft_toRightOf="@id/btn_save"
+        app:layout_constraintRight_toRightOf="@id/input_field" />
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Quay về"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/grey"
+        android:layout_marginRight="@dimen/margin_standard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/input_field"
+        app:layout_constraintRight_toRightOf="@id/input_field" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
