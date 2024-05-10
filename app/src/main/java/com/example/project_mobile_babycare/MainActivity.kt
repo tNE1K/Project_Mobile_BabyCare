@@ -1,14 +1,20 @@
 package com.example.project_mobile_babycare
 
+import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -28,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var baby: Baby
     lateinit var babyAdapter: BabyAdapter
     lateinit var babyList: ArrayList<Baby>
+    lateinit var builder:AlertDialog.Builder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         btnBabyMemory = findViewById(R.id.BTNbabyMemory)
         btnBabyMilestone = findViewById(R.id.BTNbabyMilestone)
         btnLogout = findViewById(R.id.BTNlogout)
+        builder = AlertDialog.Builder(this)
 
         babyList = ArrayList<Baby>()
         babyList.add(Baby("Kiên"))
@@ -107,9 +115,27 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnLogout.setOnClickListener {
+            showCustomDialogBox()
+
+        }
+    }
+
+    private fun showCustomDialogBox() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.custom_logout_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val btnYes:Button = dialog.findViewById(R.id.btn_logout)
+        val btnThoat:Button = dialog.findViewById(R.id.btn_thoat)
+        btnYes.setOnClickListener{
             val intent = Intent(this, logIn::class.java)
             startActivity(intent)
             finish()
         }
+        btnThoat.setOnClickListener{
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 }
