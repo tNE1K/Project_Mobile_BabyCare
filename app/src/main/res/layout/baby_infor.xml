@@ -77,11 +77,12 @@
         android:layout_marginRight="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
         android:inputType="text"
-        android:text="\t\tTên của bé"
+        android:hint="Tên của bé"
         android:textColor="#959595"
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:paddingLeft="@dimen/padding_standard"
         app:layout_constraintTop_toBottomOf="@id/tvName_bbinfor" />
 
     <TextView
@@ -144,10 +145,11 @@
         android:layout_marginRight="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
         android:inputType="text"
-        android:text="\t\tChiều cao"
+        android:hint="Chiều cao"
         android:textColor="#959595"
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
+        android:paddingLeft="@dimen/padding_standard"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_chieucao" />
 
@@ -172,10 +174,11 @@
         android:layout_marginRight="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
         android:inputType="text"
-        android:text="\t\tCân nặng"
+        android:hint="Cân nặng"
         android:textColor="#959595"
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
+        android:paddingLeft="@dimen/padding_standard"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_cannang" />
 
