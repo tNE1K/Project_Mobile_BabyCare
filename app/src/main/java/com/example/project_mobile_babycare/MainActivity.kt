@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.example.project_mobile_babycare.signOut
 
 class MainActivity : AppCompatActivity() {
     lateinit var btnBabyInfo: Button
@@ -129,6 +130,7 @@ class MainActivity : AppCompatActivity() {
         val btnYes:Button = dialog.findViewById(R.id.btn_logout)
         val btnThoat:Button = dialog.findViewById(R.id.btn_thoat)
         btnYes.setOnClickListener{
+            signOut()
             val intent = Intent(this, logIn::class.java)
             startActivity(intent)
             finish()
