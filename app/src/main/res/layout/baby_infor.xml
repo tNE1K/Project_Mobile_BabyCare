@@ -220,28 +220,30 @@
 
     <Button
         android:id="@+id/btn_infback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
         android:layout_marginLeft="@dimen/margin_super_large"
         android:layout_marginBottom="@dimen/margin_large"
-        android:backgroundTint="@color/light_blue"
+        android:background="@drawable/rounded_button"
+        app:backgroundTint="@color/light_blue"
         android:text="Trở về"
         android:textColor="@color/black"
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="@id/body_bbinfor"
-        app:layout_constraintTop_toBottomOf="@+id/rgGT" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
         android:id="@+id/btn_infsave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
         android:layout_marginRight="@dimen/margin_super_large"
         android:layout_marginBottom="@dimen/margin_large"
-        android:backgroundTint="#329DFF"
+        android:background="@drawable/rounded_button"
+        app:backgroundTint="@color/blue"
         android:text="Lưu"
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
         app:layout_constraintRight_toRightOf="@id/body_bbinfor"
-        app:layout_constraintTop_toBottomOf="@+id/rgGT" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

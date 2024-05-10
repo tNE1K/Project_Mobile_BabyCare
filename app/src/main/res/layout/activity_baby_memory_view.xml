@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink"
-    tools:context=".medical_history_view">
+    tools:context=".Baby_Memory_View">
 
     <View
         android:id="@+id/body"
@@ -30,7 +30,7 @@
         android:id="@+id/logo"
         android:layout_width="@dimen/view_height_standard"
         android:layout_height="@dimen/view_height_standard"
-        android:src="@drawable/babymedicalhistory"
+        android:src="@drawable/babymemory"
         app:layout_constraintBottom_toBottomOf="@id/logo_container"
         app:layout_constraintLeft_toLeftOf="@id/logo_container"
         app:layout_constraintRight_toRightOf="@id/logo_container"
@@ -46,7 +46,7 @@
         android:shadowDx="6"
         android:shadowDy="6"
         android:shadowRadius="5"
-        android:text="Tiền sử bệnh"
+        android:text="Khoảnh khắc"
         android:textColor="@color/blue"
         android:textColorHighlight="@color/white"
         android:textSize="@dimen/text_large"
@@ -55,41 +55,15 @@
         app:layout_constraintStart_toEndOf="@id/logo_container"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/label_start_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="Ngày phát bệnh"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_standard"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/body" />
-
-    <TextView
-        android:id="@+id/label_end_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/margin_large"
-        android:text="Ngày khỏi bệnh"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_standard"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/label_start_date" />
-
-    <ListView
-        android:id="@+id/lv_medical_history"
+    <GridView
+        android:id="@+id/gv_baby_memory"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:numColumns="2"
         android:layout_marginLeft="@dimen/margin_small"
-        android:layout_marginTop="@dimen/margin_super_small"
         android:layout_marginRight="@dimen/margin_small"
-        android:layout_marginBottom="@dimen/margin_super_small"
-        android:divider="@color/transparent"
-        android:dividerHeight="@dimen/margin_small"
-        app:layout_constraintBottom_toTopOf="@id/btn_add"
-        app:layout_constraintTop_toBottomOf="@id/label_start_date" />
+        app:layout_constraintTop_toTopOf="@id/body"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"/>
 
     <Button
         android:id="@+id/btn_add"
@@ -99,8 +73,9 @@
         android:layout_marginRight="@dimen/margin_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        android:text="Thêm"
+        android:text="Thêm khoảnh khắc của bé"
         android:textStyle="bold"
+        android:textSize="@dimen/text_small"
         android:textColor="@color/white"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
