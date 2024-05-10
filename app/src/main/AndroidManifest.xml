@@ -15,10 +15,14 @@
         android:theme="@style/Theme.Project_Mobile_BabyCare"
         tools:targetApi="31">
         <activity
-            android:name=".BabyMilestone"
+            android:name=".MemoryAlbumEdit"
             android:exported="false" />
         <activity
-            android:name=".Baby_Memory_View"
+            android:name=".BabyMilestone"
+            android:exported="false" />
+        <activity android:name=".Baby_Memory_View" />
+        <activity
+            android:name=".MemoryAlbumAdd"
             android:exported="false" />
         <activity
             android:name=".BabyInjecActivity"

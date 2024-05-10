@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pink"
+    tools:context=".medical_history_view">
+
+    <View
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/view_height_large"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/main" />
+
+    <View
+        android:id="@+id/logo_container"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/img_border"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintLeft_toLeftOf="@id/body"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/view_height_standard"
+        android:layout_height="@dimen/view_height_standard"
+        android:src="@drawable/babymemory"
+        app:layout_constraintBottom_toBottomOf="@id/logo_container"
+        app:layout_constraintLeft_toLeftOf="@id/logo_container"
+        app:layout_constraintRight_toRightOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="@id/logo_container" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:fontFamily="@font/itimregular"
+        android:shadowColor="@color/white"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="Khoảnh khắc"
+        android:textColor="@color/blue"
+        android:textColorHighlight="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintStart_toEndOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="Thêm hình ảnh"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/body" />
+
+    <ImageView
+        android:id="@+id/logo_camera"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginRight="@dimen/margin_super_large"
+        android:src="@drawable/camera"
+        app:layout_constraintBottom_toTopOf="@id/add"
+        app:layout_constraintLeft_toLeftOf="@id/main"
+        app:layout_constraintRight_toLeftOf="@id/logo_folder"
+        app:layout_constraintTop_toBottomOf="@id/label_add"
+        app:tint="@color/pink" />
+
+    <ImageView
+        android:id="@+id/logo_folder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginRight="@dimen/margin_super_large"
+        android:src="@drawable/folder"
+        app:layout_constraintTop_toTopOf="@id/logo_camera"
+        app:layout_constraintLeft_toRightOf="@id/logo_camera"
+        app:layout_constraintRight_toRightOf="@id/main"
+        app:layout_constraintBottom_toBottomOf="@id/logo_camera"
+        app:tint="@color/pink" />
+
+    <View
+        android:id="@+id/add"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginRight="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_standard"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:background="@drawable/img_border"
+        android:backgroundTint="@color/pink"
+        app:layout_constraintBottom_toTopOf="@id/input_field"
+        app:layout_constraintLeft_toLeftOf="@id/main"
+        app:layout_constraintRight_toRightOf="@id/main"
+        app:layout_constraintTop_toBottomOf="@id/logo_camera" />
+
+    <EditText
+        android:id="@+id/input_field"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginRight="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@color/light_gray"
+        android:gravity="top"
+        android:hint="Nhập ghi chú"
+        android:inputType="textMultiLine"
+        android:padding="@dimen/padding_standard"
+        app:layout_constraintBottom_toTopOf="@id/btn_save"
+        app:layout_constraintLeft_toLeftOf="@id/main"
+        app:layout_constraintRight_toRightOf="@id/main"
+        app:layout_constraintTop_toBottomOf="@id/add" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Thêm"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toTopOf="@id/btn_back"
+        app:layout_constraintTop_toBottomOf="@id/input_field"
+        app:layout_constraintLeft_toLeftOf="@id/input_field"
+        app:layout_constraintRight_toRightOf="@id/input_field" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Quay về"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/grey"
+        app:layout_constraintTop_toBottomOf="@id/btn_save"
+        app:layout_constraintBottom_toBottomOf="@id/main"
+        app:layout_constraintLeft_toLeftOf="@id/input_field"
+        app:layout_constraintRight_toRightOf="@id/input_field" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:textColor="@color/black"
+        android:textSize="100dp"
+        app:layout_constraintBottom_toBottomOf="@id/add"
+        app:layout_constraintLeft_toLeftOf="@id/add"
+        app:layout_constraintRight_toRightOf="@id/add"
+        app:layout_constraintTop_toTopOf="@id/add" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

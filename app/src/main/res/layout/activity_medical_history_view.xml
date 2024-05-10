@@ -88,11 +88,11 @@
         android:layout_marginBottom="@dimen/margin_super_small"
         android:divider="@color/transparent"
         android:dividerHeight="@dimen/margin_small"
-        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:layout_constraintBottom_toTopOf="@id/btn_save"
         app:layout_constraintTop_toBottomOf="@id/label_start_date" />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginLeft="@dimen/margin_large"
