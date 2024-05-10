@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -5,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink"
-    tools:context=".heightweightActivity">
+    tools:context=".BabyMilestone">
 
     <View
-        android:id="@+id/body_hw"
+        android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/view_height_large"
@@ -21,22 +22,22 @@
         android:layout_height="100dp"
         android:layout_marginStart="@dimen/margin_small"
         android:background="@drawable/img_border"
-        app:layout_constraintBottom_toTopOf="@id/body_hw"
-        app:layout_constraintLeft_toLeftOf="@id/body_hw"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintLeft_toLeftOf="@id/body"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/img_hw"
+        android:id="@+id/logo"
         android:layout_width="@dimen/view_height_standard"
         android:layout_height="@dimen/view_height_standard"
-        android:src="@drawable/babywh"
+        android:src="@drawable/babymilestone"
         app:layout_constraintBottom_toBottomOf="@id/logo_container"
         app:layout_constraintLeft_toLeftOf="@id/logo_container"
         app:layout_constraintRight_toRightOf="@id/logo_container"
         app:layout_constraintTop_toTopOf="@id/logo_container" />
 
     <TextView
-        android:id="@+id/tvtitle_cccn"
+        android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_super_large"
@@ -45,75 +46,41 @@
         android:shadowDx="6"
         android:shadowDy="6"
         android:shadowRadius="5"
-        android:text="Chiều cao &amp;\ncân nặng"
+        android:text="Cột mốc\n phát triển"
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textColorHighlight="@color/white"
         android:textSize="@dimen/text_large"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/body_hw"
+        app:layout_constraintBottom_toTopOf="@id/body"
         app:layout_constraintStart_toEndOf="@id/logo_container"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_ngaynhap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_small"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="Ngày nhập"
-        android:textSize="@dimen/text_small"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/body_hw" />
-
-    <TextView
-        android:id="@+id/tv_cccn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginRight="@dimen/margin_small"
-        android:text="Chiều cao/Cân nặng"
-        android:textSize="@dimen/text_small"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/body_hw" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCcCn"
-        android:layout_width="0dp"
+    <ListView
+        android:id="@+id/gv_baby_memory"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_ngaynhap" />
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_small"
+        app:layout_constraintTop_toTopOf="@id/body"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"/>
 
     <Button
-        android:id="@+id/btn_ssheightweight"
-        android:layout_width="150dp"
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        android:text="So sánh với chuẩn WHO"
+        android:text="Quay về"
         android:textStyle="bold"
-        android:textSize="14dp"
-        android:textColor="@color/black"
-        app:backgroundTint="@color/light_blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <Button
-        android:id="@+id/btnAdd_heightweight"
-        android:layout_width="150dp"
-        android:layout_height="56dp"
-        android:layout_marginRight="@dimen/margin_super_large"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:background="@drawable/rounded_button"
-        android:text="Thêm"
-        android:textSize="14dp"
-        android:textStyle="bold"
+        android:textSize="@dimen/text_small"
         android:textColor="@color/white"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
