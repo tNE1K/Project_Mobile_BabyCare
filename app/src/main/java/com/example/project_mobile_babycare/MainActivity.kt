@@ -90,22 +90,22 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, medical_history_view::class.java)
             startActivity(intent)
         }
-//        btnBabyInjection.setOnClickListener{
-//            val intent = Intent(this, heightweightActivity::class.java)
-//            startActivity(intent)
-//        }
+        btnBabyInjection.setOnClickListener{
+            val intent = Intent(this, BabyInjecActivity::class.java)
+            startActivity(intent)
+        }
         btnBabyNutrition.setOnClickListener {
             val intent = Intent(this, Baby_nutrition_age::class.java)
             startActivity(intent)
         }
-//        btnBabyMemory.setOnClickListener{
-//            val intent = Intent(this, heightweightActivity::class.java)
-//            startActivity(intent)
-//        }
-//        btnBabyMilestone.setOnClickListener{
-//            val intent = Intent(this, heightweightActivity::class.java)
-//            startActivity(intent)
-//        }
+        btnBabyMemory.setOnClickListener{
+            val intent = Intent(this, Baby_Memory_View::class.java)
+            startActivity(intent)
+        }
+        btnBabyMilestone.setOnClickListener{
+            val intent = Intent(this, BabyMilestone::class.java)
+            startActivity(intent)
+        }
         btnLogout.setOnClickListener {
             val intent = Intent(this, logIn::class.java)
             startActivity(intent)
