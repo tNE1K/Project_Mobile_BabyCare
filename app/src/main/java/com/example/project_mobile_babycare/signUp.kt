@@ -38,14 +38,63 @@ class signUp : AppCompatActivity() {
             val password_ = password.text.toString()
             val checkPass_ = checkPass.text.toString()
 
+
+            if(email_.isEmpty()){
+                Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
+                email.setBackgroundResource(R.drawable.error_edittext)
+                return@setOnClickListener
+            }
+            else{
+                email.setBackgroundResource(R.drawable.rounded_textbox)
+            }
+            if(password_.isEmpty()){
+                Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
+                password.setBackgroundResource(R.drawable.error_edittext)
+                return@setOnClickListener
+            }
+            else{
+                password.setBackgroundResource(R.drawable.rounded_textbox)
+            }
+            if(checkPass_.isEmpty()){
+                Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
+                checkPass.setBackgroundResource(R.drawable.error_edittext)
+                return@setOnClickListener
+            }
+            else{
+                checkPass.setBackgroundResource(R.drawable.rounded_textbox)
+            }
+
+            //Check if password length is not long enough
+            if(password_.length < 8 && password_.length > 0)
+            {
+                Toast.makeText(this, "Vui lòng nhập mật khẩu có trên 8 ký tự!", Toast.LENGTH_SHORT).show()
+                password.setBackgroundResource(R.drawable.error_edittext)
+                return@setOnClickListener
+            }
+            else{
+                password.setBackgroundResource(R.drawable.rounded_textbox)
+            }
+
             // Check if password is the same as checkPass
             if (checkPass_ != password_) {
                 Toast.makeText(this, "Hãy kiểm tra lại thông tin!", Toast.LENGTH_SHORT).show()
+                password.setBackgroundResource(R.drawable.error_edittext)
+                checkPass.setBackgroundResource(R.drawable.error_edittext)
                 return@setOnClickListener
             }
+            else{
+                password.setBackgroundResource(R.drawable.rounded_textbox)
+                checkPass.setBackgroundResource(R.drawable.rounded_textbox)
+            }
+
 
             // Check if 3 fields it not empty
             if (email_.isNotEmpty() && password_.isNotEmpty() && checkPass_.isNotEmpty()) {
+
+                email.setBackgroundResource(R.drawable.rounded_textbox)
+                password.setBackgroundResource(R.drawable.rounded_textbox)
+                checkPass.setBackgroundResource(R.drawable.rounded_textbox)
+
                 // Sign up with email and password
                 auth.createUserWithEmailAndPassword(email_, password_)
                     .addOnCompleteListener(this) { task ->
@@ -53,14 +102,18 @@ class signUp : AppCompatActivity() {
                             // Send verification mail
                             sendEmailVerification()
                         } else {
-                            Toast.makeText(this, "Đăng ký thất bại!\n", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Đăng ký thất bại!", Toast.LENGTH_SHORT).show()
                             val errorMessage = task.exception?.message
                             Toast.makeText(baseContext, "$errorMessage", Toast.LENGTH_SHORT).show()
                         }
                     }
-            } else {
-                Toast.makeText(this, "Hãy nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show()
             }
+//            else {
+//                email.setBackgroundResource(R.drawable.error_edittext)
+//                password.setBackgroundResource(R.drawable.error_edittext)
+//                checkPass.setBackgroundResource(R.drawable.error_edittext)
+//                Toast.makeText(this, "Hãy nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show()
+//            }
         }
     }
 

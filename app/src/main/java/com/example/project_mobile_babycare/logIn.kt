@@ -35,6 +35,23 @@ class logIn : AppCompatActivity() {
             val username_ = username.text.toString()
             val password_ = password.text.toString()
 
+            if(username_.isEmpty()){
+                Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
+                username.setBackgroundResource(R.drawable.error_edittext)
+                return@setOnClickListener
+            }
+            else{
+                username.setBackgroundResource(R.drawable.rounded_textbox)
+            }
+            if(password_.isEmpty()){
+                Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
+                password.setBackgroundResource(R.drawable.error_edittext)
+                return@setOnClickListener
+            }
+            else{
+                password.setBackgroundResource(R.drawable.rounded_textbox)
+            }
+
             if (username_.isNotEmpty() && password_.isNotEmpty()) {
                 // Sign in with email and password
                 auth.signInWithEmailAndPassword(username_, password_)
@@ -50,9 +67,10 @@ class logIn : AppCompatActivity() {
                             ).show()
                         }
                     }
-            } else {
-                Toast.makeText(this, "Hãy nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show()
             }
+//            else {
+//                Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show()
+//            }
         }
     }
 
