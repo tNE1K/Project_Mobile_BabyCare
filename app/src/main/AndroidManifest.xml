@@ -20,7 +20,7 @@
         <activity
             android:name=".BabyMilestone"
             android:exported="false" />
-        <activity android:name=".Baby_Memory_View" />
+        <activity android:name=".BabyMemoryView" />
         <activity
             android:name=".MemoryAlbumAdd"
             android:exported="false" />
@@ -28,31 +28,31 @@
             android:name=".BabyInjecActivity"
             android:exported="false" />
         <activity
-            android:name=".medical_history_view"
+            android:name=".MedicalHistoryView"
             android:exported="false" />
         <activity
-            android:name=".Baby_nutrition_weight"
+            android:name=".BabyNutritionWeight"
             android:exported="false" />
         <activity
-            android:name=".Baby_nutrition_age"
+            android:name=".BabyNutritionAge"
             android:exported="false" />
         <activity
-            android:name=".Baby_Info"
+            android:name=".BabyInfo"
             android:exported="false" />
         <activity
             android:name=".MedicalHistoryInput"
             android:exported="false" />
         <activity
-            android:name=".heightweightActivity"
+            android:name=".HeightWeightActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".signUp"
+            android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".logIn"
+            android:name=".LogIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

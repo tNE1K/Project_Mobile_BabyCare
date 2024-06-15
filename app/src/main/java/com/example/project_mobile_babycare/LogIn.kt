@@ -6,58 +6,50 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class logIn : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
+class LogIn : AppCompatActivity() {
+    lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.log_in)
-
         auth = Firebase.auth
-
-        checkUserLoggedIn()
-
-        val button: Button = findViewById(R.id.BTNsignIn)
+        val buttonSignIn: Button = findViewById(R.id.BTNsignIn)
         val username: EditText = findViewById(R.id.ETname)
         val password: EditText = findViewById(R.id.ETpassword)
         val signup: LinearLayout = findViewById(R.id.containerSignUp)
-        // Go to sign up activity
+
         signup.setOnClickListener {
             navigateToSignUp()
         }
-        button.setOnClickListener {
+
+        buttonSignIn.setOnClickListener {
             val username_ = username.text.toString()
             val password_ = password.text.toString()
 
-            if(username_.isEmpty()){
+            if (username_.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
                 username.setBackgroundResource(R.drawable.error_edittext)
                 return@setOnClickListener
-            }
-            else{
+            } else {
                 username.setBackgroundResource(R.drawable.rounded_textbox)
             }
-            if(password_.isEmpty()){
+            if (password_.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
                 password.setBackgroundResource(R.drawable.error_edittext)
                 return@setOnClickListener
-            }
-            else{
+            } else {
                 password.setBackgroundResource(R.drawable.rounded_textbox)
             }
 
             if (username_.isNotEmpty() && password_.isNotEmpty()) {
-                // Sign in with email and password
                 auth.signInWithEmailAndPassword(username_, password_)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            // Sign in success
                             checkUserVerified()
                         } else {
                             Toast.makeText(
@@ -68,10 +60,12 @@ class logIn : AppCompatActivity() {
                         }
                     }
             }
-//            else {
-//                Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show()
-//            }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        checkUserLoggedIn()
     }
 
     private fun navigateToMainActivity() {
@@ -81,27 +75,35 @@ class logIn : AppCompatActivity() {
     }
 
     private fun navigateToSignUp() {
-        val intent = Intent(this, signUp::class.java)
+        val intent = Intent(this, SignUp::class.java)
         startActivity(intent)
     }
 
-    //    Check user is loged in or not
     private fun checkUserLoggedIn() {
-        // Check if user is signed in on start of app
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            // Check if user email is still existed on Firebase Auth
-            checkUserExistence()
-            navigateToMainActivity()
-            finish()
+        auth.currentUser
+        if (auth.currentUser != null) {
+//            checkUserExistence {
+//                navigateToMainActivity()
+//            }
+            checkUserVerified()
         }
     }
+//    private fun checkUserExistence(onComplete: () -> Unit) {
+//        val currentUser = auth.currentUser
+//        Firebase.auth.fetchSignInMethodsForEmail(currentUser?.email ?: "")
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful && task.result?.signInMethods?.isNotEmpty() == true) {
+//                    onComplete()
+//                } else {
+//                    Firebase.auth.signOut()
+//                }
+//            }
+//    }
 
     private fun checkUserVerified() {
         val user = auth.currentUser
         if (user?.isEmailVerified == true) {
             navigateToMainActivity()
-            finish()
         } else {
             reSendEmailVerification()
         }
@@ -114,29 +116,9 @@ class logIn : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Email xác thực đã được gửi lại!", Toast.LENGTH_SHORT)
                         .show()
-                    return@addOnCompleteListener
                 } else {
-                    Toast.makeText(
-                        baseContext,
-                        "Vui lòng kiểm tra hộp thư của bạn!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    return@addOnCompleteListener
-                }
-            }
-    }
-
-    private fun checkUserExistence() {
-        val currentUser = auth.currentUser
-
-        Firebase.auth.fetchSignInMethodsForEmail(currentUser?.email ?: "")
-            .addOnCompleteListener { task ->
-                if (!task.isSuccessful || task.result?.signInMethods?.isEmpty() == true) {
-                    // Sign out the user if they're already signed in
-                    if (currentUser != null) {
-                        Firebase.auth.signOut()
-                    }
-                    return@addOnCompleteListener
+                    Toast.makeText(this, "Vui lòng kiểm tra hộp thư của bạn!", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
     }
