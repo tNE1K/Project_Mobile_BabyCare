@@ -18,6 +18,8 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_up)
 
+        auth = Firebase.auth
+
         val email: EditText = findViewById(R.id.ETemail)
         val password: EditText = findViewById(R.id.ETpassword)
         val checkPass: EditText = findViewById(R.id.ETcheckPassword)
