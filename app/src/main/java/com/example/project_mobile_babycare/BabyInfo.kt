@@ -1,6 +1,8 @@
 package com.example.project_mobile_babycare
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.content.ContentValues
 import android.os.Bundle
 import android.text.TextUtils
@@ -14,6 +16,9 @@ import android.widget.FrameLayout
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -24,6 +29,7 @@ class BabyInfo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.baby_infor)
+        enableFullscreenMode()
 
         val auth = Firebase.auth
         val user = auth.currentUser
@@ -38,7 +44,8 @@ class BabyInfo : AppCompatActivity() {
         var Male: RadioButton = findViewById(R.id.rbt_male)
         var Female: RadioButton = findViewById(R.id.rbt_female)
         var BTNsave: Button = findViewById(R.id.btn_infsave)
-        var month: Int
+        var BTNback: Button = findViewById(R.id.btn_infback)
+        var month:Int
 
         BTNdateOfBirth.setOnClickListener() {
             if (!CalendarContainer.isVisible)
@@ -106,6 +113,22 @@ class BabyInfo : AppCompatActivity() {
                     finish()
                 }
             }
+        }
+        BTNback.setOnClickListener(){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    //enable full screen mode
+    private fun Activity.enableFullscreenMode() {
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+
+        // Hide the navigation and status bars
+        windowInsetsController?.let {
+            it.hide(WindowInsetsCompat.Type.systemBars())
+            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

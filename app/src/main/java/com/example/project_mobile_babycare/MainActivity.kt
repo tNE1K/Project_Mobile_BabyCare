@@ -1,5 +1,6 @@
 package com.example.project_mobile_babycare
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.ContentValues
 import android.content.ContentValues.TAG
@@ -16,6 +17,10 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.auth.User
@@ -44,6 +49,8 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        enableFullscreenMode()
+
         if (user != null) {
             val docRef = db.collection("users").document(user.uid)
             docRef.get()
@@ -97,32 +104,39 @@ class MainActivity : AppCompatActivity() {
         btnBabyInfo.setOnClickListener {
             val intent = Intent(this, BabyInfo::class.java)
             startActivity(intent)
+            finish()
         }
 
         btnBabyWnH.setOnClickListener {
             val intent = Intent(this, HeightWeightActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         btnBabyMedicalHistory.setOnClickListener {
             val intent = Intent(this, MedicalHistoryView::class.java)
             startActivity(intent)
+            finish()
         }
         btnBabyInjection.setOnClickListener {
             val intent = Intent(this, BabyInjecActivity::class.java)
             startActivity(intent)
+            finish()
         }
         btnBabyNutrition.setOnClickListener {
             val intent = Intent(this, BabyNutritionAge::class.java)
             startActivity(intent)
+            finish()
         }
         btnBabyMemory.setOnClickListener {
             val intent = Intent(this, BabyMemoryView::class.java)
             startActivity(intent)
+            finish()
         }
         btnBabyMilestone.setOnClickListener {
             val intent = Intent(this, BabyMilestone::class.java)
             startActivity(intent)
+            finish()
         }
         btnLogout.setOnClickListener {
             showCustomDialogBox(auth)
@@ -147,5 +161,15 @@ class MainActivity : AppCompatActivity() {
             dialog.dismiss()
         }
         dialog.show()
+    }
+    //enable full screen mode
+    private fun Activity.enableFullscreenMode() {
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+
+        // Hide the navigation and status bars
+        windowInsetsController?.let {
+            it.hide(WindowInsetsCompat.Type.systemBars())
+            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 }

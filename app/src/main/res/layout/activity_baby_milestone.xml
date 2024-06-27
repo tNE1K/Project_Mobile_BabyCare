@@ -63,10 +63,10 @@
         android:layout_marginLeft="@dimen/margin_small"
         android:layout_marginRight="@dimen/margin_small"
         app:layout_constraintTop_toTopOf="@id/body"
-        app:layout_constraintBottom_toTopOf="@id/btn_save"/>
+        app:layout_constraintBottom_toTopOf="@id/btn_back"/>
 
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_back"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginLeft="@dimen/margin_large"
