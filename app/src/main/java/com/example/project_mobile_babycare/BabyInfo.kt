@@ -1,8 +1,10 @@
 package com.example.project_mobile_babycare
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Button
@@ -36,7 +38,7 @@ class BabyInfo : AppCompatActivity() {
         var Male: RadioButton = findViewById(R.id.rbt_male)
         var Female: RadioButton = findViewById(R.id.rbt_female)
         var BTNsave: Button = findViewById(R.id.btn_infsave)
-        var month:Int
+        var month: Int
 
         BTNdateOfBirth.setOnClickListener() {
             if (!CalendarContainer.isVisible)
@@ -53,10 +55,56 @@ class BabyInfo : AppCompatActivity() {
         BTNsave.setOnClickListener() {
             if (TextUtils.isEmpty(ETname.text) || TextUtils.isEmpty(ETheight.text) || TextUtils.isEmpty(
                     ETweight.text
-                )
+                ) || (!Male.isChecked && !Female.isChecked)
             ) {
-                Toast.makeText(this, "Vui lòng kiểm tra thông tin và thử lại!!!", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    this,
+                    "Vui lòng kiểm tra thông tin và thử lại!!!",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
+                return@setOnClickListener
+            } else {
+                if (user != null) {
+                    var babyCount: Int = 0
+                    val height_ = ETheight.text.toString().toInt()
+                    val weight_ = ETweight.text.toString().toInt()
+                    val data = hashMapOf(
+                        "name" to ETname.text.toString(),
+                        "birth" to BTNdateOfBirth.text.toString(),
+                        "height" to height_,
+                        "weight" to weight_,
+                        "male" to Male.isChecked,
+                        "female" to Female.isChecked
+                    )
+                    val userDocRef = db.collection("users").document(user.uid)
+                    userDocRef.get()
+                        .addOnSuccessListener { document ->
+                            if (document != null) {
+//                                update babycount
+                                babyCount = document.getLong("babyCount")?.toInt()!! + 1
+                                userDocRef.update("babyCount", babyCount.toInt())
+                                Log.d(ContentValues.TAG, "Increased babyCount to $babyCount")
+                            } else {
+                                Log.d(ContentValues.TAG, "No such document")
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d(ContentValues.TAG, "get failed with ", exception)
+                        }
+//                    add data to baby
+                    userDocRef.collection("baby").add(data)
+                        .addOnSuccessListener { documentReference ->
+                            Log.d(
+                                "YourActivity",
+                                "Subcollection added with ID: ${documentReference.id}"
+                            )
+                        }
+                        .addOnFailureListener { e ->
+                            Log.w("YourActivity", "Error adding subcollection document", e)
+                        }
+                    finish()
+                }
             }
         }
     }
