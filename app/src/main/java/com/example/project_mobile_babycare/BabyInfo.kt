@@ -36,6 +36,7 @@ class BabyInfo : AppCompatActivity() {
         var Male: RadioButton = findViewById(R.id.rbt_male)
         var Female: RadioButton = findViewById(R.id.rbt_female)
         var BTNsave: Button = findViewById(R.id.btn_infsave)
+        var month:Int
 
         BTNdateOfBirth.setOnClickListener() {
             if (!CalendarContainer.isVisible)
@@ -44,7 +45,8 @@ class BabyInfo : AppCompatActivity() {
         }
 
         DatePick.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
-            val msg = "$dayOfMonth/$monthOfYear/$year"
+            month = monthOfYear + 1
+            val msg = "$dayOfMonth/$month/$year"
             BTNdateOfBirth.setText(msg)
         }
 
