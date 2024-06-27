@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink"
-    tools:context=".MedicalHistoryView">
+    tools:context=".MemoryAlbumAdd">
 
     <View
         android:id="@+id/body"
@@ -130,6 +130,7 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Thêm"
+        android:textStyle="bold"
         android:textColor="@color/white"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toTopOf="@id/btn_back"
@@ -144,8 +145,9 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Quay về"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/grey"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/light_blue"
         app:layout_constraintTop_toBottomOf="@id/btn_save"
         app:layout_constraintBottom_toBottomOf="@id/main"
         app:layout_constraintLeft_toLeftOf="@id/input_field"

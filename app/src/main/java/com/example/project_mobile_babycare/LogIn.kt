@@ -1,5 +1,6 @@
 package com.example.project_mobile_babycare
 
+import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +10,9 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -22,6 +26,8 @@ class LogIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.log_in)
+        enableFullscreenMode()
+
         auth = Firebase.auth
         val buttonSignIn: Button = findViewById(R.id.BTNsignIn)
         val username: EditText = findViewById(R.id.ETname)
@@ -126,5 +132,15 @@ class LogIn : AppCompatActivity() {
                         .show()
                 }
             }
+    }
+    //enable full screen mode
+    private fun Activity.enableFullscreenMode() {
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+
+        // Hide the navigation and status bars
+        windowInsetsController?.let {
+            it.hide(WindowInsetsCompat.Type.systemBars())
+            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 }

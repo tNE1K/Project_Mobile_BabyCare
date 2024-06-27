@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Project_Mobile_BabyCare"
         tools:targetApi="31">
         <activity
+            android:name=".Weight_and_Height_Input"
+            android:exported="false" />
+        <activity
             android:name=".MemoryAlbumEdit"
             android:exported="false" />
         <activity
