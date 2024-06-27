@@ -1,7 +1,9 @@
 package com.example.project_mobile_babycare
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -9,11 +11,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class LogIn : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
-
+    val db = Firebase.firestore
+    lateinit var username_ : String
+    lateinit var password_ : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.log_in)
@@ -22,14 +27,12 @@ class LogIn : AppCompatActivity() {
         val username: EditText = findViewById(R.id.ETname)
         val password: EditText = findViewById(R.id.ETpassword)
         val signup: LinearLayout = findViewById(R.id.containerSignUp)
-
         signup.setOnClickListener {
             navigateToSignUp()
         }
-
         buttonSignIn.setOnClickListener {
-            val username_ = username.text.toString()
-            val password_ = password.text.toString()
+            username_ = username.text.toString()
+            password_ = password.text.toString()
 
             if (username_.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
@@ -45,7 +48,6 @@ class LogIn : AppCompatActivity() {
             } else {
                 password.setBackgroundResource(R.drawable.rounded_textbox)
             }
-
             if (username_.isNotEmpty() && password_.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(username_, password_)
                     .addOnCompleteListener(this) { task ->
@@ -62,53 +64,56 @@ class LogIn : AppCompatActivity() {
             }
         }
     }
-
     override fun onStart() {
         super.onStart()
         checkUserLoggedIn()
     }
-
     private fun navigateToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
-
     private fun navigateToSignUp() {
         val intent = Intent(this, SignUp::class.java)
         startActivity(intent)
     }
-
     private fun checkUserLoggedIn() {
         auth.currentUser
         if (auth.currentUser != null) {
-//            checkUserExistence {
-//                navigateToMainActivity()
-//            }
             checkUserVerified()
         }
     }
-//    private fun checkUserExistence(onComplete: () -> Unit) {
-//        val currentUser = auth.currentUser
-//        Firebase.auth.fetchSignInMethodsForEmail(currentUser?.email ?: "")
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful && task.result?.signInMethods?.isNotEmpty() == true) {
-//                    onComplete()
-//                } else {
-//                    Firebase.auth.signOut()
-//                }
-//            }
-//    }
-
     private fun checkUserVerified() {
         val user = auth.currentUser
         if (user?.isEmailVerified == true) {
             navigateToMainActivity()
+            val userDocRef = db.collection("users").document(username_)
+            userDocRef.get()
+                .addOnSuccessListener { document ->
+                    if (!document.exists()) {
+                        // add user to Firestore if first time log in
+                        val data = hashMapOf(
+                            "email" to username_,
+                            "password" to password_,
+                        )
+                        userDocRef.set(data)
+                            .addOnSuccessListener {
+                                Log.d(TAG, "DocumentSnapshot successfully written!")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w(TAG, "Error writing document", e)
+                            }
+                    } else {
+                        Log.d(TAG, "User already exists in Firestore.")
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error checking document", e)
+                }
         } else {
             reSendEmailVerification()
         }
     }
-
     private fun reSendEmailVerification() {
         val user = auth.currentUser
         user?.sendEmailVerification()
