@@ -76,13 +76,13 @@
         android:layout_marginTop="12dp"
         android:layout_marginRight="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
-        android:inputType="text"
         android:hint="Tên của bé"
-        android:textColor="#959595"
+        android:inputType="text"
+        android:paddingLeft="@dimen/padding_standard"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:paddingLeft="@dimen/padding_standard"
         app:layout_constraintTop_toBottomOf="@id/tvName_bbinfor" />
 
     <TextView
@@ -106,23 +106,12 @@
         android:layout_marginRight="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
         android:hint="dd/mm/yy"
-        android:inputType="text"
         android:textAlignment="textStart"
-        android:textColor="#959595"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_dateofbirth" />
-
-    <CalendarView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_standard"
-        android:background="@color/white"
-        android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="@+id/btn_dateofbirth"
-        app:layout_constraintTop_toBottomOf="@+id/btn_dateofbirth" />
 
     <TextView
         android:id="@+id/tv_chieucao"
@@ -144,12 +133,12 @@
         android:layout_marginTop="12dp"
         android:layout_marginRight="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
-        android:inputType="text"
         android:hint="Chiều cao"
-        android:textColor="#959595"
+        android:inputType="numberDecimal"
+        android:paddingLeft="@dimen/padding_standard"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
-        android:paddingLeft="@dimen/padding_standard"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_chieucao" />
 
@@ -173,12 +162,12 @@
         android:layout_marginTop="12dp"
         android:layout_marginRight="@dimen/margin_large"
         android:background="@drawable/rounded_textbox"
-        android:inputType="text"
         android:hint="Cân nặng"
-        android:textColor="#959595"
+        android:inputType="number"
+        android:paddingLeft="@dimen/padding_standard"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_standard"
         app:backgroundTint="@color/light_gray"
-        android:paddingLeft="@dimen/padding_standard"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_cannang" />
 
@@ -223,27 +212,48 @@
         android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        app:backgroundTint="@color/light_blue"
         android:text="Trở về"
         android:textColor="@color/black"
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/body_bbinfor"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:backgroundTint="@color/light_blue"
+        app:layout_constraintLeft_toLeftOf="@id/edt_babyname"
+        app:layout_constraintRight_toLeftOf="@id/btn_infsave"
+        app:layout_constraintTop_toBottomOf="@id/tv_gioitinh" />
 
     <Button
         android:id="@+id/btn_infsave"
         android:layout_width="150dp"
         android:layout_height="56dp"
+        android:layout_marginLeft="@dimen/margin_large"
         android:layout_marginRight="@dimen/margin_super_large"
-        android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        app:backgroundTint="@color/blue"
         android:text="Lưu"
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="@id/body_bbinfor"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@id/btn_infback"
+        app:layout_constraintLeft_toRightOf="@id/btn_infback"
+        app:layout_constraintRight_toRightOf="@id/edt_babyname" />
+
+    <FrameLayout
+        android:id="@+id/calendarContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/btn_dateofbirth"
+        app:layout_constraintRight_toRightOf="@id/btn_dateofbirth"
+        app:layout_constraintTop_toBottomOf="@id/btn_dateofbirth">
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

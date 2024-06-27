@@ -17,7 +17,7 @@ import com.google.firebase.ktx.Firebase
 class LogIn : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
-    lateinit var username_ : String
+    lateinit var email_ : String
     lateinit var password_ : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +31,10 @@ class LogIn : AppCompatActivity() {
             navigateToSignUp()
         }
         buttonSignIn.setOnClickListener {
-            username_ = username.text.toString()
+            email_ = username.text.toString()
             password_ = password.text.toString()
 
-            if (username_.isEmpty()) {
+            if (email_.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
                 username.setBackgroundResource(R.drawable.error_edittext)
                 return@setOnClickListener
@@ -48,8 +48,8 @@ class LogIn : AppCompatActivity() {
             } else {
                 password.setBackgroundResource(R.drawable.rounded_textbox)
             }
-            if (username_.isNotEmpty() && password_.isNotEmpty()) {
-                auth.signInWithEmailAndPassword(username_, password_)
+            if (email_.isNotEmpty() && password_.isNotEmpty()) {
+                auth.signInWithEmailAndPassword(email_, password_)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             checkUserVerified()
@@ -87,14 +87,14 @@ class LogIn : AppCompatActivity() {
         val user = auth.currentUser
         if (user?.isEmailVerified == true) {
             navigateToMainActivity()
-            val userDocRef = db.collection("users").document(username_)
+            val userDocRef = db.collection("users").document(user.uid)
             userDocRef.get()
                 .addOnSuccessListener { document ->
                     if (!document.exists()) {
                         // add user to Firestore if first time log in
                         val data = hashMapOf(
-                            "email" to username_,
-                            "password" to password_,
+                            "email" to email_,
+                            "babyCount" to 0,
                         )
                         userDocRef.set(data)
                             .addOnSuccessListener {

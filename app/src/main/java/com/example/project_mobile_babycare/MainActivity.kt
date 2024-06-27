@@ -1,10 +1,12 @@
 package com.example.project_mobile_babycare
 
 import android.app.Dialog
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.AdapterView
@@ -16,6 +18,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
@@ -33,21 +36,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var babyAdapter: BabyAdapter
     lateinit var babyList: ArrayList<Baby>
     lateinit var builder: AlertDialog.Builder
-
+    val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
+        auth = Firebase.auth
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // listen for auth state change
-//        FirebaseAuth.getInstance().addAuthStateListener { firebaseAuth ->
-//            val user = firebaseAuth.currentUser
-//            if (user == null) {
-//                // User is signed out, navigate to login screen
-//                val intent = Intent(this, LogIn::class.java)
-//                startActivity(intent)
-//                finish()
-//            }
-//        }
-        auth = Firebase.auth
         btnBabyInfo = findViewById(R.id.BTNbabyInfo)
         btnBabyWnH = findViewById(R.id.BTNbabyWH)
         btnBabyMedicalHistory = findViewById(R.id.BTNbabyMedicalHistory)
