@@ -218,6 +218,21 @@
                     android:layout_marginLeft="@dimen/margin_large"
                     android:text="NỮ" />
             </RadioGroup>
+            <FrameLayout
+                android:id="@+id/calendarContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="@id/btn_dateofbirth"
+                app:layout_constraintRight_toRightOf="@id/btn_dateofbirth"
+                app:layout_constraintTop_toBottomOf="@id/btn_dateofbirth">
+
+                <DatePicker
+                    android:id="@+id/datePicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white" />
+            </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
@@ -252,22 +267,8 @@
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="@id/btn_infback"
         app:layout_constraintLeft_toRightOf="@id/btn_infback"
-        app:layout_constraintRight_toRightOf="@id/edt_babyname" />
+        app:layout_constraintRight_toRightOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/calendarContainer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="@id/btn_dateofbirth"
-        app:layout_constraintRight_toRightOf="@id/btn_dateofbirth"
-        app:layout_constraintTop_toBottomOf="@id/btn_dateofbirth">
 
-        <DatePicker
-            android:id="@+id/datePicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white" />
-    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
