@@ -56,156 +56,170 @@
         app:layout_constraintStart_toEndOf="@id/logo_container"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvName_bbinfor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Tên của bé"
-        android:textSize="@dimen/text_standard"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/body_bbinfor" />
-
-    <EditText
-        android:id="@+id/edt_babyname"
+    <ScrollView
+        android:id="@+id/sv_body"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/view_height_standard"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="@dimen/margin_large"
-        android:background="@drawable/rounded_textbox"
-        android:hint="Tên của bé"
-        android:inputType="text"
-        android:paddingLeft="@dimen/padding_standard"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_standard"
-        app:backgroundTint="@color/light_gray"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvName_bbinfor" />
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_small"
+        app:layout_constraintBottom_toTopOf="@id/btn_infback"
+        app:layout_constraintTop_toTopOf="@id/body_bbinfor">
 
-    <TextView
-        android:id="@+id/tv_dateofbirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Ngày/Tháng/Năm Sinh"
-        android:textSize="@dimen/text_standard"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_babyname" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_dateofbirth"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/view_height_standard"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="@dimen/margin_large"
-        android:background="@drawable/rounded_textbox"
-        android:hint="dd/mm/yy"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_standard"
-        app:backgroundTint="@color/light_gray"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_dateofbirth" />
+            <TextView
+                android:id="@+id/tvName_bbinfor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Tên của bé"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_chieucao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Chiều cao"
-        android:textSize="@dimen/text_standard"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_dateofbirth" />
+            <EditText
+                android:id="@+id/edt_babyname"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="Tên của bé"
+                android:inputType="text"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvName_bbinfor" />
 
-    <EditText
-        android:id="@+id/edt_chieucao"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/view_height_standard"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="@dimen/margin_large"
-        android:background="@drawable/rounded_textbox"
-        android:hint="Chiều cao"
-        android:inputType="numberDecimal"
-        android:paddingLeft="@dimen/padding_standard"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_standard"
-        app:backgroundTint="@color/light_gray"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_chieucao" />
+            <TextView
+                android:id="@+id/tv_dateofbirth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Ngày/Tháng/Năm Sinh"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edt_babyname" />
 
-    <TextView
-        android:id="@+id/tv_cannang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Cân nặng"
-        android:textSize="@dimen/text_standard"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_chieucao" />
+            <Button
+                android:id="@+id/btn_dateofbirth"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="dd/mm/yy"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_dateofbirth" />
 
-    <EditText
-        android:id="@+id/edt_cannang"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/view_height_standard"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="@dimen/margin_large"
-        android:background="@drawable/rounded_textbox"
-        android:hint="Cân nặng"
-        android:inputType="number"
-        android:paddingLeft="@dimen/padding_standard"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_standard"
-        app:backgroundTint="@color/light_gray"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_cannang" />
+            <TextView
+                android:id="@+id/tv_chieucao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Chiều cao"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_dateofbirth" />
 
-    <TextView
-        android:id="@+id/tv_gioitinh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Giới tính"
-        android:textSize="@dimen/text_standard"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_cannang" />
+            <EditText
+                android:id="@+id/edt_chieucao"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="Chiều cao"
+                android:inputType="numberDecimal"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_chieucao" />
 
-    <RadioGroup
-        android:id="@+id/rgGT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintLeft_toRightOf="@id/tv_gioitinh"
-        app:layout_constraintTop_toBottomOf="@+id/edt_cannang">
+            <TextView
+                android:id="@+id/tv_cannang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Cân nặng"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edt_chieucao" />
 
-        <RadioButton
-            android:id="@+id/rbt_male"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NAM" />
+            <EditText
+                android:id="@+id/edt_cannang"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="Cân nặng"
+                android:inputType="number"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_cannang" />
 
-        <RadioButton
-            android:id="@+id/rbt_female"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_large"
-            android:text="NỮ" />
-    </RadioGroup>
+            <TextView
+                android:id="@+id/tv_gioitinh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Giới tính"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edt_cannang" />
+
+            <RadioGroup
+                android:id="@+id/rgGT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toRightOf="@id/tv_gioitinh"
+                app:layout_constraintTop_toBottomOf="@+id/edt_cannang">
+
+                <RadioButton
+                    android:id="@+id/rbt_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NAM" />
+
+                <RadioButton
+                    android:id="@+id/rbt_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:text="NỮ" />
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/btn_infback"
@@ -221,9 +235,9 @@
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
         app:backgroundTint="@color/light_blue"
-        app:layout_constraintLeft_toLeftOf="@id/edt_babyname"
-        app:layout_constraintRight_toLeftOf="@id/btn_infsave"
-        app:layout_constraintTop_toBottomOf="@id/tv_gioitinh" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_infsave" />
 
     <Button
         android:id="@+id/btn_infsave"

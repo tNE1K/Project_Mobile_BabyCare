@@ -56,103 +56,117 @@
         app:layout_constraintStart_toEndOf="@id/logo_container"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvCc_hwip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Chiều cao"
-        android:textSize="@dimen/text_standard"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/body_hwinput" />
-
-    <EditText
-        android:id="@+id/edtCc_hwip"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/view_height_standard"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="@dimen/margin_large"
-        android:background="@drawable/rounded_textbox"
-        android:inputType="text"
-        android:hint="Chiều cao"
-        android:textColor="#959595"
-        android:textSize="@dimen/text_standard"
-        app:backgroundTint="@color/light_gray"
-        android:paddingLeft="@dimen/padding_standard"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCc_hwip" />
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_small"
+        app:layout_constraintBottom_toTopOf="@id/btnDelete_hwip"
+        app:layout_constraintTop_toTopOf="@id/body_hwinput">
 
-    <TextView
-        android:id="@+id/tvCn_hwip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Cân nặng"
-        android:textSize="@dimen/text_standard"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtCc_hwip" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/edt_cannang"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/view_height_standard"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="@dimen/margin_large"
-        android:background="@drawable/rounded_textbox"
-        android:inputType="text"
-        android:hint="Cân nặng"
-        android:textColor="#959595"
-        android:textSize="@dimen/text_standard"
-        app:backgroundTint="@color/light_gray"
-        android:paddingLeft="@dimen/padding_standard"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCn_hwip" />
+            <TextView
+                android:id="@+id/tvCc_hwip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Chiều cao"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_dateofbirthhwip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:text="Ngày/Tháng/Năm Sinh"
-        android:textSize="@dimen/text_standard"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edt_cannang" />
+            <EditText
+                android:id="@+id/edtCc_hwip"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="Chiều cao"
+                android:inputType="text"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textColor="#959595"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCc_hwip" />
 
-    <Button
-        android:id="@+id/btn_dateinput"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/view_height_standard"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="@dimen/margin_large"
-        android:background="@drawable/rounded_textbox"
-        android:hint="dd/mm/yy"
-        android:inputType="text"
-        android:textAlignment="textStart"
-        android:textColor="#959595"
-        android:textSize="@dimen/text_standard"
-        android:paddingLeft="@dimen/padding_standard"
-        app:backgroundTint="@color/light_gray"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_dateofbirthhwip" />
+            <TextView
+                android:id="@+id/tvCn_hwip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Cân nặng"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edtCc_hwip" />
 
-    <CalendarView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_standard"
-        android:background="@color/white"
-        android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="@+id/btn_dateinput"
-        app:layout_constraintTop_toBottomOf="@+id/btn_dateinput" />
+            <EditText
+                android:id="@+id/edt_cannang"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="Cân nặng"
+                android:inputType="text"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textColor="#959595"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCn_hwip" />
+
+            <TextView
+                android:id="@+id/tv_dateofbirthhwip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Ngày/Tháng/Năm Sinh"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edt_cannang" />
+
+            <Button
+                android:id="@+id/btn_dateinput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="dd/mm/yy"
+                android:inputType="text"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textAlignment="textStart"
+                android:textColor="#959595"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_dateofbirthhwip" />
+
+            <CalendarView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_standard"
+                android:layout_marginRight="@dimen/margin_standard"
+                android:background="@color/white"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="@+id/btn_dateinput"
+                app:layout_constraintTop_toBottomOf="@+id/btn_dateinput" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/btnDelete_hwip"
@@ -162,8 +176,8 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Xoá"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -176,8 +190,8 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Lưu"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
