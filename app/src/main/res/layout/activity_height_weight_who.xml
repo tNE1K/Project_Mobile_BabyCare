@@ -70,7 +70,7 @@
     <View
         android:id="@+id/baby_line"
         android:layout_width="0dp"
-        android:layout_height="5dp"
+        android:layout_height="3dp"
         android:layout_marginStart="@dimen/margin_small"
         android:layout_marginBottom="5dp"
         android:layout_marginEnd="@dimen/margin_large"
@@ -94,7 +94,7 @@
     <View
         android:id="@+id/who_line"
         android:layout_width="0dp"
-        android:layout_height="5dp"
+        android:layout_height="3dp"
         android:layout_marginStart="@dimen/margin_small"
         android:layout_marginBottom="5dp"
         android:layout_marginEnd="@dimen/margin_large"
