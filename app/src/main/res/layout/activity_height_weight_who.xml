@@ -63,19 +63,21 @@
         android:layout_marginLeft="@dimen/margin_small"
         android:layout_marginTop="@dimen/margin_small"
         android:text="Thông số của bé:"
-        android:textSize="@dimen/text_small"
+        android:textSize="@dimen/text_very_small"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@id/body_hw_who" />
 
     <View
         android:id="@+id/baby_line"
-        android:layout_width="200dp"
-        android:layout_height="10dp"
+        android:layout_width="0dp"
+        android:layout_height="5dp"
         android:layout_marginStart="@dimen/margin_small"
         android:layout_marginBottom="5dp"
+        android:layout_marginEnd="@dimen/margin_large"
         android:background="@android:color/holo_green_light"
         app:layout_constraintBottom_toBottomOf="@id/tv_tsbaby"
-        app:layout_constraintLeft_toRightOf="@id/tv_tsbaby" />
+        app:layout_constraintLeft_toRightOf="@id/tv_tsbaby"
+        app:layout_constraintRight_toRightOf="parent"/>
 
 
     <TextView
@@ -83,21 +85,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_small"
-        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_very_small"
         android:text="Thông số tiêu chuẩn của WHO:"
-        android:textSize="@dimen/text_small"
+        android:textSize="@dimen/text_very_small"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_tsbaby" />
 
     <View
         android:id="@+id/who_line"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:background="@android:color/holo_red_light"
+        app:layout_constraintBottom_toBottomOf="@id/tv_tswho"
+        app:layout_constraintLeft_toRightOf="@id/tv_tswho"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_tswho_avg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_very_small"
+        android:text="Thông số tiêu chuẩn trung bình của WHO:"
+        android:textSize="@dimen/text_very_small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tswho" />
+
+    <View
+        android:id="@+id/who_avg_line"
+        android:layout_width="0dp"
         android:layout_height="10dp"
         android:layout_marginStart="@dimen/margin_small"
         android:layout_marginBottom="5dp"
-        android:background="@android:color/holo_red_light"
-        app:layout_constraintBottom_toBottomOf="@id/tv_tswho"
-        app:layout_constraintLeft_toRightOf="@id/tv_tswho" />
+        android:layout_marginEnd="@dimen/margin_large"
+        android:background="@drawable/dashed_line"
+        app:layout_constraintBottom_toBottomOf="@id/tv_tswho_avg"
+        app:layout_constraintLeft_toRightOf="@id/tv_tswho_avg"
+        app:layout_constraintRight_toRightOf="parent"/>
 
 
     <ScrollView
@@ -106,7 +133,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="@dimen/margin_small"
         app:layout_constraintBottom_toTopOf="@id/btnBack_hw_who"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tswho">
+        app:layout_constraintTop_toBottomOf="@+id/tv_tswho_avg">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
