@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pink"
+    tools:context=".HeightWeightWhoActivity">
+
+    <View
+        android:id="@+id/body_hw_who"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/view_height_large"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/main" />
+
+    <View
+        android:id="@+id/logo_container"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/img_border"
+        app:layout_constraintBottom_toTopOf="@id/body_hw_who"
+        app:layout_constraintLeft_toLeftOf="@id/body_hw_who"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_cccnwho"
+        android:layout_width="@dimen/view_height_standard"
+        android:layout_height="@dimen/view_height_standard"
+        android:src="@drawable/babywh"
+        app:layout_constraintBottom_toBottomOf="@id/logo_container"
+        app:layout_constraintLeft_toLeftOf="@id/logo_container"
+        app:layout_constraintRight_toRightOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="@id/logo_container" />
+
+    <TextView
+        android:id="@+id/tv_cccnwho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:fontFamily="@font/itimregular"
+        android:shadowColor="@color/white"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="Chiều cao &amp;\ncân nặng"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textColorHighlight="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/body_hw_who"
+        app:layout_constraintStart_toEndOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_tsbaby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="Thông số của bé:"
+        android:textSize="@dimen/text_very_small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/body_hw_who" />
+
+    <View
+        android:id="@+id/baby_line"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:background="@android:color/holo_green_light"
+        app:layout_constraintBottom_toBottomOf="@id/tv_tsbaby"
+        app:layout_constraintLeft_toRightOf="@id/tv_tsbaby"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/tv_tswho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_very_small"
+        android:text="Thông số tiêu chuẩn của WHO:"
+        android:textSize="@dimen/text_very_small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tsbaby" />
+
+    <View
+        android:id="@+id/who_line"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:background="@android:color/holo_red_light"
+        app:layout_constraintBottom_toBottomOf="@id/tv_tswho"
+        app:layout_constraintLeft_toRightOf="@id/tv_tswho"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_tswho_avg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_very_small"
+        android:text="Thông số tiêu chuẩn trung bình của WHO:"
+        android:textSize="@dimen/text_very_small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tswho" />
+
+    <View
+        android:id="@+id/who_avg_line"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:background="@drawable/dashed_line"
+        app:layout_constraintBottom_toBottomOf="@id/tv_tswho_avg"
+        app:layout_constraintLeft_toRightOf="@id/tv_tswho_avg"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/margin_small"
+        app:layout_constraintBottom_toTopOf="@id/btnBack_hw_who"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tswho_avg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvLc_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Biều đồ cân nặng theo tháng"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.androidplot.xy.XYPlot
+                android:id="@+id/linechart_weight"
+                style="@style/APDefacto.Light"
+                android:layout_width="350dp"
+                android:layout_height="500dp"
+                android:layout_margin="10dp"
+                android:contentDescription="linechart_weight_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLc_weight"
+                app:lineLabelInsetBottom="-2dp"
+                app:lineLabelRotationBottom="0"
+                app:lineLabelRotationLeft="0" />
+
+            <TextView
+                android:id="@+id/tvLc_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Biều đồ chiều cao theo tháng"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linechart_weight" />
+
+            <com.androidplot.xy.XYPlot
+                android:id="@+id/linechart_height"
+                style="@style/APDefacto.Light"
+                android:layout_width="350dp"
+                android:layout_height="500dp"
+                android:layout_margin="10dp"
+                android:contentDescription="linechart_height_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLc_height"
+                app:lineLabelInsetBottom="-2dp"
+                app:lineLabelRotationBottom="0"
+                app:lineLabelRotationLeft="0" />
+            <TextView
+                android:id="@+id/tvLc_bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Biều đồ BMI theo tháng"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linechart_height" />
+
+            <com.androidplot.xy.XYPlot
+                android:id="@+id/linechart_bmi"
+                style="@style/APDefacto.Light"
+                android:layout_width="350dp"
+                android:layout_height="500dp"
+                android:layout_margin="10dp"
+                android:contentDescription="inechart_bmi_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLc_bmi"
+                app:lineLabelInsetBottom="-2dp"
+                app:lineLabelRotationBottom="0"
+                app:lineLabelRotationLeft="0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnBack_hw_who"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Quay về"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
