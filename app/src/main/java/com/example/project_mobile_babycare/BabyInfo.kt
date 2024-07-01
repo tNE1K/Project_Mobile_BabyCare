@@ -2,8 +2,8 @@ package com.example.project_mobile_babycare
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Intent
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -45,7 +45,7 @@ class BabyInfo : AppCompatActivity() {
         var Female: RadioButton = findViewById(R.id.rbt_female)
         var BTNsave: Button = findViewById(R.id.btn_infsave)
         var BTNback: Button = findViewById(R.id.btn_infback)
-        var month:Int
+        var month: Int
 
         BTNdateOfBirth.setOnClickListener() {
             if (!CalendarContainer.isVisible)
@@ -73,7 +73,7 @@ class BabyInfo : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 if (user != null) {
-                    var babyCount: Int = 0
+                    var babyCount: Int
                     val height_ = ETheight.text.toString().toInt()
                     val weight_ = ETweight.text.toString().toInt()
                     val data = hashMapOf(
@@ -90,14 +90,14 @@ class BabyInfo : AppCompatActivity() {
                             if (document != null) {
 //                                update babycount
                                 babyCount = document.getLong("babyCount")?.toInt()!! + 1
-                                userDocRef.update("babyCount", babyCount.toInt())
+                                userDocRef.update("babyCount", babyCount)
                                 Log.d(ContentValues.TAG, "Increased babyCount to $babyCount")
                             } else {
                                 Log.d(ContentValues.TAG, "No such document")
                             }
                         }
                         .addOnFailureListener { exception ->
-                            Log.d(ContentValues.TAG, "get failed with ", exception)
+                            Log.d(ContentValues.TAG, "Get failed with ", exception)
                         }
 //                    add data to baby
                     userDocRef.collection("baby").add(data)
@@ -110,11 +110,13 @@ class BabyInfo : AppCompatActivity() {
                         .addOnFailureListener { e ->
                             Log.w("YourActivity", "Error adding subcollection document", e)
                         }
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                     finish()
                 }
             }
         }
-        BTNback.setOnClickListener(){
+        BTNback.setOnClickListener() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -128,7 +130,8 @@ class BabyInfo : AppCompatActivity() {
         // Hide the navigation and status bars
         windowInsetsController?.let {
             it.hide(WindowInsetsCompat.Type.systemBars())
-            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            it.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }
