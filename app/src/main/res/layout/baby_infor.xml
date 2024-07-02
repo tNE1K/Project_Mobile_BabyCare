@@ -242,7 +242,7 @@
                     android:id="@+id/datePicker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:calendarTextColor="@color/black"
+                    android:headerBackground="@color/blue"
                     android:background="@color/white" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
