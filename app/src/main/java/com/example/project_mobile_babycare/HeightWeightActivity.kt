@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 class HeightWeightActivity : AppCompatActivity() {
     lateinit var BTN_back:Button
     lateinit var BTN_add:Button
+    lateinit var btn_ssheightweight:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_heightweight)
@@ -21,6 +22,7 @@ class HeightWeightActivity : AppCompatActivity() {
 
         BTN_back = findViewById(R.id.btn_back)
         BTN_add = findViewById(R.id.btnAdd_heightweight)
+        btn_ssheightweight = findViewById(R.id.btn_ssheightweight)
         BTN_back.setOnClickListener(){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -28,6 +30,10 @@ class HeightWeightActivity : AppCompatActivity() {
         }
         BTN_add.setOnClickListener(){
             val intent = Intent(this, Weight_and_Height_Input::class.java)
+            startActivity(intent)
+        }
+        btn_ssheightweight.setOnClickListener(){
+            val intent = Intent(this, HeightWeightWhoActivity::class.java)
             startActivity(intent)
         }
     }

@@ -13,6 +13,8 @@ import com.androidplot.xy.LineAndPointFormatter
 import com.androidplot.xy.SimpleXYSeries
 import com.androidplot.xy.XYGraphWidget
 import com.androidplot.xy.XYPlot
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 import java.text.DecimalFormat
 import java.util.Arrays
 
@@ -33,6 +35,7 @@ class HeightWeightWhoActivity : AppCompatActivity() {
         linechartWeight = findViewById(R.id.linechart_weight)
         linechartHeight = findViewById(R.id.linechart_height)
         linechartBmi = findViewById(R.id.linechart_bmi)
+        btn_back = findViewById(R.id.btnBack_hw_who)
 
         //lấy từ BD
         val months = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ,18 ,19)
@@ -47,8 +50,8 @@ class HeightWeightWhoActivity : AppCompatActivity() {
 
         val height_who_min = arrayOf(50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105)
         val height_who_max = arrayOf(60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115)
-        val height_who_avg: Array<Int> = Array(height_who_min.size) { i ->
-            (height_who_min[i] + height_who_max[i]) / 2
+        val height_who_avg: Array<Double> = Array(height_who_min.size) { i ->
+            (height_who_min[i].toDouble() + height_who_max[i].toDouble()) / 2
         }
 
         val height_baby = arrayOf(52, 57, 62, 67, 72, 77, 82, 87, 92, 97, 102, 107)
