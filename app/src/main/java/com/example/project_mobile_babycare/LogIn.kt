@@ -1,10 +1,8 @@
 package com.example.project_mobile_babycare
 
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -13,16 +11,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import com.google.common.base.Objects
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class LogIn : AppCompatActivity() {
-    lateinit var auth: FirebaseAuth
-    val db = Firebase.firestore
-    lateinit var email_ : String
-    lateinit var password_ : String
+    private lateinit var auth: FirebaseAuth
+    private val db = Firebase.firestore
+    private lateinit var email: String
+    private lateinit var password: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.log_in)
@@ -37,25 +36,27 @@ class LogIn : AppCompatActivity() {
             navigateToSignUp()
         }
         buttonSignIn.setOnClickListener {
-            email_ = username.text.toString()
-            password_ = password.text.toString()
+            email = username.text.toString()
+            this.password = password.text.toString()
 
-            if (email_.isEmpty()) {
+            if (email.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
                 username.setBackgroundResource(R.drawable.error_edittext)
                 return@setOnClickListener
             } else {
                 username.setBackgroundResource(R.drawable.rounded_textbox)
             }
-            if (password_.isEmpty()) {
+
+            if (this.password.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show()
                 password.setBackgroundResource(R.drawable.error_edittext)
                 return@setOnClickListener
             } else {
                 password.setBackgroundResource(R.drawable.rounded_textbox)
             }
-            if (email_.isNotEmpty() && password_.isNotEmpty()) {
-                auth.signInWithEmailAndPassword(email_, password_)
+
+            if (email.isNotEmpty() && this.password.isNotEmpty()) {
+                auth.signInWithEmailAndPassword(email, this.password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             checkUserVerified()
@@ -70,56 +71,50 @@ class LogIn : AppCompatActivity() {
             }
         }
     }
+
     override fun onStart() {
         super.onStart()
         checkUserLoggedIn()
     }
+
     private fun navigateToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
+
     private fun navigateToSignUp() {
         val intent = Intent(this, SignUp::class.java)
         startActivity(intent)
     }
+
     private fun checkUserLoggedIn() {
         auth.currentUser
         if (auth.currentUser != null) {
             checkUserVerified()
         }
     }
+
     private fun checkUserVerified() {
         val user = auth.currentUser
         if (user?.isEmailVerified == true) {
             navigateToMainActivity()
-            val userDocRef = db.collection("users").document(user.uid)
-            userDocRef.get()
-                .addOnSuccessListener { document ->
-                    if (!document.exists()) {
-                        // add user to Firestore if first time log in
-                        val data = hashMapOf(
-                            "email" to email_,
-                            "babyCount" to 0,
-                        )
-                        userDocRef.set(data)
-                            .addOnSuccessListener {
-                                Log.d(TAG, "DocumentSnapshot successfully written!")
-                            }
-                            .addOnFailureListener { e ->
-                                Log.w(TAG, "Error writing document", e)
-                            }
-                    } else {
-                        Log.d(TAG, "User already exists in Firestore.")
-                    }
+
+            val userPath = db.collection("users").document(user.uid).collection("userInfo")
+            userPath.get().addOnSuccessListener { result ->
+                if (result.isEmpty){
+                    val data = hashMapOf(
+                        "email" to email,
+                        "babyCount" to 0,
+                    )
+                    userPath.add(data)
                 }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error checking document", e)
-                }
+            }
         } else {
             reSendEmailVerification()
         }
     }
+
     private fun reSendEmailVerification() {
         val user = auth.currentUser
         user?.sendEmailVerification()
@@ -133,14 +128,16 @@ class LogIn : AppCompatActivity() {
                 }
             }
     }
+
     //enable full screen mode
     private fun Activity.enableFullscreenMode() {
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
 
         // Hide the navigation and status bars
-        windowInsetsController?.let {
+        windowInsetsController.let {
             it.hide(WindowInsetsCompat.Type.systemBars())
-            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            it.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var babyAdapter: BabyAdapter
     lateinit var babyList: ArrayList<Baby>
     lateinit var builder: AlertDialog.Builder
-    lateinit var db : FirebaseFirestore
+    lateinit var db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         db = Firebase.firestore
         auth = Firebase.auth
@@ -61,17 +62,16 @@ class MainActivity : AppCompatActivity() {
         babyAdapter = BabyAdapter(this, babyList)
         hSpinner.adapter = babyAdapter
 
-//        update spinner when add new baby
         user?.let {
-            val userDocRef = db.collection("users").document(user.uid).collection("baby")
-            userDocRef.addSnapshotListener { snapshots, e ->
+            val userPath = db.collection("users").document(user.uid).collection("baby")
+            userPath.addSnapshotListener { snapshots, e ->
                 if (e != null) {
                     Log.w("MainActivity", "listen:error", e)
                     return@addSnapshotListener
                 }
                 babyList.clear()
                 for (doc in snapshots!!) {
-                    val babyName = doc.getString("name")
+                    val babyName = doc.getString("babyName")
                     if (babyName != null) {
                         babyList.add(Baby(babyName))
                     }
@@ -80,15 +80,16 @@ class MainActivity : AppCompatActivity() {
                 babyAdapter.notifyDataSetChanged()
             }
         }
+
         hSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
-
+                // Handle item selection
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-
+                // Handle no item selected
             }
         }
 
@@ -97,13 +98,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
         btnBabyWnH.setOnClickListener {
             val intent = Intent(this, HeightWeightActivity::class.java)
             startActivity(intent)
             finish()
         }
-
         btnBabyMedicalHistory.setOnClickListener {
             val intent = Intent(this, MedicalHistoryView::class.java)
             startActivity(intent)
@@ -154,7 +153,7 @@ class MainActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    //enable full screen mode
+    // Enable full screen mode
     private fun Activity.enableFullscreenMode() {
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
 
