@@ -62,6 +62,7 @@
         android:layout_marginLeft="@dimen/margin_small"
         android:layout_marginTop="@dimen/margin_small"
         android:text="Thêm hình ảnh"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="@id/body" />
 
