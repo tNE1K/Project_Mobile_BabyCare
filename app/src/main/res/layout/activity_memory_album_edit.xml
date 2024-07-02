@@ -117,6 +117,7 @@
         android:background="@color/light_gray"
         android:gravity="top"
         android:hint="Nhập ghi chú"
+        android:textColorHint="@color/grey"
         android:inputType="textMultiLine"
         android:padding="@dimen/padding_standard"
         app:layout_constraintBottom_toTopOf="@id/btn_save"
