@@ -15,6 +15,33 @@
         android:theme="@style/Theme.Project_Mobile_BabyCare"
         tools:targetApi="31">
         <activity
+            android:name=".Milestone_info_walk"
+            android:exported="false" />
+        <activity
+            android:name=".Milestone_info_knowledge"
+            android:exported="false" />
+        <activity
+            android:name=".Milestone_info_tooth"
+            android:exported="false" />
+        <activity
+            android:name=".Milestone_info_stand"
+            android:exported="false" />
+        <activity
+            android:name=".Milestone_info_crawl"
+            android:exported="false" />
+        <activity
+            android:name=".Milestone_info_sit"
+            android:exported="false" />
+        <activity
+            android:name=".Milestone_info_scroll"
+            android:exported="false" />
+        <activity
+            android:name=".Milestone_info_sound"
+            android:exported="false" />
+        <activity
+            android:name=".Milestone_info_head"
+            android:exported="false" />
+        <activity
             android:name=".Weight_and_Height_Input"
             android:exported="false" />
         <activity
