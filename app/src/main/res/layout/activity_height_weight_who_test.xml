@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink"
-    tools:context=".HeightWeightWhoActivity">
+    tools:context=".HeightWeightWhoTestActivity">
 
     <View
         android:id="@+id/body_hw_who"
@@ -74,7 +74,7 @@
         android:layout_marginStart="@dimen/margin_small"
         android:layout_marginBottom="5dp"
         android:layout_marginEnd="@dimen/margin_large"
-        android:background="@color/MAGENTA"
+        android:background="@android:color/holo_green_light"
         app:layout_constraintBottom_toBottomOf="@id/tv_tsbaby"
         app:layout_constraintLeft_toRightOf="@id/tv_tsbaby"
         app:layout_constraintRight_toRightOf="parent"/>

@@ -12,4 +12,6 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="light_gray">#F6F6F6</color>
     <color name="sofia">#2F8E9A</color>
+    <color name="MAGENTA">#FF00FF</color>
+    <color name="green_chart">#74EE59</color>
 </resources>
