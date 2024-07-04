@@ -51,4 +51,6 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
+    implementation("com.androidplot:androidplot-core:1.5.9")
+    implementation("androidx.appcompat:appcompat:1.3.1")
 }

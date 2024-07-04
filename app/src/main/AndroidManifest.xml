@@ -40,6 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".Milestone_info_head"
+
             android:exported="false" />
         <activity
             android:name=".Weight_and_Height_Input"
@@ -82,7 +83,7 @@
             android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".LogIn"
+            android:name=".HeightWeightWhoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
