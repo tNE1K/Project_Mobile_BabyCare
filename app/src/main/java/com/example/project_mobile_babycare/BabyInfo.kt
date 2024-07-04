@@ -21,8 +21,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDateTime
+import java.util.Date
 
 class BabyInfo : AppCompatActivity() {
     @SuppressLint("NewApi")
@@ -84,13 +87,13 @@ class BabyInfo : AppCompatActivity() {
                         "male" to Male.isChecked,
                         "female" to Female.isChecked
                     )
-                    val userDocRef = db.collection("users").document(user.uid)
-                    userDocRef.get()
+                    val userUid = db.collection("users").document(user.uid)
+                    userUid.get()
                         .addOnSuccessListener { document ->
                             if (document != null) {
 //                                update babycount
                                 babyCount = document.getLong("babyCount")?.toInt()!! + 1
-                                userDocRef.update("babyCount", babyCount)
+                                userUid.update("babyCount", babyCount)
                                 Log.d(ContentValues.TAG, "Increased babyCount to $babyCount")
                             } else {
                                 Log.d(ContentValues.TAG, "No such document")
@@ -99,17 +102,22 @@ class BabyInfo : AppCompatActivity() {
                         .addOnFailureListener { exception ->
                             Log.d(ContentValues.TAG, "Get failed with ", exception)
                         }
-//                    add data to baby
-                    userDocRef.collection("baby").add(data)
-                        .addOnSuccessListener { documentReference ->
-                            Log.d(
-                                "YourActivity",
-                                "Subcollection added with ID: ${documentReference.id}"
-                            )
+
+//                    add new baby, baby info and first milestone
+                    val babyId = userUid.collection("baby").document(ETname.text.toString())
+                    babyId.collection("Info").document().set(data)
+                        .addOnSuccessListener {
+                            Log.d("Add baby info"," successfully")
                         }
                         .addOnFailureListener { e ->
-                            Log.w("YourActivity", "Error adding subcollection document", e)
+                            Log.w("Add baby info", "error with:", e)
                         }
+                    val current = LocalDateTime.now()
+                    val milestoneData = hashMapOf(
+                        "height" to height_,
+                        "weight" to weight_
+                    )
+                    babyId.collection("Milestone").document(current.toString()).set(milestoneData)
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
