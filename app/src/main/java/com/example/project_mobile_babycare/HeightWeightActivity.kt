@@ -54,6 +54,7 @@ class HeightWeightActivity : AppCompatActivity() {
         btn_ssheightweight.setOnClickListener(){
             val intent = Intent(this, HeightWeightWhoTestActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
