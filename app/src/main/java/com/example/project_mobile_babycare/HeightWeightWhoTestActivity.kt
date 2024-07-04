@@ -1,5 +1,6 @@
 package com.example.project_mobile_babycare
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.DashPathEffect
@@ -9,7 +10,9 @@ import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.androidplot.xy.CatmullRomInterpolator
 import com.androidplot.xy.LineAndPointFormatter
 import com.androidplot.xy.SimpleXYSeries
@@ -29,13 +32,8 @@ class HeightWeightWhoTestActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableFullscreenMode()
         setContentView(R.layout.activity_height_weight_who_test)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         linechartWeight = findViewById(R.id.linechart_weight)
         linechartHeight = findViewById(R.id.linechart_height)
@@ -256,6 +254,8 @@ class HeightWeightWhoTestActivity : AppCompatActivity() {
         }.addOnFailureListener { exception ->
             Log.e("FirestoreData", "Error fetching data", exception)
         }
+
+
 //        //lấy từ BD
 //        val months = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19)
 //
@@ -462,6 +462,15 @@ class HeightWeightWhoTestActivity : AppCompatActivity() {
 //        linechartBmi.graph.getLineLabelStyle(XYGraphWidget.Edge.LEFT).format = DecimalFormat("0")
 ////        PanZoom.attach(linechartBmi)
 //        linechartBmi.outerLimits.set(1.0, 100.0, 0.0, 100.0)
+    }
+    private fun Activity.enableFullscreenMode() {
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+
+        // Hide the navigation and status bars
+        windowInsetsController?.let {
+            it.hide(WindowInsetsCompat.Type.systemBars())
+            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 }
 
