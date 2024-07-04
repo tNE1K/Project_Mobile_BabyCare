@@ -2,11 +2,9 @@ package com.example.project_mobile_babycare
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Button
@@ -21,13 +19,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.time.LocalDateTime
-import java.util.Date
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class BabyInfo : AppCompatActivity() {
+
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +48,18 @@ class BabyInfo : AppCompatActivity() {
         var BTNback: Button = findViewById(R.id.btn_infback)
         var month: Int
 
+        fun getCurrentDate(): String {
+            val currentDate = LocalDate.now()
+            val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            return currentDate.format(formatter)
+        }
+
         BTNdateOfBirth.setOnClickListener() {
-            if (!CalendarContainer.isVisible)
-                CalendarContainer.visibility = VISIBLE
+            if (!CalendarContainer.isVisible) CalendarContainer.visibility = VISIBLE
             else CalendarContainer.visibility = GONE
         }
+
+        val currentDate = getCurrentDate()
 
         DatePick.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
             month = monthOfYear + 1
@@ -68,56 +73,43 @@ class BabyInfo : AppCompatActivity() {
                 ) || (!Male.isChecked && !Female.isChecked)
             ) {
                 Toast.makeText(
-                    this,
-                    "Vui lòng kiểm tra thông tin và thử lại!!!",
-                    Toast.LENGTH_SHORT
-                )
-                    .show()
+                    this, "Vui lòng kiểm tra thông tin và thử lại!!!", Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
             } else {
                 if (user != null) {
                     var babyCount: Int
-                    val height_ = ETheight.text.toString().toInt()
-                    val weight_ = ETweight.text.toString().toInt()
-                    val data = hashMapOf(
-                        "name" to ETname.text.toString(),
-                        "birth" to BTNdateOfBirth.text.toString(),
-                        "height" to height_,
-                        "weight" to weight_,
+                    val name = ETname.text.toString()
+                    val height = ETheight.text.toString().toInt()
+                    val weight = ETweight.text.toString().toInt()
+                    val birth = BTNdateOfBirth.text.toString()
+                    val babyData = hashMapOf(
+                        "name" to name,
+                        "birth" to birth,
+                        "height" to height,
+                        "weight" to weight,
                         "male" to Male.isChecked,
                         "female" to Female.isChecked
                     )
-                    val userUid = db.collection("users").document(user.uid)
-                    userUid.get()
-                        .addOnSuccessListener { document ->
-                            if (document != null) {
-//                                update babycount
-                                babyCount = document.getLong("babyCount")?.toInt()!! + 1
-                                userUid.update("babyCount", babyCount)
-                                Log.d(ContentValues.TAG, "Increased babyCount to $babyCount")
-                            } else {
-                                Log.d(ContentValues.TAG, "No such document")
-                            }
-                        }
-                        .addOnFailureListener { exception ->
-                            Log.d(ContentValues.TAG, "Get failed with ", exception)
-                        }
-
-//                    add new baby, baby info and first milestone
-                    val babyId = userUid.collection("baby").document(ETname.text.toString())
-                    babyId.collection("Info").document().set(data)
-                        .addOnSuccessListener {
-                            Log.d("Add baby info"," successfully")
-                        }
-                        .addOnFailureListener { e ->
-                            Log.w("Add baby info", "error with:", e)
-                        }
-                    val current = LocalDateTime.now()
-                    val milestoneData = hashMapOf(
-                        "height" to height_,
-                        "weight" to weight_
+                    val basicBabyData = hashMapOf(
+                        "babyName" to name,
+                        "test" to "test"
                     )
-                    babyId.collection("Milestone").document(current.toString()).set(milestoneData)
+//                    reference to the collection baby within the document corresponding
+//                    to the current user (user.uid) in the users collection
+                    val babyCollectionPath =
+                        db.collection("users").document(user.uid).collection("baby")
+//                    reference to a specific document within the baby collection identified by the baby's name
+                    val baby = babyCollectionPath.document(name)
+//                    set the basic data for the document identified by the baby's name
+//                    if the document does not exist, it will be created
+                    baby.set(basicBabyData)
+//                    adds the detailed baby data as new document in babyList collection
+                    val babyInfo = baby.collection("babyInfo")
+//                    add baby info
+                    babyInfo.add(babyData)
+
+//                    back to main activity
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Milestone_info_sound"
+    android:background="@color/pink">
+    <View
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/view_height_large"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/main" />
+
+    <View
+        android:id="@+id/logo_container"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/img_border"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintLeft_toLeftOf="@id/body"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/view_height_standard"
+        android:layout_height="@dimen/view_height_standard"
+        android:src="@drawable/babymilestone"
+        app:layout_constraintBottom_toBottomOf="@id/logo_container"
+        app:layout_constraintLeft_toLeftOf="@id/logo_container"
+        app:layout_constraintRight_toRightOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="@id/logo_container" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:fontFamily="@font/itimregular"
+        android:shadowColor="@color/white"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="Cột mốc\n phát triển"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textColorHighlight="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintStart_toEndOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:id="@+id/iv_milestone_logo"
+        android:src="@drawable/babysound"
+        app:layout_constraintTop_toTopOf="@id/body"
+        app:layout_constraintStart_toStartOf="@id/body"
+        app:layout_constraintEnd_toStartOf="@id/tv_milestone_title"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_milestone_title"
+        android:text="Phản xạ với âm thanh"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/iv_milestone_logo"
+        app:layout_constraintTop_toTopOf="@id/iv_milestone_logo"
+        app:layout_constraintBottom_toBottomOf="@id/iv_milestone_logo"
+        app:layout_constraintEnd_toEndOf="@id/body"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginLeft="@dimen/margin_super_small"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_milestone_logo"
+        app:layout_constraintBottom_toTopOf="@id/btn_back"
+        android:layout_marginBottom="@dimen/margin_super_small">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/cl_body_scroll">
+            <TextView
+                android:layout_marginTop="@dimen/margin_super_small"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_info"
+                android:text="Tháng thứ 2, bé bắt đầu phát ra âm thanh.\n\nCuối tháng thứ 3, bé bắt đầu bi bô, ríu rít do sự phát triển của dây hanh quản. Đến tháng thứ 4, bé bắt đầu tập nói những âm tiết đơn giản như &#34;Ah&#34;, &#34;Eh&#34;, &#34;Oh&#34;... \n\nĐến cuối tháng thứ 6, bé bắt đầu biết xâu chuỗi những nguyên âm lại với nhau như &#34;Aaoo&#34; hoặc &#34;Eeaa&#34;. Điều này cũng đúng với những phụ âm như &#34;Mh&#34;, &#34;Dh&#34;, và &#34;Bh&#34;.\n\nCuối tháng thứ 8, bé bắt đầu nói &#34;ba&#34; nhưng vẫn chưa hiểu được ý nghĩa của nó. Vì vậy, ai bé cũng sẽ gọi là ba.\n\nCuối tháng thứ 9, bé đã bắt chước được một số từ mặc dù phát âm của bé vẫn còn ngọng líu ngọng lo. Đến 1 tuổi, bé đã nói được &#34;mẹ&#34;, &#34;ba&#34;, và một số từ đơn giản khác như &#34;không&#34;, &#34;đi&#34;...."
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/black"
+                android:layout_marginRight="@dimen/margin_small"
+                android:justificationMode="inter_word"
+                android:layout_marginLeft="@dimen/margin_small"
+                app:layout_constraintTop_toTopOf="@id/cl_body_scroll"
+                app:layout_constraintLeft_toLeftOf="@id/cl_body_scroll"
+                app:layout_constraintRight_toRightOf="@id/cl_body_scroll"/>
+
+
+            <TextView
+                android:id="@+id/tv_seperate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:text="----------------------------------------------"
+                android:textSize="@dimen/text_standard"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_info" />
+
+            <TextView
+                android:id="@+id/tv_infoSourceHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:text="Source:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seperate" />
+
+            <TextView
+                android:id="@+id/tv_infoSourceBody"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="- https://tamanhhospital.com\n- Và tham khảo các nguồn trên mạng"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@id/tv_infoSourceHeader"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_infoSourceHeader" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Quay về"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_small"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

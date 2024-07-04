@@ -75,6 +75,7 @@
                 android:layout_marginLeft="@dimen/margin_super_large"
                 android:layout_marginTop="@dimen/margin_standard"
                 android:text="Tên của bé"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_standard"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -90,6 +91,7 @@
                 android:background="@drawable/rounded_textbox"
                 android:hint="Tên của bé"
                 android:inputType="text"
+                android:textColorHint="@color/grey"
                 android:paddingLeft="@dimen/padding_standard"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_standard"
@@ -104,6 +106,7 @@
                 android:layout_marginLeft="@dimen/margin_super_large"
                 android:layout_marginTop="@dimen/margin_standard"
                 android:text="Ngày/Tháng/Năm Sinh"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_standard"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -118,6 +121,7 @@
                 android:layout_marginRight="@dimen/margin_large"
                 android:background="@drawable/rounded_textbox"
                 android:hint="dd/mm/yy"
+                android:textColorHint="@color/grey"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_standard"
@@ -132,6 +136,7 @@
                 android:layout_marginLeft="@dimen/margin_super_large"
                 android:layout_marginTop="@dimen/margin_standard"
                 android:text="Chiều cao"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_standard"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -146,6 +151,7 @@
                 android:layout_marginRight="@dimen/margin_large"
                 android:background="@drawable/rounded_textbox"
                 android:hint="Chiều cao"
+                android:textColorHint="@color/grey"
                 android:inputType="numberDecimal"
                 android:paddingLeft="@dimen/padding_standard"
                 android:textColor="@color/black"
@@ -161,6 +167,7 @@
                 android:layout_marginLeft="@dimen/margin_super_large"
                 android:layout_marginTop="@dimen/margin_standard"
                 android:text="Cân nặng"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_standard"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -175,6 +182,7 @@
                 android:layout_marginRight="@dimen/margin_large"
                 android:background="@drawable/rounded_textbox"
                 android:hint="Cân nặng"
+                android:textColorHint="@color/grey"
                 android:inputType="number"
                 android:paddingLeft="@dimen/padding_standard"
                 android:textColor="@color/black"
@@ -190,6 +198,7 @@
                 android:layout_marginLeft="@dimen/margin_super_large"
                 android:layout_marginTop="@dimen/margin_standard"
                 android:text="Giới tính"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_standard"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -209,14 +218,16 @@
                     android:id="@+id/rbt_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NAM" />
+                    android:text="NAM"
+                    android:textColor="@color/black"/>
 
                 <RadioButton
                     android:id="@+id/rbt_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_large"
-                    android:text="NỮ" />
+                    android:text="NỮ"
+                    android:textColor="@color/black"/>
             </RadioGroup>
             <FrameLayout
                 android:id="@+id/calendarContainer"
@@ -231,6 +242,7 @@
                     android:id="@+id/datePicker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:headerBackground="@color/blue"
                     android:background="@color/white" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

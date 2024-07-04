@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Milestone_info_walk"
+    android:background="@color/pink">
+    <View
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/view_height_large"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/main" />
+
+    <View
+        android:id="@+id/logo_container"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/img_border"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintLeft_toLeftOf="@id/body"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/view_height_standard"
+        android:layout_height="@dimen/view_height_standard"
+        android:src="@drawable/babymilestone"
+        app:layout_constraintBottom_toBottomOf="@id/logo_container"
+        app:layout_constraintLeft_toLeftOf="@id/logo_container"
+        app:layout_constraintRight_toRightOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="@id/logo_container" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:fontFamily="@font/itimregular"
+        android:shadowColor="@color/white"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="Cột mốc\n phát triển"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textColorHighlight="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintStart_toEndOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:id="@+id/iv_milestone_logo"
+        android:src="@drawable/babyfeet"
+        app:layout_constraintTop_toTopOf="@id/body"
+        app:layout_constraintStart_toStartOf="@id/body"
+        app:layout_constraintEnd_toStartOf="@id/tv_milestone_title"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_milestone_title"
+        android:text="Quá trình tập đi"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/iv_milestone_logo"
+        app:layout_constraintTop_toTopOf="@id/iv_milestone_logo"
+        app:layout_constraintBottom_toBottomOf="@id/iv_milestone_logo"
+        app:layout_constraintEnd_toEndOf="@id/body"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginLeft="@dimen/margin_super_small"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_milestone_logo"
+        app:layout_constraintBottom_toTopOf="@id/btn_back"
+        android:layout_marginBottom="@dimen/margin_super_small">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/cl_body_scroll">
+            <TextView
+                android:layout_marginTop="@dimen/margin_super_small"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_info1"
+                android:text="Đi là một động tác phức tạp, đòi hỏi sự phối hợp chặt chẽ giữa hệ thần kinh và các cơ. Đi được cho là một dấu hiệu cho thấy bé đang tiến bộ hơn trên con đường hướng tới sự độc lập.\n"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/black"
+                android:layout_marginRight="@dimen/margin_small"
+                android:justificationMode="inter_word"
+                android:layout_marginLeft="@dimen/margin_small"
+                app:layout_constraintTop_toTopOf="@id/cl_body_scroll"
+                app:layout_constraintLeft_toLeftOf="@id/cl_body_scroll"
+                app:layout_constraintRight_toRightOf="@id/cl_body_scroll"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/margin_super_small"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_info2"
+                android:text="Những mốc phát triển trong quá trình tập đi của trẻ\n"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/black"
+                android:layout_marginRight="@dimen/margin_small"
+                android:justificationMode="inter_word"
+                android:layout_marginLeft="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@id/tv_info1"
+                app:layout_constraintLeft_toLeftOf="@id/cl_body_scroll"
+                app:layout_constraintRight_toRightOf="@id/cl_body_scroll"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/margin_super_small"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_info3"
+                android:text="Lúc 11 tháng tuổi: Đa số bé bắt đầu đi men theo vật dụng trong nhà. Đầu tiên, bé chỉ có thể lần theo những đồ đạc đặt cách nhau không quá một sải tay. Dần dần, bé học di chuyển dọc theo vật dụng cách nhau xa hơn, nghĩa là bé đã có thể tự đi một đoạn ngắn.\n\nNhiều bé 11 tháng tuổi sẽ đi khi một hoặc hai bàn tay vịn hoặc đẩy một món đồ chơi nào đó. Bé cũng có thể tự đứng trong giây lát mà không cần đỡ.\n\nLúc 12 tháng tuổi: Một số bé đã có thể đi một mình.\n\nLúc 14 tháng tuổi, bé có thể tập đi lùi.\n\nLúc bé 15 tháng tuổi: Nhiều bé đã có thể đi một mình tuy chưa vững lắm, bé giữ thăng bằng cơ thể bằng cách dang rộng hai chân và đưa hai tay ra ngoài. Bé cần học cách dừng lại có kiểm soát, vì trong thời gian này, vé vẫn thường va đầu vào đồ vật. Vào thời điểm này, bé sẽ thích những đồ chơi có thể đẩy và kéo.\n\nLúc 18 tháng tuổi: Bé đi vững hơn, hai chân di chuyển sát nhau hơn và có thể dừng lại dễ dàng hơn. Bé không cần đưa hai tay ra ngoài để giữ thăng bằng nữa. Bé bắt đầu tăng tốc và thậm chí có thể chạy theo kiểu chập chững nữa.\n\nLúc khoảng 2 tuổi: Bé đã đi thành thạo và đạt được kỹ năng đi như người lớn.\n"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/black"
+                android:layout_marginRight="@dimen/margin_small"
+                android:justificationMode="inter_word"
+                android:layout_marginLeft="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@id/tv_info2"
+                app:layout_constraintLeft_toLeftOf="@id/cl_body_scroll"
+                app:layout_constraintRight_toRightOf="@id/cl_body_scroll"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/margin_super_small"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_info4"
+                android:text="Sự hỗ trợ của ba mẹ trong quá trình tập đi của trẻ\n"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/black"
+                android:layout_marginRight="@dimen/margin_small"
+                android:justificationMode="inter_word"
+                android:layout_marginLeft="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@id/tv_info3"
+                app:layout_constraintLeft_toLeftOf="@id/cl_body_scroll"
+                app:layout_constraintRight_toRightOf="@id/cl_body_scroll"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/margin_super_small"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_info5"
+                android:text="Để có thể tự đi mà không cần đỡ, bé phải có lòng tự tin rất lớn. Trong quá trình tập đi của trẻ, bạn có thể giúp con tự tin hơn bằng cách khen ngợi bé và thông qua những hoạt động sau đây:\n\nĐi cùng với bé: Hãy dành thời gian để đi cùng với bé bất cứ khi nào có thể, chứ không nên chỉ đặt bé vào xe tập đi khi bạn muốn đi đâu đó. Bởi xe tập thường nâng đỡ bé quá nhiều, khiến bé chậm biết cách giữ thăng bằng và không tăng cường được cơ lực cần thiết ở chân nhằm chuẩn bị cho động tác đi.\n\nBé sẽ thực sự thích thú với giai đoạn tập đi này. Lúc đầu, hãy để bé nắm lấy hai bàn tay bạn, sau đó là nắm một bàn tay và cuối cùng là nắm một ngón tay. Lúc này, bé đã chuẩn bị để đi một mình. Bạn không nên đột ngột buông tay bé ra trước khi bé sẵn sàng. Khi bé đã sẵn sàng để đi một mình, bạn có thể đứng cách bé một khoảng ngắn và khích lệ bé tiến về phía trước.\n\nNhảy múa: Bé mới tập đi thường thích nhún nhảy theo nhạc. Hãy mở những loại nhạc với nhịp điệu chậm, nhanh khác nhau cho bé nghe theo để thu hút sự chú ý của bé. Nếu có thể, bạn hãy nhảy múa cùng bé - bé rất thích điều đó!"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/black"
+                android:layout_marginRight="@dimen/margin_small"
+                android:justificationMode="inter_word"
+                android:layout_marginLeft="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@id/tv_info4"
+                app:layout_constraintLeft_toLeftOf="@id/cl_body_scroll"
+                app:layout_constraintRight_toRightOf="@id/cl_body_scroll"/>
+
+
+            <TextView
+                android:id="@+id/tv_seperate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:text="----------------------------------------------"
+                android:textSize="@dimen/text_standard"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_info5" />
+
+            <TextView
+                android:id="@+id/tv_infoSourceHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:text="Source:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_seperate" />
+
+            <TextView
+                android:id="@+id/tv_infoSourceBody"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="- https://tamanhhospital.com\n- Và tham khảo các nguồn trên mạng"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small"
+                app:layout_constraintLeft_toRightOf="@id/tv_infoSourceHeader"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_infoSourceHeader" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Quay về"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_small"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
