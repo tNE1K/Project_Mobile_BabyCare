@@ -24,7 +24,7 @@ class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
         val name = rowView.findViewById<TextView>(R.id.tv_selectedBaby)
         name.text = "Xin chào bé " + list[position].name
         return rowView
-    }
+     }
 
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         return initView(position, convertView, parent)
@@ -38,7 +38,7 @@ class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
         val imgIgnore = rowView.findViewById<ImageView>(R.id.IV_babyIgnore)
         name.text = list[position].name
         btnAdd.setOnClickListener {
-            val intent = Intent(context, BabyInfo::class.java)
+            val intent = Intent(context, AddBaby::class.java)
             context.startActivity(intent)
         }
         if (position == list.size - 1) {

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Project_Mobile_BabyCare"
         tools:targetApi="31">
         <activity
+            android:name=".AddBaby"
+            android:exported="false" />
+        <activity
             android:name=".LogIn"
             android:exported="true">
             <intent-filter>
@@ -49,7 +52,6 @@
             android:exported="false" />
         <activity
             android:name=".Milestone_info_head"
-
             android:exported="false" />
         <activity
             android:name=".Weight_and_Height_Input"
@@ -93,8 +95,7 @@
             android:exported="false" />
         <activity
             android:name=".HeightWeightWhoTestActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

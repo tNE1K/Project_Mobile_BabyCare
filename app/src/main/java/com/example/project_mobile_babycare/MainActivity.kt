@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var babyList: ArrayList<Baby>
     lateinit var builder: AlertDialog.Builder
     lateinit var db: FirebaseFirestore
+    lateinit var currentBabyUID: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         db = Firebase.firestore
@@ -72,11 +73,12 @@ class MainActivity : AppCompatActivity() {
                 babyList.clear()
                 for (doc in snapshots!!) {
                     val babyName = doc.getString("babyName")
-                    if (babyName != null) {
-                        babyList.add(Baby(babyName))
+                    val babyID = doc.getString("babyUID")
+                    if (babyName != null && babyID != null) {
+                        babyList.add(Baby(babyName, babyID))
                     }
                 }
-                babyList.add(Baby(""))
+                babyList.add(Baby("", ""))
                 babyAdapter.notifyDataSetChanged()
             }
         }
@@ -86,30 +88,40 @@ class MainActivity : AppCompatActivity() {
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
                 // Handle item selection
+                currentBabyUID = babyList.get(position).uid
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // Handle no item selected
+                currentBabyUID = babyList.get(0).uid
             }
         }
 
         btnBabyInfo.setOnClickListener {
             val intent = Intent(this, BabyInfo::class.java)
+            intent.putExtra("userUID", user?.uid)
+            intent.putExtra("babyUID", currentBabyUID)
             startActivity(intent)
             finish()
         }
         btnBabyWnH.setOnClickListener {
             val intent = Intent(this, HeightWeightActivity::class.java)
+            intent.putExtra("userUID", user?.uid)
+            intent.putExtra("babyUID", currentBabyUID)
             startActivity(intent)
             finish()
         }
         btnBabyMedicalHistory.setOnClickListener {
             val intent = Intent(this, MedicalHistoryView::class.java)
+            intent.putExtra("userUID", user?.uid)
+            intent.putExtra("babyUID", currentBabyUID)
             startActivity(intent)
             finish()
         }
         btnBabyInjection.setOnClickListener {
             val intent = Intent(this, BabyInjecActivity::class.java)
+            intent.putExtra("userUID", user?.uid)
+            intent.putExtra("babyUID", currentBabyUID)
             startActivity(intent)
             finish()
         }
@@ -120,6 +132,8 @@ class MainActivity : AppCompatActivity() {
         }
         btnBabyMemory.setOnClickListener {
             val intent = Intent(this, BabyMemoryView::class.java)
+            intent.putExtra("userUID", user?.uid)
+            intent.putExtra("babyUID", currentBabyUID)
             startActivity(intent)
             finish()
         }

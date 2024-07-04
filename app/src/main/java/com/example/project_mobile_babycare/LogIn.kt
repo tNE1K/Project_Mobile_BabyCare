@@ -99,17 +99,6 @@ class LogIn : AppCompatActivity() {
         val user = auth.currentUser
         if (user?.isEmailVerified == true) {
             navigateToMainActivity()
-
-            val userPath = db.collection("users").document(user.uid).collection("userInfo")
-            userPath.get().addOnSuccessListener { result ->
-                if (result.isEmpty){
-                    val data = hashMapOf(
-                        "email" to email,
-                        "babyCount" to 0,
-                    )
-                    userPath.add(data)
-                }
-            }
         } else {
             reSendEmailVerification()
         }
