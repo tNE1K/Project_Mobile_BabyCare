@@ -30,7 +30,7 @@ class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
         val context = context.layoutInflater
         val rowView = context.inflate(R.layout.baby_selected, parent, false)
         val name = rowView.findViewById<TextView>(R.id.tv_selectedBaby)
-        name.text = "Xin chào bé " + list[position].name
+        name.setText("Xin chào bé " + list[position].name + "!")
         return rowView
     }
 

@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pink"
     tools:context=".medicalHistoryEditActivity">
     <View
         android:id="@+id/body"
@@ -57,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/margin_small"
-        app:layout_constraintBottom_toTopOf="@id/btn_back"
+        app:layout_constraintBottom_toTopOf="@id/btn_back_medical"
         app:layout_constraintTop_toTopOf="@id/body">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -192,6 +193,7 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Quay về"
+        android:textSize="@dimen/text_very_small"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:backgroundTint="@color/light_blue"
@@ -206,6 +208,7 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Thêm"
+        android:textSize="@dimen/text_very_small"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:backgroundTint="@color/blue"

@@ -159,7 +159,7 @@
         android:background="@drawable/rounded_button"
         android:text="Quay về"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_small"
+        android:textSize="@dimen/text_very_small"
         android:textStyle="bold"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"

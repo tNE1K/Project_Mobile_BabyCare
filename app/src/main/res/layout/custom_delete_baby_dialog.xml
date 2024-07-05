@@ -39,24 +39,24 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_delete"
+                android:id="@+id/btn_thoat"
                 android:layout_width="150dp"
                 android:layout_height="56dp"
                 android:layout_marginRight="@dimen/margin_small"
                 android:background="@drawable/rounded_button"
-                android:text="Xóa"
-                android:textSize="@dimen/text_small"
+                android:text="Thoát"
+                android:textSize="@dimen/text_very_small"
                 android:textStyle="bold"
                 app:backgroundTint="@color/blue" />
 
             <Button
-                android:id="@+id/btn_thoat"
+                android:id="@+id/btn_delete"
                 android:layout_width="150dp"
                 android:layout_height="56dp"
                 android:layout_marginLeft="@dimen/margin_small"
                 android:background="@drawable/rounded_button"
-                android:text="Thoát"
-                android:textSize="@dimen/text_small"
+                android:text="Xóa"
+                android:textSize="@dimen/text_very_small"
                 android:textStyle="bold"
                 app:backgroundTint="@color/red" />
 

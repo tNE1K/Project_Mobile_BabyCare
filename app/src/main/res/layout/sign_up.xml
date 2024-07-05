@@ -109,6 +109,7 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Đăng ký"
+        android:textSize="@dimen/text_very_small"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:backgroundTint="@color/blue"

@@ -88,7 +88,8 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         app:layout_constraintLeft_toLeftOf="@id/Vmenu"
-        app:layout_constraintTop_toTopOf="@id/Vmenu" />
+        app:layout_constraintTop_toTopOf="@id/Vmenu"
+        app:layout_constraintBottom_toTopOf="@id/TVbabyMedicalHistory_background"/>
 
     <ImageView
         android:id="@+id/IVbabyInfo"
@@ -120,7 +121,7 @@
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyInfo_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyInfo_background"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyInfo_background" />
+        app:layout_constraintTop_toBottomOf="@id/TVbabyInfo_background"/>
 
 
     <TextView
@@ -132,7 +133,8 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         app:layout_constraintRight_toRightOf="@id/Vmenu"
-        app:layout_constraintTop_toTopOf="@id/Vmenu" />
+        app:layout_constraintTop_toTopOf="@id/Vmenu"
+        app:layout_constraintBottom_toTopOf="@id/TVbabyInjection_background"/>
 
     <ImageView
         android:id="@+id/IVbabyWH"
@@ -175,7 +177,8 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         app:layout_constraintLeft_toLeftOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyInfo_background" />
+        app:layout_constraintTop_toBottomOf="@id/TVbabyInfo_background"
+        app:layout_constraintBottom_toTopOf="@id/TVbabyNutrition_background"/>
 
     <ImageView
         android:id="@+id/IVbabyMedicalHistory"
@@ -207,7 +210,7 @@
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMedicalHistory_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMedicalHistory_background"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyMedicalHistory_background" />
+        app:layout_constraintTop_toBottomOf="@id/TVbabyMedicalHistory_background"/>
 
     <TextView
         android:id="@+id/TVbabyInjection_background"
@@ -218,7 +221,8 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         app:layout_constraintRight_toRightOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyWH_background" />
+        app:layout_constraintTop_toBottomOf="@id/TVbabyWH_background"
+        app:layout_constraintBottom_toTopOf="@id/TVbabyMemory_background"/>
 
     <ImageView
         android:id="@+id/IVbabyInjection"
@@ -261,7 +265,8 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         app:layout_constraintLeft_toLeftOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyMedicalHistory_background" />
+        app:layout_constraintTop_toBottomOf="@id/TVbabyMedicalHistory_background"
+        app:layout_constraintBottom_toTopOf="@id/TVbabyMilestone_background"/>
 
     <ImageView
         android:id="@+id/IVbabyNutrition"
@@ -293,7 +298,7 @@
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyNutrition_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyNutrition_background"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyNutrition_background" />
+        app:layout_constraintTop_toBottomOf="@id/TVbabyNutrition_background"/>
 
     <TextView
         android:id="@+id/TVbabyMemory_background"
@@ -304,7 +309,8 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         app:layout_constraintRight_toRightOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyInjection_background" />
+        app:layout_constraintTop_toBottomOf="@id/TVbabyInjection_background"
+        app:layout_constraintBottom_toTopOf="@id/TVlogout_background"/>
 
     <ImageView
         android:id="@+id/IVbabyMemory"
@@ -314,7 +320,8 @@
         app:layout_constraintBottom_toBottomOf="@id/TVbabyMemory_background"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMemory_background"
         app:layout_constraintRight_toRightOf="@id/TVbabyMemory_background"
-        app:layout_constraintTop_toTopOf="@id/TVbabyMemory_background" />
+        app:layout_constraintTop_toTopOf="@id/TVbabyMemory_background"
+        app:layout_constraintBottom_toTopOf="@id/TVbabyMemory"/>
 
     <Button
         android:id="@+id/BTNbabyMemory"
@@ -331,7 +338,7 @@
         android:id="@+id/TVbabyMemory"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:text="Lưu giữ khoảnh khắc"
+        android:text="Lưu giữ kỷ niệm"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="@id/TVbabyMemory_background"
@@ -348,7 +355,9 @@
         android:textColor="@color/black"
         app:backgroundTint="@color/white"
         app:layout_constraintLeft_toLeftOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyNutrition_background" />
+        app:layout_constraintTop_toBottomOf="@id/TVbabyNutrition_background"
+        app:layout_constraintBottom_toBottomOf="@id/Vmenu"
+        android:layout_marginBottom="@dimen/margin_super_large"/>
 
     <ImageView
         android:id="@+id/IVbabyMilestone"
@@ -391,7 +400,9 @@
         android:background="@drawable/rounded_textbox"
         app:backgroundTint="@color/white"
         app:layout_constraintRight_toRightOf="@id/Vmenu"
-        app:layout_constraintTop_toBottomOf="@id/TVbabyMemory_background" />
+        app:layout_constraintTop_toBottomOf="@id/TVbabyMemory_background"
+        app:layout_constraintBottom_toBottomOf="@id/Vmenu"
+        android:layout_marginBottom="@dimen/margin_super_large"/>
 
     <ImageView
         android:id="@+id/IVlogout"
@@ -423,7 +434,7 @@
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="@id/TVlogout_background"
         app:layout_constraintRight_toRightOf="@id/TVlogout_background"
-        app:layout_constraintTop_toBottomOf="@id/TVlogout_background" />
+        app:layout_constraintTop_toBottomOf="@id/TVlogout_background"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

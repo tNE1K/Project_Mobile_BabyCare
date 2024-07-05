@@ -129,6 +129,7 @@
         android:clickable="true"
         android:focusable="true"
         android:text="Đăng nhập"
+        android:textSize="@dimen/text_very_small"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:backgroundTint="@color/blue"
