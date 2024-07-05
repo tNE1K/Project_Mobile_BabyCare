@@ -7,9 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.FrameLayout
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -25,7 +23,7 @@ class Weight_and_Height_Input : AppCompatActivity() {
         var CalendarContainer: FrameLayout = findViewById(R.id.calendarContainer)
         var DatePick: DatePicker = findViewById(R.id.datePicker)
         var month: Int
-        BTNdateInput.setOnClickListener() {
+        BTNdateInput.setOnClickListener {
             if (!CalendarContainer.isVisible)
                 CalendarContainer.visibility = View.VISIBLE
             else CalendarContainer.visibility = View.GONE
@@ -34,7 +32,7 @@ class Weight_and_Height_Input : AppCompatActivity() {
         DatePick.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
             month = monthOfYear + 1
             val msg = "$dayOfMonth/$month/$year"
-            BTNdateInput.setText(msg)
+            BTNdateInput.text = msg
         }
     }
 
@@ -42,9 +40,10 @@ class Weight_and_Height_Input : AppCompatActivity() {
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
 
         // Hide the navigation and status bars
-        windowInsetsController?.let {
+        windowInsetsController.let {
             it.hide(WindowInsetsCompat.Type.systemBars())
-            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            it.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

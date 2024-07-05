@@ -15,9 +15,6 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -35,7 +32,7 @@ class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
         val name = rowView.findViewById<TextView>(R.id.tv_selectedBaby)
         name.text = "Xin chào bé " + list[position].name
         return rowView
-     }
+    }
 
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         return initView(position, convertView, parent)
@@ -57,7 +54,7 @@ class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
             imgIgnore.visibility = View.GONE
         }
 
-        imgIgnore.setOnClickListener{
+        imgIgnore.setOnClickListener {
             showCustomDialogBox(position)
         }
         return rowView

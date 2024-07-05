@@ -1,7 +1,6 @@
 package com.example.project_mobile_babycare
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -84,7 +83,11 @@ class SignUp : AppCompatActivity() {
                             sendEmailVerification()
                         } else {
                             val errorMessage = task.exception?.message
-                            Toast.makeText(this, "Đăng ký thất bại!\n$errorMessage", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this,
+                                "Đăng ký thất bại!\n$errorMessage",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
             }
@@ -120,9 +123,10 @@ class SignUp : AppCompatActivity() {
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
 
         // Hide the navigation and status bars
-        windowInsetsController?.let {
+        windowInsetsController.let {
             it.hide(WindowInsetsCompat.Type.systemBars())
-            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            it.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

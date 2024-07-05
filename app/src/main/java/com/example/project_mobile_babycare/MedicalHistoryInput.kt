@@ -7,9 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.FrameLayout
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -30,8 +28,8 @@ class MedicalHistoryInput : AppCompatActivity() {
         var EndDatePick: DatePicker = findViewById(R.id.endDatePicker)
 
         var month: Int
-        BTNstartdate.setOnClickListener() {
-            if(EndCalendarContainer.isVisible)
+        BTNstartdate.setOnClickListener {
+            if (EndCalendarContainer.isVisible)
                 EndCalendarContainer.visibility = View.GONE
 
             if (!StartCalendarContainer.isVisible)
@@ -42,11 +40,11 @@ class MedicalHistoryInput : AppCompatActivity() {
         StartDatePick.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
             month = monthOfYear + 1
             val msg = "$dayOfMonth/$month/$year"
-            BTNstartdate.setText(msg)
+            BTNstartdate.text = msg
         }
 
-        BTNenddate.setOnClickListener() {
-            if(StartCalendarContainer.isVisible)
+        BTNenddate.setOnClickListener {
+            if (StartCalendarContainer.isVisible)
                 StartCalendarContainer.visibility = View.GONE
 
             if (!EndCalendarContainer.isVisible)
@@ -57,7 +55,7 @@ class MedicalHistoryInput : AppCompatActivity() {
         EndDatePick.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
             month = monthOfYear + 1
             val msg = "$dayOfMonth/$month/$year"
-            BTNenddate.setText(msg)
+            BTNenddate.text = msg
         }
     }
 
@@ -66,9 +64,10 @@ class MedicalHistoryInput : AppCompatActivity() {
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
 
         // Hide the navigation and status bars
-        windowInsetsController?.let {
+        windowInsetsController.let {
             it.hide(WindowInsetsCompat.Type.systemBars())
-            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            it.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

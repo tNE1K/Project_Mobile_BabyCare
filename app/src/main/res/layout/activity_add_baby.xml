@@ -237,13 +237,6 @@
                 app:layout_constraintLeft_toLeftOf="@id/btn_dateofbirth"
                 app:layout_constraintRight_toRightOf="@id/btn_dateofbirth"
                 app:layout_constraintTop_toBottomOf="@id/btn_dateofbirth">
-
-                <DatePicker
-                    android:id="@+id/datePicker"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:headerBackground="@color/blue"
-                    android:background="@color/white" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

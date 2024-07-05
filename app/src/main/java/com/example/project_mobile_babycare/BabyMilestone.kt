@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ListView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -41,57 +40,66 @@ class BabyMilestone : AppCompatActivity() {
         milestoneAdapter = MilestoneAdapter(this, milestoneList)
         lvMilestone.adapter = milestoneAdapter
 
-        lvMilestone.onItemClickListener = AdapterView.OnItemClickListener{ parent, view, position, id ->
-            when(position){
-                0 -> {
-                    val intent = Intent(this, Milestone_info_head::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                1 -> {
-                    val intent = Intent(this, Milestone_info_sound::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                2 -> {
-                    val intent = Intent(this, Milestone_info_scroll::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                3 -> {
-                    val intent = Intent(this, Milestone_info_sit::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                4 -> {
-                    val intent = Intent(this, Milestone_info_crawl::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                5 -> {
-                    val intent = Intent(this, Milestone_info_stand::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                6 -> {
-                    val intent = Intent(this, Milestone_info_tooth::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                7 -> {
-                    val intent = Intent(this, Milestone_info_knowledge::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                8 -> {
-                    val intent = Intent(this, Milestone_info_walk::class.java)
-                    startActivity(intent)
-                    finish()
+        lvMilestone.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                when (position) {
+                    0 -> {
+                        val intent = Intent(this, Milestone_info_head::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
+                    1 -> {
+                        val intent = Intent(this, Milestone_info_sound::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
+                    2 -> {
+                        val intent = Intent(this, Milestone_info_scroll::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
+                    3 -> {
+                        val intent = Intent(this, Milestone_info_sit::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
+                    4 -> {
+                        val intent = Intent(this, Milestone_info_crawl::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
+                    5 -> {
+                        val intent = Intent(this, Milestone_info_stand::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
+                    6 -> {
+                        val intent = Intent(this, Milestone_info_tooth::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
+                    7 -> {
+                        val intent = Intent(this, Milestone_info_knowledge::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
+                    8 -> {
+                        val intent = Intent(this, Milestone_info_walk::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
                 }
 
             }
-
-        }
 
         BTN_back.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -105,9 +113,10 @@ class BabyMilestone : AppCompatActivity() {
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
 
         // Hide the navigation and status bars
-        windowInsetsController?.let {
+        windowInsetsController.let {
             it.hide(WindowInsetsCompat.Type.systemBars())
-            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            it.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

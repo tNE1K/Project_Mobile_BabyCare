@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -17,8 +16,8 @@ class MedicalHistoryView : AppCompatActivity() {
     lateinit var medical: Medical
     lateinit var medicalAdapter: MedicalAdapter
     lateinit var medicalList: ArrayList<Medical>
-    lateinit var BTN_back:Button
-    lateinit var BTN_add:Button
+    lateinit var BTN_back: Button
+    lateinit var BTN_add: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medical_history_view)
@@ -36,13 +35,13 @@ class MedicalHistoryView : AppCompatActivity() {
         medicalAdapter = MedicalAdapter(this, medicalList)
         lvMedical.adapter = medicalAdapter
 
-        BTN_back.setOnClickListener(){
+        BTN_back.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        BTN_add.setOnClickListener(){
+        BTN_add.setOnClickListener {
             val intent = Intent(this, MedicalHistoryInput::class.java)
             startActivity(intent)
         }
@@ -54,9 +53,10 @@ class MedicalHistoryView : AppCompatActivity() {
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
 
         // Hide the navigation and status bars
-        windowInsetsController?.let {
+        windowInsetsController.let {
             it.hide(WindowInsetsCompat.Type.systemBars())
-            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            it.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 

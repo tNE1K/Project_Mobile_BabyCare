@@ -5,18 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 
 class HeightWeightActivity : AppCompatActivity() {
-    lateinit var BTN_back:Button
-    lateinit var BTN_add:Button
+    lateinit var BTN_back: Button
+    lateinit var BTN_add: Button
 
-    lateinit var btn_ssheightweight:Button
+    lateinit var btn_ssheightweight: Button
 
     lateinit var lvHeightWeight: ListView
     lateinit var heightWeight: HeightWeight
@@ -41,17 +39,17 @@ class HeightWeightActivity : AppCompatActivity() {
         lvHeightWeight.adapter = heightWeightAdapter
 
 
-        BTN_back.setOnClickListener(){
+        BTN_back.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
-        BTN_add.setOnClickListener(){
+        BTN_add.setOnClickListener {
             val intent = Intent(this, Weight_and_Height_Input::class.java)
             startActivity(intent)
         }
         btn_ssheightweight = findViewById(R.id.btn_ssheightweight)
-        btn_ssheightweight.setOnClickListener(){
+        btn_ssheightweight.setOnClickListener {
             val intent = Intent(this, HeightWeightWhoTestActivity::class.java)
             startActivity(intent)
             finish()
@@ -63,9 +61,10 @@ class HeightWeightActivity : AppCompatActivity() {
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
 
         // Hide the navigation and status bars
-        windowInsetsController?.let {
+        windowInsetsController.let {
             it.hide(WindowInsetsCompat.Type.systemBars())
-            it.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            it.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

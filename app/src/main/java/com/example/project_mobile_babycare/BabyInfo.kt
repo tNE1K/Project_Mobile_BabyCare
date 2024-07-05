@@ -2,31 +2,26 @@ package com.example.project_mobile_babycare
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.ContentValues.TAG
+import android.app.DatePickerDialog
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.RadioButton
-import android.widget.ScrollView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.isVisible
+import androidx.fragment.app.DialogFragment
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import java.util.Calendar
 
 class BabyInfo : AppCompatActivity() {
 
@@ -42,8 +37,6 @@ class BabyInfo : AppCompatActivity() {
         val db = Firebase.firestore
 
         var BTNdateOfBirth: Button = findViewById(R.id.btn_dateofbirth)
-        var CalendarContainer: FrameLayout = findViewById(R.id.calendarContainer)
-        var DatePick: DatePicker = findViewById(R.id.datePicker)
         var ETname: EditText = findViewById(R.id.edt_babyname)
         var ETheight: EditText = findViewById(R.id.edt_chieucao)
         var ETweight: EditText = findViewById(R.id.edt_cannang)
@@ -51,9 +44,11 @@ class BabyInfo : AppCompatActivity() {
         var Female: RadioButton = findViewById(R.id.rbt_female)
         var BTNsave: Button = findViewById(R.id.btn_infsave)
         var BTNback: Button = findViewById(R.id.btn_infback)
-        var scrollView: ScrollView = findViewById(R.id.sv_body)
-        var month: Int
 
+        BTNdateOfBirth.setOnClickListener {
+            val newFragment = DatePickerFragment()
+            newFragment.show(supportFragmentManager, "datePicker")
+        }
 
         //Get text from Intent
         val intent = intent
@@ -72,15 +67,13 @@ class BabyInfo : AppCompatActivity() {
                 }
                 for (doc in snapshots!!) {
                     ETname.setText(doc.getString("name"))
-                    BTNdateOfBirth.setText(doc.getString("birth"))
+                    BTNdateOfBirth.text = doc.getString("birth")
                     ETheight.setText(doc.getLong("height").toString())
                     ETweight.setText(doc.getDouble("weight").toString())
-                    if(doc.getBoolean("male") == true){
+                    if (doc.getBoolean("male") == true) {
                         Male.isChecked = true
                         Female.isChecked = false
-                    }
-                    else
-                    {
+                    } else {
                         Male.isChecked = false
                         Female.isChecked = true
                     }
@@ -89,26 +82,7 @@ class BabyInfo : AppCompatActivity() {
 
         }
 
-        fun getCurrentDate(): String {
-            val currentDate = LocalDate.now()
-            val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-            return currentDate.format(formatter)
-        }
-
-        BTNdateOfBirth.setOnClickListener() {
-            if (!CalendarContainer.isVisible) CalendarContainer.visibility = VISIBLE
-            else CalendarContainer.visibility = GONE
-        }
-
-        val currentDate = getCurrentDate()
-
-        DatePick.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
-            month = monthOfYear + 1
-            val msg = "$dayOfMonth/$month/$year"
-            BTNdateOfBirth.setText(msg)
-        }
-
-        BTNsave.setOnClickListener() {
+        BTNsave.setOnClickListener {
             if (TextUtils.isEmpty(ETname.text) || TextUtils.isEmpty(ETheight.text) || TextUtils.isEmpty(
                     ETweight.text
                 ) || (!Male.isChecked && !Female.isChecked)
@@ -143,20 +117,26 @@ class BabyInfo : AppCompatActivity() {
                             docRef.update(updates)
                                 .addOnSuccessListener {
                                     // Document updated successfully
-                                    Toast.makeText(this, "Baby info updated", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(this, "Baby info updated", Toast.LENGTH_SHORT)
+                                        .show()
                                 }
                                 .addOnFailureListener { e ->
                                     // Handle the error
-                                    Toast.makeText(this, "Error updating baby info: ${e.message}", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        this,
+                                        "Error updating baby info: ${e.message}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
                         }
                     }
 
 
-                    val babyBasicPath = db.collection("users").document(userUID!!).collection("baby")
+                    val babyBasicPath =
+                        db.collection("users").document(userUID).collection("baby")
                     babyBasicPath.get().addOnSuccessListener { result ->
                         for (doc in result) {
-                            val docRef = babyBasicPath.document(currentBabyUID!!)
+                            val docRef = babyBasicPath.document(currentBabyUID)
                             val name = ETname.text.toString()
                             val updates = mapOf(
                                 "babyName" to name
@@ -168,14 +148,19 @@ class BabyInfo : AppCompatActivity() {
                                 }
                                 .addOnFailureListener { e ->
                                     // Handle the error
-                                    Toast.makeText(this, "Error updating baby info: ${e.message}", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        this,
+                                        "Error updating baby info: ${e.message}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
                         }
                     }
                 }
             }
         }
-        BTNback.setOnClickListener() {
+
+        BTNback.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -187,10 +172,27 @@ class BabyInfo : AppCompatActivity() {
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
 
         // Hide the navigation and status bars
-        windowInsetsController?.let {
+        windowInsetsController.let {
             it.hide(WindowInsetsCompat.Type.systemBars())
             it.systemBarsBehavior =
                 WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
+
+    class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
+
+        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+            // Use the current date as the default date in the picker.
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            return DatePickerDialog(requireContext(), this, year, month, day)
+        }
+
+        override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
+            val activity = activity as? BabyInfo
+            activity?.findViewById<Button>(R.id.btn_dateofbirth)?.text = "$day/${month + 1}/$year"
         }
     }
 }

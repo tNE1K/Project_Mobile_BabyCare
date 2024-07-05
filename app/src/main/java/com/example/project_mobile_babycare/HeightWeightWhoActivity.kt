@@ -12,7 +12,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.androidplot.xy.CatmullRomInterpolator
 import com.androidplot.xy.LineAndPointFormatter
-import com.androidplot.xy.PanZoom
 import com.androidplot.xy.SimpleXYSeries
 import com.androidplot.xy.XYGraphWidget
 import com.androidplot.xy.XYPlot
@@ -202,7 +201,7 @@ class HeightWeightWhoActivity : AppCompatActivity() {
 
         val formatterWho = LineAndPointFormatter(Color.RED, null, null, null).apply {
             linePaint.strokeWidth = 5f
-            setLegendIconEnabled(false)
+            isLegendIconEnabled = false
             interpolationParams =
                 CatmullRomInterpolator.Params(3000, CatmullRomInterpolator.Type.Uniform)
 
@@ -220,7 +219,7 @@ class HeightWeightWhoActivity : AppCompatActivity() {
         formatterWhoAvg.linePaint.pathEffect = DashPathEffect(floatArrayOf(10f, 10f), 0f)
 
         linechartWeight.clear()
-        linechartWeight.apply{
+        linechartWeight.apply {
             addSeries(seriesWeightWhoMin, formatterWho)
             addSeries(seriesWeightWhoMax, formatterWho)
             addSeries(seriesWeightWhoAvg, formatterWhoAvg)
@@ -292,7 +291,7 @@ class HeightWeightWhoActivity : AppCompatActivity() {
 
     private fun calculateBMI(weight: Double?, height: Double?): Double? {
         return if (weight != null && height != null) {
-            weight*10000 / (height * height)
+            weight * 10000 / (height * height)
         } else {
             null
         }
