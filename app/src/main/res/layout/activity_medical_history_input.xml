@@ -187,13 +187,13 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btn_back_medical"
+        android:id="@+id/btn_back"
         android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginLeft="@dimen/margin_super_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        android:text="Quay về"
+        android:text="Trở về"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:backgroundTint="@color/light_blue"
@@ -201,7 +201,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_luu"
         android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginRight="@dimen/margin_super_large"
