@@ -2,16 +2,17 @@ package com.example.project_mobile_babycare
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.Dialog
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.DatePicker
-import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.core.view.isVisible
+import androidx.fragment.app.DialogFragment
+import java.util.Calendar
 
 class MedicalHistoryInput : AppCompatActivity() {
     @SuppressLint("NewApi")
@@ -19,43 +20,19 @@ class MedicalHistoryInput : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history_input)
         enableFullscreenMode()
-        var BTNstartdate: Button = findViewById(R.id.button_start_date)
-        var StartCalendarContainer: FrameLayout = findViewById(R.id.startCalendarContainer)
-        var StartDatePick: DatePicker = findViewById(R.id.startDatePicker)
 
-        var BTNenddate: Button = findViewById(R.id.button_end_date)
-        var EndCalendarContainer: FrameLayout = findViewById(R.id.endCalendarContainer)
-        var EndDatePick: DatePicker = findViewById(R.id.endDatePicker)
+        val btnStartDate: Button = findViewById(R.id.button_start_date)
 
-        var month: Int
-        BTNstartdate.setOnClickListener {
-            if (EndCalendarContainer.isVisible)
-                EndCalendarContainer.visibility = View.GONE
+        val btnEndDate: Button = findViewById(R.id.button_end_date)
 
-            if (!StartCalendarContainer.isVisible)
-                StartCalendarContainer.visibility = View.VISIBLE
-            else StartCalendarContainer.visibility = View.GONE
+        btnStartDate.setOnClickListener {
+            val newFragment = DatePickerFragmentStart()
+            newFragment.show(supportFragmentManager, "datePicker")
         }
 
-        StartDatePick.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
-            month = monthOfYear + 1
-            val msg = "$dayOfMonth/$month/$year"
-            BTNstartdate.text = msg
-        }
-
-        BTNenddate.setOnClickListener {
-            if (StartCalendarContainer.isVisible)
-                StartCalendarContainer.visibility = View.GONE
-
-            if (!EndCalendarContainer.isVisible)
-                EndCalendarContainer.visibility = View.VISIBLE
-            else EndCalendarContainer.visibility = View.GONE
-        }
-
-        EndDatePick.setOnDateChangedListener { view, year, monthOfYear, dayOfMonth ->
-            month = monthOfYear + 1
-            val msg = "$dayOfMonth/$month/$year"
-            BTNenddate.text = msg
+        btnEndDate.setOnClickListener {
+            val newFragment = DatePickerFragmentEnd()
+            newFragment.show(supportFragmentManager, "datePicker")
         }
     }
 
@@ -68,6 +45,40 @@ class MedicalHistoryInput : AppCompatActivity() {
             it.hide(WindowInsetsCompat.Type.systemBars())
             it.systemBarsBehavior =
                 WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
+
+    class DatePickerFragmentStart : DialogFragment(), DatePickerDialog.OnDateSetListener {
+
+        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+            // Use the current date as the default date in the picker.
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            return DatePickerDialog(requireContext(), this, year, month, day)
+        }
+
+        override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
+            val activity = activity as? MedicalHistoryInput
+            activity?.findViewById<Button>(R.id.button_start_date)?.text = "$day/${month + 1}/$year"
+        }
+    }
+
+    class DatePickerFragmentEnd : DialogFragment(), DatePickerDialog.OnDateSetListener {
+
+        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+            // Use the current date as the default date in the picker.
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+            return DatePickerDialog(requireContext(), this, year, month, day)
+        }
+
+        override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
+            val activity = activity as? MedicalHistoryInput
+            activity?.findViewById<Button>(R.id.button_end_date)?.text = "$day/${month + 1}/$year"
         }
     }
 }

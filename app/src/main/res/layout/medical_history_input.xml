@@ -183,40 +183,6 @@
                 app:backgroundTint="@color/light_gray"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/label_symptoms" />
-
-            <FrameLayout
-                android:id="@+id/startCalendarContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="@id/button_start_date"
-                app:layout_constraintTop_toBottomOf="@id/button_start_date">
-
-                <DatePicker
-                    android:id="@+id/startDatePicker"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:headerBackground="@color/blue"
-                    android:background="@color/white" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:id="@+id/endCalendarContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="@id/button_end_date"
-                app:layout_constraintTop_toBottomOf="@id/button_end_date">
-
-                <DatePicker
-                    android:id="@+id/endDatePicker"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:headerBackground="@color/blue"
-                    android:background="@color/white" />
-            </FrameLayout>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
@@ -235,7 +201,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/btn_"
+        android:id="@+id/btn_luu"
         android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginRight="@dimen/margin_super_large"
