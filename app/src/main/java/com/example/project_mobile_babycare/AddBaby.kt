@@ -40,7 +40,7 @@ class AddBaby : AppCompatActivity() {
         var ETweight: EditText = findViewById(R.id.edt_cannang)
         var Male: RadioButton = findViewById(R.id.rbt_male)
         var Female: RadioButton = findViewById(R.id.rbt_female)
-        var BTNsave: Button = findViewById(R.id.btn_infadd)
+        var BTNadd: Button = findViewById(R.id.btn_infadd)
         var BTNback: Button = findViewById(R.id.btn_infback)
 
         BTNdateOfBirth.setOnClickListener {
@@ -48,7 +48,7 @@ class AddBaby : AppCompatActivity() {
             newFragment.show(supportFragmentManager, "datePicker")
         }
 
-        BTNsave.setOnClickListener {
+        BTNadd.setOnClickListener {
             if (TextUtils.isEmpty(ETname.text) || TextUtils.isEmpty(ETheight.text) || TextUtils.isEmpty(
                     ETweight.text
                 ) || (!Male.isChecked && !Female.isChecked)

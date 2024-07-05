@@ -19,7 +19,7 @@ class MedicalAdapter(val context: Activity, val list: ArrayList<Medical>) :
         val startDay = rowView.findViewById<TextView>(R.id.tv_medicalStartDay)
         val endDay = rowView.findViewById<TextView>(R.id.tv_medicalEndDay)
         startDay.text = list[position].start
-        endDay.text = list[position].end
+        endDay.text = list[position].name
         return rowView
     }
 }
