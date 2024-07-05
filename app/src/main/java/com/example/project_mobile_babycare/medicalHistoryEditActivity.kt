@@ -7,18 +7,20 @@ import android.app.Dialog
 import android.os.Bundle
 import android.widget.Button
 import android.widget.DatePicker
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.DialogFragment
 import java.util.Calendar
 
-class MedicalHistoryInput : AppCompatActivity() {
+class medicalHistoryEditActivity : AppCompatActivity() {
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_medical_history_input)
+        setContentView(R.layout.activity_medical_history_edit)
         enableFullscreenMode()
 
         val btnStartDate: Button = findViewById(R.id.button_start_date)
@@ -77,7 +79,7 @@ class MedicalHistoryInput : AppCompatActivity() {
         }
 
         override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-            val activity = activity as? MedicalHistoryInput
+            val activity = activity as? medicalHistoryEditActivity
             activity?.findViewById<Button>(R.id.button_end_date)?.text = "$day/${month + 1}/$year"
         }
     }

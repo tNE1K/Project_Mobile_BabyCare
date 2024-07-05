@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".medicalHistoryEditActivity">
+    <View
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/view_height_large"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/main" />
+
+    <View
+        android:id="@+id/logo_container"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/img_border"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintLeft_toLeftOf="@id/body"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/view_height_standard"
+        android:layout_height="@dimen/view_height_standard"
+        android:src="@drawable/babymedicalhistory"
+        app:layout_constraintBottom_toBottomOf="@id/logo_container"
+        app:layout_constraintLeft_toLeftOf="@id/logo_container"
+        app:layout_constraintRight_toRightOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="@id/logo_container" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:fontFamily="@font/itimregular"
+        android:shadowColor="@color/white"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="Tiền sử bệnh"
+        android:textColor="@color/blue"
+        android:textColorHighlight="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/body"
+        app:layout_constraintStart_toEndOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_small"
+        app:layout_constraintBottom_toTopOf="@id/btn_xoa"
+        app:layout_constraintTop_toTopOf="@id/body">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/label_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Ngày phát bệnh"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="dd/mm/yyyy"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_start_date" />
+
+            <TextView
+                android:id="@+id/label_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="Ngày hết bệnh"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_start_date" />
+
+            <Button
+                android:id="@+id/button_end_date"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="dd/mm/yyyy"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_end_date" />
+
+            <TextView
+                android:id="@+id/label_disease_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="Tên bệnh"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_end_date" />
+
+            <EditText
+                android:id="@+id/edit_text_disease_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="Tên bệnh"
+                android:inputType="textLongMessage"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_disease_name" />
+
+            <TextView
+                android:id="@+id/label_symptoms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="Triệu chứng"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edit_text_disease_name" />
+
+            <EditText
+                android:id="@+id/edit_text_symptoms"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="Triệu chứng"
+                android:inputType="textLongMessage"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_symptoms" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_xoa"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Xoá"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:backgroundTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/btn_luu"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
+        android:layout_marginRight="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Lưu"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
