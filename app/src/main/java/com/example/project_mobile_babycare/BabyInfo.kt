@@ -14,6 +14,7 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.RadioButton
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -39,7 +40,6 @@ class BabyInfo : AppCompatActivity() {
         val auth = Firebase.auth
         val user = auth.currentUser
         val db = Firebase.firestore
-        val firestoreInstance = FirebaseFirestore.getInstance()
 
         var BTNdateOfBirth: Button = findViewById(R.id.btn_dateofbirth)
         var CalendarContainer: FrameLayout = findViewById(R.id.calendarContainer)
@@ -51,6 +51,7 @@ class BabyInfo : AppCompatActivity() {
         var Female: RadioButton = findViewById(R.id.rbt_female)
         var BTNsave: Button = findViewById(R.id.btn_infsave)
         var BTNback: Button = findViewById(R.id.btn_infback)
+        var scrollView: ScrollView = findViewById(R.id.sv_body)
         var month: Int
 
 
@@ -63,25 +64,29 @@ class BabyInfo : AppCompatActivity() {
             val babyCollectionPath = db.collection("users").document(userUID)
                 .collection("baby").document(currentBabyUID).collection("babyInfo")
 
-            babyCollectionPath.get().addOnSuccessListener { result ->
-                for (doc in result) {
-                    val babyInfoUID = doc.id // Initialize babyInfoUID here
 
-                    // Now you can safely use babyInfoUID
-                    val docRef = babyCollectionPath.document(babyInfoUID)
-                    docRef.get()
-                        .addOnSuccessListener { document ->
-                            if (document != null) {
-                                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                            } else {
-                                Log.d(TAG, "No such document")
-                            }
-                        }
-                        .addOnFailureListener { exception ->
-                            Log.d(TAG, "get failed with ", exception)
-                        }
+            babyCollectionPath.addSnapshotListener { snapshots, e ->
+                if (e != null) {
+                    Log.w("MainActivity", "listen:error", e)
+                    return@addSnapshotListener
+                }
+                for (doc in snapshots!!) {
+                    ETname.setText(doc.getString("name"))
+                    BTNdateOfBirth.setText(doc.getString("birth"))
+                    ETheight.setText(doc.getLong("height").toString())
+                    ETweight.setText(doc.getDouble("weight").toString())
+                    if(doc.getBoolean("male") == true){
+                        Male.isChecked = true
+                        Female.isChecked = false
+                    }
+                    else
+                    {
+                        Male.isChecked = false
+                        Female.isChecked = true
+                    }
                 }
             }
+
         }
 
         fun getCurrentDate(): String {
@@ -114,7 +119,59 @@ class BabyInfo : AppCompatActivity() {
                 return@setOnClickListener
             } else {
                 if (user != null) {
+                    val babyCollectionPath = db.collection("users").document(userUID!!)
+                        .collection("baby").document(currentBabyUID!!).collection("babyInfo")
+                    babyCollectionPath.get().addOnSuccessListener { result ->
+                        for (doc in result) {
+                            val babyInfoUID = doc.id // Initialize babyInfoUID here
 
+                            // Now you can safely use babyInfoUID
+                            val docRef = babyCollectionPath.document(babyInfoUID)
+                            val name = ETname.text.toString()
+                            val height = ETheight.text.toString().toLong()
+                            val weight = ETweight.text.toString().toDouble()
+                            val birth = BTNdateOfBirth.text.toString()
+                            val updates = mapOf(
+                                "name" to name,
+                                "birth" to birth,
+                                "height" to height,
+                                "weight" to weight,
+                                "male" to Male.isChecked,
+                                "female" to Female.isChecked
+                            )
+
+                            docRef.update(updates)
+                                .addOnSuccessListener {
+                                    // Document updated successfully
+                                    Toast.makeText(this, "Baby info updated", Toast.LENGTH_SHORT).show()
+                                }
+                                .addOnFailureListener { e ->
+                                    // Handle the error
+                                    Toast.makeText(this, "Error updating baby info: ${e.message}", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                    }
+
+
+                    val babyBasicPath = db.collection("users").document(userUID!!).collection("baby")
+                    babyBasicPath.get().addOnSuccessListener { result ->
+                        for (doc in result) {
+                            val docRef = babyBasicPath.document(currentBabyUID!!)
+                            val name = ETname.text.toString()
+                            val updates = mapOf(
+                                "babyName" to name
+                            )
+
+                            docRef.update(updates)
+                                .addOnSuccessListener {
+                                    // Document updated successfully
+                                }
+                                .addOnFailureListener { e ->
+                                    // Handle the error
+                                    Toast.makeText(this, "Error updating baby info: ${e.message}", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                    }
                 }
             }
         }

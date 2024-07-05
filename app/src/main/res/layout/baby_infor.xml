@@ -243,7 +243,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:headerBackground="@color/blue"
-                    android:background="@color/white" />
+                    android:background="@color/white"
+                    android:datePickerMode="calendar"/>
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

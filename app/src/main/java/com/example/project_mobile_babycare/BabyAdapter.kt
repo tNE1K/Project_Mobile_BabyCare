@@ -2,14 +2,25 @@ package com.example.project_mobile_babycare
 
 
 import android.app.Activity
+import android.app.Dialog
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
     ArrayAdapter<Baby>(context, R.layout.item_baby) {
@@ -44,6 +55,10 @@ class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
         if (position == list.size - 1) {
             btnAdd.visibility = View.VISIBLE
             imgIgnore.visibility = View.GONE
+        }
+
+        imgIgnore.setOnClickListener{
+
         }
         return rowView
     }
