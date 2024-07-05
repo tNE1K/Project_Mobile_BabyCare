@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Project_Mobile_BabyCare"
         tools:targetApi="31">
         <activity
+            android:name=".weightAndHeightEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddBaby"
             android:exported="false" />
         <activity
@@ -95,7 +98,7 @@
             android:exported="false" />
         <activity
             android:name=".HeightWeightWhoTestActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

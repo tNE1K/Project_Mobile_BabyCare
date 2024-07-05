@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pink"
+    tools:context=".weightAndHeightEditActivity">
+    <View
+        android:id="@+id/body_hwinput"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/view_height_large"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/main" />
+
+    <View
+        android:id="@+id/logo_container"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:background="@drawable/img_border"
+        app:layout_constraintBottom_toTopOf="@id/body_hwinput"
+        app:layout_constraintLeft_toLeftOf="@id/body_hwinput"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_cccnip"
+        android:layout_width="@dimen/view_height_standard"
+        android:layout_height="@dimen/view_height_standard"
+        android:src="@drawable/babywh"
+        app:layout_constraintBottom_toBottomOf="@id/logo_container"
+        app:layout_constraintLeft_toLeftOf="@id/logo_container"
+        app:layout_constraintRight_toRightOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="@id/logo_container" />
+
+    <TextView
+        android:id="@+id/tv_cccnip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:fontFamily="@font/itimregular"
+        android:shadowColor="@color/white"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="Chiều cao &amp;\ncân nặng"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textColorHighlight="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/body_hwinput"
+        app:layout_constraintStart_toEndOf="@id/logo_container"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_small"
+        app:layout_constraintBottom_toTopOf="@id/btnDelete_hwip"
+        app:layout_constraintTop_toTopOf="@id/body_hwinput">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvCc_hwip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Chiều cao"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edtCc_hwip"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="Chiều cao"
+                android:inputType="text"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCc_hwip" />
+
+            <TextView
+                android:id="@+id/tvCn_hwip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Cân nặng"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edtCc_hwip" />
+
+            <EditText
+                android:id="@+id/edt_cannang"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="Cân nặng"
+                android:inputType="text"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCn_hwip" />
+
+            <TextView
+                android:id="@+id/tv_dateofbirthhwip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Ngày/Tháng/Năm Sinh"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edt_cannang" />
+
+            <Button
+                android:id="@+id/btn_dateinput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height_standard"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@drawable/rounded_textbox"
+                android:hint="dd/mm/yy"
+                android:inputType="text"
+                android:paddingLeft="@dimen/padding_standard"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/text_standard"
+                app:backgroundTint="@color/light_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_dateofbirthhwip" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_del"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Xoá"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:backgroundTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="150dp"
+        android:layout_height="56dp"
+        android:layout_marginRight="@dimen/margin_super_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Lưu"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
