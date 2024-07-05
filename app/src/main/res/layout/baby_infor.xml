@@ -229,15 +229,6 @@
                     android:text="NỮ"
                     android:textColor="@color/black"/>
             </RadioGroup>
-            <FrameLayout
-                android:id="@+id/calendarContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="@id/btn_dateofbirth"
-                app:layout_constraintRight_toRightOf="@id/btn_dateofbirth"
-                app:layout_constraintTop_toBottomOf="@id/btn_dateofbirth">
-            </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
