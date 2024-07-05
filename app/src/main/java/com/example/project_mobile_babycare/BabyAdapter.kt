@@ -58,8 +58,35 @@ class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
         }
 
         imgIgnore.setOnClickListener{
-
+            showCustomDialogBox(position)
         }
         return rowView
+    }
+
+    private fun showCustomDialogBox(position: Int) {
+        val auth = Firebase.auth
+        val user = auth.currentUser
+        val db = Firebase.firestore
+        val dialog = Dialog(context)
+        lateinit var currentBabyUID: String
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(true)
+        dialog.setContentView(R.layout.custom_delete_baby_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val btnYes: Button = dialog.findViewById(R.id.btn_delete)
+        val btnThoat: Button = dialog.findViewById(R.id.btn_thoat)
+        currentBabyUID = list.get(position).uid
+        btnYes.setOnClickListener {
+            db.collection("users").document(user!!.uid)
+                .collection("baby").document(currentBabyUID)
+                .delete()
+                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+                .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+            dialog.dismiss()
+        }
+        btnThoat.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 }
