@@ -91,9 +91,9 @@
                 android:background="@drawable/rounded_textbox"
                 android:hint="Tên của bé"
                 android:inputType="text"
-                android:textColorHint="@color/grey"
                 android:paddingLeft="@dimen/padding_standard"
                 android:textColor="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="@dimen/text_standard"
                 app:backgroundTint="@color/light_gray"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -121,9 +121,9 @@
                 android:layout_marginRight="@dimen/margin_large"
                 android:background="@drawable/rounded_textbox"
                 android:hint="dd/mm/yy"
-                android:textColorHint="@color/grey"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="@dimen/text_standard"
                 app:backgroundTint="@color/light_gray"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -151,10 +151,10 @@
                 android:layout_marginRight="@dimen/margin_large"
                 android:background="@drawable/rounded_textbox"
                 android:hint="Chiều cao"
-                android:textColorHint="@color/grey"
                 android:inputType="numberDecimal"
                 android:paddingLeft="@dimen/padding_standard"
                 android:textColor="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="@dimen/text_standard"
                 app:backgroundTint="@color/light_gray"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -182,10 +182,10 @@
                 android:layout_marginRight="@dimen/margin_large"
                 android:background="@drawable/rounded_textbox"
                 android:hint="Cân nặng"
-                android:textColorHint="@color/grey"
                 android:inputType="number"
                 android:paddingLeft="@dimen/padding_standard"
                 android:textColor="@color/black"
+                android:textColorHint="@color/grey"
                 android:textSize="@dimen/text_standard"
                 app:backgroundTint="@color/light_gray"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -219,7 +219,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="NAM"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
 
                 <RadioButton
                     android:id="@+id/rbt_female"
@@ -227,8 +227,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_large"
                     android:text="NỮ"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
             </RadioGroup>
+
             <FrameLayout
                 android:id="@+id/calendarContainer"
                 android:layout_width="0dp"
@@ -236,8 +237,7 @@
                 android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="@id/btn_dateofbirth"
                 app:layout_constraintRight_toRightOf="@id/btn_dateofbirth"
-                app:layout_constraintTop_toBottomOf="@id/btn_dateofbirth">
-            </FrameLayout>
+                app:layout_constraintTop_toBottomOf="@id/btn_dateofbirth"></FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
@@ -273,7 +273,6 @@
         app:layout_constraintBottom_toBottomOf="@id/btn_infback"
         app:layout_constraintLeft_toRightOf="@id/btn_infback"
         app:layout_constraintRight_toRightOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

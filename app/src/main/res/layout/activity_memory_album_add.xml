@@ -86,10 +86,10 @@
         android:layout_marginLeft="@dimen/margin_super_large"
         android:layout_marginRight="@dimen/margin_super_large"
         android:src="@drawable/folder"
-        app:layout_constraintTop_toTopOf="@id/logo_camera"
+        app:layout_constraintBottom_toBottomOf="@id/logo_camera"
         app:layout_constraintLeft_toRightOf="@id/logo_camera"
         app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintBottom_toBottomOf="@id/logo_camera"
+        app:layout_constraintTop_toTopOf="@id/logo_camera"
         app:tint="@color/pink" />
 
     <View
@@ -97,9 +97,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginTop="@dimen/margin_standard"
         android:layout_marginRight="@dimen/margin_super_large"
         android:layout_marginBottom="@dimen/margin_standard"
-        android:layout_marginTop="@dimen/margin_standard"
         android:background="@drawable/img_border"
         android:backgroundTint="@color/pink"
         app:layout_constraintBottom_toTopOf="@id/input_field"
@@ -117,9 +117,9 @@
         android:background="@color/light_gray"
         android:gravity="top"
         android:hint="Nhập ghi chú"
-        android:textColorHint="@color/grey"
         android:inputType="textMultiLine"
         android:padding="@dimen/padding_standard"
+        android:textColorHint="@color/grey"
         app:layout_constraintBottom_toTopOf="@id/btn_save"
         app:layout_constraintLeft_toLeftOf="@id/main"
         app:layout_constraintRight_toRightOf="@id/main"
@@ -132,13 +132,13 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Thêm"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toTopOf="@id/btn_back"
-        app:layout_constraintTop_toBottomOf="@id/input_field"
         app:layout_constraintLeft_toLeftOf="@id/input_field"
-        app:layout_constraintRight_toRightOf="@id/input_field" />
+        app:layout_constraintRight_toRightOf="@id/input_field"
+        app:layout_constraintTop_toBottomOf="@id/input_field" />
 
     <Button
         android:id="@+id/btn_back"
@@ -147,13 +147,13 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Quay về"
-        android:textStyle="bold"
         android:textColor="@color/black"
+        android:textStyle="bold"
         app:backgroundTint="@color/light_blue"
-        app:layout_constraintTop_toBottomOf="@id/btn_save"
         app:layout_constraintBottom_toBottomOf="@id/main"
         app:layout_constraintLeft_toLeftOf="@id/input_field"
-        app:layout_constraintRight_toRightOf="@id/input_field" />
+        app:layout_constraintRight_toRightOf="@id/input_field"
+        app:layout_constraintTop_toBottomOf="@id/btn_save" />
 
     <TextView
         android:layout_width="wrap_content"

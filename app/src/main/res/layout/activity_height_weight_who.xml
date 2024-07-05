@@ -72,12 +72,12 @@
         android:layout_width="0dp"
         android:layout_height="3dp"
         android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginBottom="5dp"
         android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginBottom="5dp"
         android:background="@color/MAGENTA"
         app:layout_constraintBottom_toBottomOf="@id/tv_tsbaby"
         app:layout_constraintLeft_toRightOf="@id/tv_tsbaby"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
 
     <TextView
@@ -96,12 +96,12 @@
         android:layout_width="0dp"
         android:layout_height="3dp"
         android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginBottom="5dp"
         android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginBottom="5dp"
         android:background="@android:color/holo_red_light"
         app:layout_constraintBottom_toBottomOf="@id/tv_tswho"
         app:layout_constraintLeft_toRightOf="@id/tv_tswho"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/tv_tswho_avg"
@@ -119,12 +119,12 @@
         android:layout_width="0dp"
         android:layout_height="10dp"
         android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginBottom="5dp"
         android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/dashed_line"
         app:layout_constraintBottom_toBottomOf="@id/tv_tswho_avg"
         app:layout_constraintLeft_toRightOf="@id/tv_tswho_avg"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
 
     <ScrollView
@@ -191,6 +191,7 @@
                 app:lineLabelInsetBottom="-2dp"
                 app:lineLabelRotationBottom="0"
                 app:lineLabelRotationLeft="0" />
+
             <TextView
                 android:id="@+id/tvLc_bmi"
                 android:layout_width="wrap_content"

@@ -112,9 +112,9 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Quay về"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_small"
         android:textColor="@color/black"
+        android:textSize="@dimen/text_small"
+        android:textStyle="bold"
         app:backgroundTint="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -127,9 +127,9 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Lưu"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_small"
         android:textColor="@color/white"
+        android:textSize="@dimen/text_small"
+        android:textStyle="bold"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

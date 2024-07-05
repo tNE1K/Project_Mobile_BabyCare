@@ -59,11 +59,11 @@
         android:id="@+id/gv_baby_memory"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:numColumns="2"
         android:layout_marginLeft="@dimen/margin_small"
         android:layout_marginRight="@dimen/margin_small"
-        app:layout_constraintTop_toTopOf="@id/body"
-        app:layout_constraintBottom_toTopOf="@id/btn_save"/>
+        android:numColumns="2"
+        app:layout_constraintBottom_toTopOf="@id/btn_save"
+        app:layout_constraintTop_toTopOf="@id/body" />
 
     <Button
         android:id="@+id/btn_save"
@@ -74,9 +74,9 @@
         android:layout_marginBottom="@dimen/margin_super_small"
         android:background="@drawable/rounded_button"
         android:text="Thêm khoảnh khắc của bé"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_small"
         android:textColor="@color/white"
+        android:textSize="@dimen/text_small"
+        android:textStyle="bold"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toTopOf="@id/btn_back"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -91,9 +91,9 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Quay về"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_small"
         android:textColor="@color/black"
+        android:textSize="@dimen/text_small"
+        android:textStyle="bold"
         app:backgroundTint="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

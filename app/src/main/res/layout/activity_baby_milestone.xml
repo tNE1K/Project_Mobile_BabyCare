@@ -62,8 +62,8 @@
         android:layout_height="0dp"
         android:layout_marginLeft="@dimen/margin_small"
         android:layout_marginRight="@dimen/margin_small"
-        app:layout_constraintTop_toTopOf="@id/body"
-        app:layout_constraintBottom_toTopOf="@id/btn_back"/>
+        app:layout_constraintBottom_toTopOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/body" />
 
     <Button
         android:id="@+id/btn_back"
@@ -74,9 +74,9 @@
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Quay về"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_small"
         android:textColor="@color/white"
+        android:textSize="@dimen/text_small"
+        android:textStyle="bold"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
