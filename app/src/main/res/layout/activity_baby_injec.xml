@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_hight_large"
+        android:layout_marginRight="@dimen/margin_standard"
         android:text="Chưa tiêm"
         android:textColor="@color/black"
         android:textSize="@dimen/text_standard"
@@ -95,14 +95,15 @@
         app:layout_constraintRight_toRightOf="@id/body_bbinjec"
         app:layout_constraintTop_toTopOf="@id/body_bbinjec" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvbbinjec"
+    <ListView
+        android:id="@+id/lvbbinjec"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnUndo_bbinjec"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvMui_bbinjec" />
+        app:layout_constraintTop_toBottomOf="@id/tvMui_bbinjec"
+        android:layout_marginBottom="@dimen/margin_small"/>
 
     <Button
         android:id="@+id/btnUndo_bbinjec"

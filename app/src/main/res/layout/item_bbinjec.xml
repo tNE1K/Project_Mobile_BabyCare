@@ -4,43 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <View
-        android:id="@+id/body_bjitem"
-        android:layout_width="0dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="@dimen/margin_hight_large"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginRight="@dimen/margin_hight_large"
-        android:layout_marginBottom="@dimen/margin_small"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/txtName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="TextView"
         android:textSize="@dimen/text_small"
-        app:layout_constraintBottom_toBottomOf="@+id/body_bjitem"
-        app:layout_constraintStart_toStartOf="@+id/body_bjitem"
-        app:layout_constraintTop_toTopOf="@+id/body_bjitem" />
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/rginjec"
+        android:paddingLeft="@dimen/padding_super_small"/>
 
     <RadioGroup
         android:id="@+id/rginjec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_hight_large"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/body_bjitem"
-        app:layout_constraintEnd_toEndOf="@+id/body_bjitem"
-        app:layout_constraintTop_toTopOf="@+id/body_bjitem">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/rbt_datiem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/margin_hight_large" />
+            android:layout_marginRight="72dp" />
 
         <RadioButton
             android:id="@+id/rbt_chuatiem"

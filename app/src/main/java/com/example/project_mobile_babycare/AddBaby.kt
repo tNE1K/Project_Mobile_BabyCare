@@ -7,9 +7,11 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.ListView
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +25,11 @@ import com.google.firebase.ktx.Firebase
 import java.util.Calendar
 
 class AddBaby : AppCompatActivity() {
+
+    lateinit var listviewInjection: ListView
+    lateinit var injection: Injection
+    lateinit var injectionList: ArrayList<Injection>
+    lateinit var injectionAdapter: InjectionAdapter
 
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,6 +107,45 @@ class AddBaby : AppCompatActivity() {
                     val babyInfo = baby.collection("babyInfo")
 //                    add baby info
                     babyInfo.add(babyData)
+
+                    injectionList = ArrayList<Injection>()
+                    injectionList.add(Injection("Lao (Sơ sinh)", false))
+                    injectionList.add(Injection("Viêm gan B Mũi 1\n(Sơ sinh)", false))
+                    injectionList.add(Injection("Viêm gan B Mũi 2\n(2 tháng tuổi)", false))
+                    injectionList.add(Injection("Viêm gan B Mũi 3\n(3 tháng tuổi)", false))
+                    injectionList.add(Injection("Viêm gan B Mũi 4\n(15 tháng tuổi)", false))
+                    injectionList.add(Injection("Viêm gan B Mũi 5\n(9 năm 3 tháng tuổi)", false))
+                    injectionList.add(Injection("Rota Virus Mũi 1\n(2 tháng tuổi)", false))
+                    injectionList.add(Injection("Rota Virus Mũi 2\n(3 tháng tuổi)", false))
+                    injectionList.add(Injection("Rota Virus Mũi 3\n(4 tháng tuổi)", false))
+                    injectionList.add(Injection("Phế cầu khuẩn Mũi 1\n(2 tháng tuổi)", false))
+                    injectionList.add(Injection("Phế cầu khuẩn Mũi 2\n(3 tháng tuổi)", false))
+                    injectionList.add(Injection("Phế cầu khuẩn Mũi 3\n(4 tháng tuổi)", false))
+                    injectionList.add(Injection("Phế cầu khuẩn Mũi 4\n(10 tháng tuổi)", false))
+                    injectionList.add(Injection("Cúm Mũi 1\n(6 tháng tuổi)", false))
+                    injectionList.add(Injection("Cúm Mũi 2\n(7 tháng tuổi)", false))
+                    injectionList.add(Injection("Cúm Mũi 3\n(19 tháng tuổi)", false))
+                    injectionList.add(Injection("Cúm Mũi 4\n(2 năm 7 tháng tuổi)", false))
+                    injectionList.add(Injection("Cúm Mũi 5\n(3 năm 7 tháng tuổi)", false))
+
+
+                    val injectionMapList = injectionList.map { injection ->
+                        mapOf(
+                            "name" to injection.name,
+                            "isInjected" to injection.isInjected
+                        )
+                    }
+                    val babyInjectionPath = baby.collection("babyInjection")
+
+                    injectionMapList.forEach { injectionMap ->
+                        babyInjectionPath.add(injectionMap)
+                            .addOnSuccessListener { documentReference ->
+                                Log.d("Firestore", "DocumentSnapshot added with ID: ${documentReference.id}")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w("Firestore", "Error adding document", e)
+                            }
+                    }
 
 //                    back to main activity
                     val intent = Intent(this, MainActivity::class.java)
