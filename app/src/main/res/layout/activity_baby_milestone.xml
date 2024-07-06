@@ -73,7 +73,7 @@
         android:layout_marginRight="@dimen/margin_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        android:text="Quay về"
+        android:text="Trở về"
         android:textColor="@color/white"
         android:textSize="@dimen/text_very_small"
         android:textStyle="bold"
