@@ -31,11 +31,29 @@
         app:layout_constraintTop_toBottomOf="@id/IVprojectName" />
 
     <TextView
-        android:id="@+id/TVshowMonths"
-        android:layout_width="120dp"
+        android:id="@+id/TVshowYears"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="@dimen/text_large"
-        android:layout_marginTop="@dimen/text_small"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_marginBottom="@dimen/margin_standard"
+        android:layout_marginRight="@dimen/margin_standard"
+        android:background="@drawable/rounded_textbox"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:text="0 năm"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/SPNlistBaby"
+        app:layout_constraintRight_toLeftOf="@id/TVshowMonths"
+        app:layout_constraintTop_toBottomOf="@id/SPNlistBaby" />
+
+    <TextView
+        android:id="@+id/TVshowMonths"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/margin_standard"
         android:background="@drawable/rounded_textbox"
         android:backgroundTint="@color/white"
         android:gravity="center"
@@ -44,15 +62,17 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/TVshowYears"
+        app:layout_constraintRight_toLeftOf="@id/TVshowDays"
         app:layout_constraintTop_toBottomOf="@id/SPNlistBaby" />
 
     <TextView
         android:id="@+id/TVshowDays"
-        android:layout_width="120dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="@dimen/text_small"
-        android:layout_marginRight="@dimen/text_large"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_marginBottom="@dimen/margin_standard"
+        android:layout_marginLeft="@dimen/margin_standard"
         android:background="@drawable/rounded_textbox"
         android:backgroundTint="@color/white"
         android:gravity="center"
@@ -61,7 +81,8 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toRightOf="@id/SPNlistBaby"
+        app:layout_constraintLeft_toRightOf="@id/TVshowMonths"
         app:layout_constraintTop_toBottomOf="@id/SPNlistBaby" />
 
     <View
