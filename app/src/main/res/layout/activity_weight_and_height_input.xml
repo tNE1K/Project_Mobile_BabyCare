@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/margin_small"
-        app:layout_constraintBottom_toTopOf="@id/btnDelete_hwip"
+        app:layout_constraintBottom_toTopOf="@id/btnBack_hwip"
         app:layout_constraintTop_toTopOf="@id/body_hwinput">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -165,13 +165,13 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btnDelete_hwip"
+        android:id="@+id/btnBack_hwip"
         android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginLeft="@dimen/margin_super_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        android:text="Xoá"
+        android:text="Quay lại"
         android:textSize="@dimen/text_very_small"
         android:textColor="@color/white"
         android:textStyle="bold"

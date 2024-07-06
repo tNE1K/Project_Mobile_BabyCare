@@ -15,6 +15,7 @@ import com.androidplot.xy.LineAndPointFormatter
 import com.androidplot.xy.SimpleXYSeries
 import com.androidplot.xy.XYGraphWidget
 import com.androidplot.xy.XYPlot
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.DecimalFormat
@@ -37,6 +38,9 @@ class HeightWeightWhoActivity : AppCompatActivity() {
     private lateinit var linechartHeight: XYPlot
     private lateinit var linechartBmi: XYPlot
     private lateinit var btn_back: Button
+    val auth = Firebase.auth
+    val user = auth.currentUser
+    val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,10 +56,18 @@ class HeightWeightWhoActivity : AppCompatActivity() {
         linechartHeight = findViewById(R.id.linechart_height)
         linechartBmi = findViewById(R.id.linechart_bmi)
         btn_back = findViewById(R.id.btnBack_hw_who)
+        val auth = Firebase.auth
+        val user = auth.currentUser
+        val db = Firebase.firestore
+        val userUID = intent.getStringExtra("userUID")
+        val babyUID = intent.getStringExtra("babyUID")
 
         btn_back.setOnClickListener {
             val intent = Intent(this, HeightWeightActivity::class.java)
+            intent.putExtra("userUID", user?.uid)
+            intent.putExtra("babyUID", babyUID)
             startActivity(intent)
+            finish()
         }
 
         fetchDataFromFirestore()
