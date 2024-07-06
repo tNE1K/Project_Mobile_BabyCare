@@ -200,26 +200,49 @@ class HeightWeightWhoActivity : AppCompatActivity() {
 
     private fun updateCharts(data: List<MonthData>) {
         Log.d("UpdateCharts", "Received data: $data")
-        val months = data.map { it.month }.toTypedArray()
-        val weightWhoMin = data.map { it.weightMin }.toTypedArray()
-        val weightWhoMax = data.map { it.weightMax }.toTypedArray()
-        val weightWhoAvg = data.map { (it.weightMin!! + it.weightMax!!) / 2 }.toTypedArray()
-        val heightWhoMin = data.map { it.heightMin }.toTypedArray()
-        val heightWhoMax = data.map { it.heightMax }.toTypedArray()
-        val heightWhoAvg = data.map { (it.heightMin!! + it.heightMax!!) / 2 }.toTypedArray()
-        val weightBaby = data.map { it.weight }.toTypedArray()
-        val heightBaby = data.map { it.height }.toTypedArray()
-        val bmiWhoMin = data.map { it.bmiMin }.toTypedArray()
-        val bmiWhoMax = data.map { it.bmiMax }.toTypedArray()
-        val bmiWhoAvg = data.map { (it.bmiMin!! + it.bmiMax!!) / 2 }.toTypedArray()
-        val bmiBaby = data.map { it.bmi }.toTypedArray()
-        Log.d("UpdateCharts", "Received data: $data")
 
-        // Ensure no null values
-        data.forEach {
-            Log.d("UpdateCharts", "Month: ${it.month}, Weight: ${it.weight}, Height: ${it.height}")
-        }
-        Log.d("MyActivity", "months: ${months}")
+        // Lấy tháng tuổi lớn nhất của baby
+        val maxBabyMonth = data.filter { it.weight != null && it.height != null && it.bmi != null }.maxOfOrNull { it.month } ?: 0
+
+        // Lọc dữ liệu chỉ đến tháng tuổi lớn nhất của baby
+        val filteredData = data.filter { it.month <= maxBabyMonth }
+
+        // Xử lý dữ liệu để loại bỏ các giá trị null
+        val validMonths = filteredData.filter { it.weight != null && it.height != null && it.bmi != null }.map { it.month }
+        val validWeightBaby = filteredData.filter { it.weight != null }.map { it.weight }
+        val validHeightBaby = filteredData.filter { it.height != null }.map { it.height }
+        val validBmiBaby = filteredData.filter { it.bmi != null }.map { it.bmi }
+
+        val months = filteredData.map { it.month }.toTypedArray()
+        val weightWhoMin = filteredData.map { it.weightMin }.toTypedArray()
+        val weightWhoMax = filteredData.map { it.weightMax }.toTypedArray()
+        val weightWhoAvg = filteredData.map {
+            if (it.weightMin != null && it.weightMax != null)
+                (it.weightMin + it.weightMax) / 2
+            else
+                null
+        }.toTypedArray()
+        val heightWhoMin = filteredData.map { it.heightMin }.toTypedArray()
+        val heightWhoMax = filteredData.map { it.heightMax }.toTypedArray()
+        val heightWhoAvg = filteredData.map {
+            if (it.heightMin != null && it.heightMax != null)
+                (it.heightMin + it.heightMax) / 2
+            else
+                null
+        }.toTypedArray()
+        val weightBaby = filteredData.map { it.weight }.toTypedArray()
+        val heightBaby = filteredData.map { it.height }.toTypedArray()
+        val bmiWhoMin = filteredData.map { it.bmiMin }.toTypedArray()
+        val bmiWhoMax = filteredData.map { it.bmiMax }.toTypedArray()
+        val bmiWhoAvg = filteredData.map {
+            if (it.bmiMin != null && it.bmiMax != null)
+                (it.bmiMin + it.bmiMax) / 2
+            else
+                null
+        }.toTypedArray()
+        val bmiBaby = filteredData.map { it.bmi }.toTypedArray()
+
+        Log.d("MyActivity", "months: ${months.joinToString()}")
         Log.d("MyActivity", "weightWhoMin: ${weightWhoMin.joinToString()}")
         Log.d("MyActivity", "weightWhoMax: ${weightWhoMax.joinToString()}")
         Log.d("MyActivity", "weightWhoAvg: ${weightWhoAvg.joinToString()}")
@@ -233,38 +256,25 @@ class HeightWeightWhoActivity : AppCompatActivity() {
         Log.d("MyActivity", "bmiWhoAvg: ${bmiWhoAvg.joinToString()}")
         Log.d("MyActivity", "bmiBaby: ${bmiBaby.joinToString()}")
 
-        val seriesWeightWhoMin =
-            SimpleXYSeries(months.toList(), weightWhoMin.toList(), "Cân nặng min theo tháng")
-        val seriesWeightWhoMax =
-            SimpleXYSeries(months.toList(), weightWhoMax.toList(), "Cân nặng max theo tháng")
-        val seriesWeightWhoAvg =
-            SimpleXYSeries(months.toList(), weightWhoAvg.toList(), "Cân nặng avg theo tháng")
-        val seriesWeightBaby =
-            SimpleXYSeries(months.toList(), weightBaby.toList(), "Cân nặng của bé theo tháng")
+        val seriesWeightWhoMin = SimpleXYSeries(months.toList(), weightWhoMin.toList(), "Cân nặng min theo tháng")
+        val seriesWeightWhoMax = SimpleXYSeries(months.toList(), weightWhoMax.toList(), "Cân nặng max theo tháng")
+        val seriesWeightWhoAvg = SimpleXYSeries(months.toList(), weightWhoAvg.toList(), "Cân nặng avg theo tháng")
+        val seriesWeightBaby = SimpleXYSeries(validMonths, validWeightBaby, "Cân nặng của bé theo tháng")
 
-        val seriesHeightWhoMin =
-            SimpleXYSeries(months.toList(), heightWhoMin.toList(), "Chiều cao min theo tháng")
-        val seriesHeightWhoMax =
-            SimpleXYSeries(months.toList(), heightWhoMax.toList(), "Chiều cao max theo tháng")
-        val seriesHeightWhoAvg =
-            SimpleXYSeries(months.toList(), heightWhoAvg.toList(), "Chiều cao avg theo tháng")
-        val seriesHeightBaby =
-            SimpleXYSeries(months.toList(), heightBaby.toList(), "Chiều cao của bé theo tháng")
+        val seriesHeightWhoMin = SimpleXYSeries(months.toList(), heightWhoMin.toList(), "Chiều cao min theo tháng")
+        val seriesHeightWhoMax = SimpleXYSeries(months.toList(), heightWhoMax.toList(), "Chiều cao max theo tháng")
+        val seriesHeightWhoAvg = SimpleXYSeries(months.toList(), heightWhoAvg.toList(), "Chiều cao avg theo tháng")
+        val seriesHeightBaby = SimpleXYSeries(validMonths, validHeightBaby, "Chiều cao của bé theo tháng")
 
-        val seriesBmiWhoMin =
-            SimpleXYSeries(months.toList(), bmiWhoMin.toList(), "BMI min theo tháng")
-        val seriesBmiWhoMax =
-            SimpleXYSeries(months.toList(), bmiWhoMax.toList(), "BMI max theo tháng")
-        val seriesBmiWhoAvg =
-            SimpleXYSeries(months.toList(), bmiWhoAvg.toList(), "BMI avg theo tháng")
-        val seriesBmiBaby =
-            SimpleXYSeries(months.toList(), bmiBaby.toList(), "BMI của bé theo tháng")
+        val seriesBmiWhoMin = SimpleXYSeries(months.toList(), bmiWhoMin.toList(), "BMI min theo tháng")
+        val seriesBmiWhoMax = SimpleXYSeries(months.toList(), bmiWhoMax.toList(), "BMI max theo tháng")
+        val seriesBmiWhoAvg = SimpleXYSeries(months.toList(), bmiWhoAvg.toList(), "BMI avg theo tháng")
+        val seriesBmiBaby = SimpleXYSeries(validMonths, validBmiBaby, "BMI của bé theo tháng")
 
         val formatterWho = LineAndPointFormatter(Color.RED, null, null, null).apply {
             linePaint.strokeWidth = 5f
             isLegendIconEnabled = false
-            interpolationParams =
-                CatmullRomInterpolator.Params(3000, CatmullRomInterpolator.Type.Uniform)
+            interpolationParams = CatmullRomInterpolator.Params(3000, CatmullRomInterpolator.Type.Uniform)
         }
 
         val formatterWhoAvg = LineAndPointFormatter(Color.GREEN, null, null, null)
@@ -327,6 +337,8 @@ class HeightWeightWhoActivity : AppCompatActivity() {
         linechartHeight.redraw()
         linechartBmi.redraw()
     }
+
+
 
 
     private fun calculateBMI(weight: Double?, height: Double?): Double? {
