@@ -117,7 +117,7 @@ class BabyInfo : AppCompatActivity() {
                             docRef.update(updates)
                                 .addOnSuccessListener {
                                     // Document updated successfully
-                                    Toast.makeText(this, "Baby info updated", Toast.LENGTH_SHORT)
+                                    Toast.makeText(this, "Cập nhật thành công!", Toast.LENGTH_SHORT)
                                         .show()
                                 }
                                 .addOnFailureListener { e ->

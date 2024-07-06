@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink"
-    tools:context=".weightAndHeightEditActivity">
+    tools:context=".BabyInjectionDetail">
+
     <View
         android:id="@+id/body_hwinput"
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
         android:id="@+id/img_cccnip"
         android:layout_width="@dimen/view_height_standard"
         android:layout_height="@dimen/view_height_standard"
-        android:src="@drawable/babywh"
+        android:src="@drawable/babyinjection"
         app:layout_constraintBottom_toBottomOf="@id/logo_container"
         app:layout_constraintLeft_toLeftOf="@id/logo_container"
         app:layout_constraintRight_toRightOf="@id/logo_container"
@@ -45,7 +46,7 @@
         android:shadowDx="6"
         android:shadowDy="6"
         android:shadowRadius="5"
-        android:text="Chiều cao &amp;\ncân nặng"
+        android:text="Sổ tiêm\nchủng"
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textColorHighlight="@color/white"
@@ -59,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/margin_small"
-        app:layout_constraintBottom_toTopOf="@id/btn_del"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
         app:layout_constraintTop_toTopOf="@id/body_hwinput">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,12 +68,12 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvCc_hwip"
+                android:id="@+id/tvInjectionName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_super_large"
                 android:layout_marginTop="@dimen/margin_standard"
-                android:text="Chiều cao"
+                android:text="Tên mũi tiêm"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_standard"
                 android:textStyle="bold"
@@ -80,14 +81,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/edtCc_hwip"
+                android:id="@+id/etInjectionName"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/view_height_standard"
                 android:layout_marginLeft="@dimen/margin_large"
                 android:layout_marginTop="12dp"
                 android:layout_marginRight="@dimen/margin_large"
                 android:background="@drawable/rounded_textbox"
-                android:hint="Chiều cao"
+                android:hint="Tên mũi tiêm"
+                android:enabled="false"
+                android:singleLine="true"
                 android:inputType="text"
                 android:paddingLeft="@dimen/padding_standard"
                 android:textColor="@color/black"
@@ -95,30 +98,30 @@
                 android:textSize="@dimen/text_standard"
                 app:backgroundTint="@color/light_gray"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvCc_hwip" />
+                app:layout_constraintTop_toBottomOf="@id/tvInjectionName" />
 
             <TextView
-                android:id="@+id/tvCn_hwip"
+                android:id="@+id/tvInjectionPlace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_super_large"
                 android:layout_marginTop="@dimen/margin_standard"
-                android:text="Cân nặng"
+                android:text="Nơi tiêm"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_standard"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edtCc_hwip" />
+                app:layout_constraintTop_toBottomOf="@id/etInjectionName" />
 
             <EditText
-                android:id="@+id/edt_cannang"
+                android:id="@+id/etInjectionPlace"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/view_height_standard"
                 android:layout_marginLeft="@dimen/margin_large"
                 android:layout_marginTop="12dp"
                 android:layout_marginRight="@dimen/margin_large"
                 android:background="@drawable/rounded_textbox"
-                android:hint="Cân nặng"
+                android:hint="Nơi tiêm"
                 android:inputType="text"
                 android:paddingLeft="@dimen/padding_standard"
                 android:textColor="@color/black"
@@ -126,23 +129,23 @@
                 android:textSize="@dimen/text_standard"
                 app:backgroundTint="@color/light_gray"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvCn_hwip" />
+                app:layout_constraintTop_toBottomOf="@id/tvInjectionPlace" />
 
             <TextView
-                android:id="@+id/tv_dateofbirthhwip"
+                android:id="@+id/tvInjectionDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_super_large"
                 android:layout_marginTop="@dimen/margin_standard"
-                android:text="Ngày nhập"
+                android:text="Ngày tiêm"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_standard"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edt_cannang" />
+                app:layout_constraintTop_toBottomOf="@id/etInjectionPlace" />
 
             <Button
-                android:id="@+id/btn_dateinput"
+                android:id="@+id/btnInjectionDate"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/view_height_standard"
                 android:layout_marginLeft="@dimen/margin_large"
@@ -158,19 +161,41 @@
                 android:textSize="@dimen/text_standard"
                 app:backgroundTint="@color/light_gray"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_dateofbirthhwip" />
+                app:layout_constraintTop_toBottomOf="@id/tvInjectionDate" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_super_large"
+                android:layout_marginTop="@dimen/margin_standard"
+                android:text="Đã tiêm"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_standard"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnInjectionDate" />
+
+            <CheckBox
+                android:id="@+id/cb_datiem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                app:layout_constraintTop_toBottomOf="@id/tvStatus"
+                app:layout_constraintLeft_toLeftOf="@id/tvStatus"/>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <Button
-        android:id="@+id/btn_del"
+        android:id="@+id/btnBack"
         android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginLeft="@dimen/margin_super_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        android:text="Xoá"
+        android:text="Quay lại"
         android:textSize="@dimen/text_very_small"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -179,7 +204,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btnSave"
         android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginRight="@dimen/margin_super_large"
