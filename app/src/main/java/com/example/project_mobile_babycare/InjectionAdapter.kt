@@ -4,6 +4,7 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.CheckBox
 import android.widget.RadioButton
 import android.widget.TextView
 
@@ -19,22 +20,14 @@ class InjectionAdapter(val context: Activity, val list: ArrayList<Injection>) :
         val context = context.layoutInflater
         val rowView = context.inflate(R.layout.item_bbinjec, parent, false)
         val name = rowView.findViewById<TextView>(R.id.txtName)
-        val injected = rowView.findViewById<RadioButton>(R.id.rbt_datiem)
-        val notInjected = rowView.findViewById<RadioButton>(R.id.rbt_chuatiem)
+        val injected = rowView.findViewById<CheckBox>(R.id.cb_datiem)
         name.text = list[position].name
         if(list[position].isInjected == true){
             injected.isChecked = true
-            notInjected.isChecked = false
         }
         else{
-            notInjected.isChecked = true
             injected.isChecked = false
         }
         return rowView
-    }
-    fun saveStatesToFirestore(){
-        for(item in list){
-            item.isInjected
-        }
     }
 }

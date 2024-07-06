@@ -79,20 +79,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/text_standard"
         android:textStyle="bold"
-        app:layout_constraintRight_toLeftOf="@id/tvChuaTiem_bbinjec"
-        app:layout_constraintTop_toTopOf="@id/body_bbinjec" />
-
-    <TextView
-        android:id="@+id/tvChuaTiem_bbinjec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_standard"
-        android:text="Chưa tiêm"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_standard"
-        android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="@id/body_bbinjec"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/body_bbinjec" />
 
     <ListView
@@ -107,32 +94,20 @@
 
     <Button
         android:id="@+id/btnUndo_bbinjec"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginLeft="@dimen/margin_super_large"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Quay về"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_very_small"
-        android:textStyle="bold"
-        app:backgroundTint="@color/light_blue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <Button
-        android:id="@+id/btnSave_bbinjec"
-        android:layout_width="150dp"
-        android:layout_height="56dp"
-        android:layout_marginRight="@dimen/margin_super_large"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:background="@drawable/rounded_button"
-        android:text="Lưu"
         android:textColor="@color/white"
         android:textSize="@dimen/text_very_small"
         android:textStyle="bold"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

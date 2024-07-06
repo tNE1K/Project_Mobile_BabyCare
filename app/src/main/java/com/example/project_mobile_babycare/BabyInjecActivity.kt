@@ -18,7 +18,6 @@ import com.google.firebase.ktx.Firebase
 
 class BabyInjecActivity : AppCompatActivity() {
     lateinit var btnBack: Button
-    lateinit var btnSave: Button
     lateinit var listviewInjection: ListView
     lateinit var injection: Injection
     lateinit var injectionList: ArrayList<Injection>
@@ -35,7 +34,6 @@ class BabyInjecActivity : AppCompatActivity() {
 
         injectionList = ArrayList<Injection>()
         btnBack = findViewById(R.id.btnUndo_bbinjec)
-        btnSave = findViewById(R.id.btnSave_bbinjec)
 
         val auth = Firebase.auth
         val user = auth.currentUser
@@ -85,10 +83,6 @@ class BabyInjecActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        btnSave.setOnClickListener {
-            injectionAdapter.saveStatesToFirestore()
-
-    }
 
 
 
