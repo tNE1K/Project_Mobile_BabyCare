@@ -1,12 +1,18 @@
 package com.example.project_mobile_babycare
 
 import android.app.Activity
+import android.app.Dialog
+import android.content.ContentValues
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
 import android.widget.Button
 import android.widget.GridView
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -114,6 +120,57 @@ class BabyMemoryView : AppCompatActivity() {
                 }
 
         }
+        gvMemory.setOnItemLongClickListener { parent, view, position, id ->
+            // Tạo Dialog để xác nhận xóa
+            val dialog = Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setCancelable(true)
+            dialog.setContentView(R.layout.custom_delete_memory_dialog)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            val btnYes: Button = dialog.findViewById(R.id.btn_delete)
+            val btnThoat: Button = dialog.findViewById(R.id.btn_thoat)
+
+            // Lấy tài liệu từ vị trí tương ứng trong danh sách
+            userPath.get()
+                .addOnSuccessListener { documents ->
+                    if (position in 0 until documents.size()) {
+                        val targetDocument = documents.documents[position]
+                        val documentId = targetDocument.id
+
+                        btnYes.setOnClickListener {
+                            // Xóa tài liệu từ Firestore
+                            userPath.document(documentId)
+                                .delete()
+                                .addOnSuccessListener {
+                                    Log.d("Firestore", "DocumentSnapshot successfully deleted!")
+                                    Toast.makeText(this, "Xóa thành công!", Toast.LENGTH_SHORT).show()
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.w("Firestore", "Error deleting document", e)
+                                    Toast.makeText(this, "Có lỗi xảy ra khi xóa!", Toast.LENGTH_SHORT).show()
+                                }
+                            dialog.dismiss()
+                        }
+
+                        btnThoat.setOnClickListener {
+                            dialog.dismiss()
+                        }
+
+                        dialog.show()
+                    } else {
+                        Log.d("Firestore", "Position $position is out of bounds")
+                        Toast.makeText(this, "Không thể xóa mục này!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("Firestore", "Error getting documents: ", exception)
+                    Toast.makeText(this, "Có lỗi xảy ra khi lấy tài liệu!", Toast.LENGTH_SHORT).show()
+                }
+
+            true // Trả về true để biểu thị sự kiện đã được xử lý
+        }
+
     }
 
     //enable full screen mode

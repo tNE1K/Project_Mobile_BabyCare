@@ -6,9 +6,10 @@
 
     <ImageView
         android:id="@+id/item_memory_iv"
-        android:layout_width="205dp"
-        android:layout_height="205dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:background="@drawable/rounded_button"
+        android:layout_margin="@dimen/margin_small"
         android:scaleType="centerCrop"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +24,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="@dimen/text_standard"
+        android:layout_margin="@dimen/margin_small"
         app:layout_constraintEnd_toEndOf="@id/item_memory_iv"
         app:layout_constraintStart_toStartOf="@id/item_memory_iv"
         app:layout_constraintTop_toBottomOf="@id/item_memory_iv" />

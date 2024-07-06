@@ -78,27 +78,12 @@
         android:hint="Nhập ghi chú cho khoảnh khắc này nhé!"
         android:paddingLeft="@dimen/padding_small"
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toTopOf="@id/btn_addMedia"
+        app:layout_constraintBottom_toTopOf="@id/btn_save"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/image_view" />
 
-    <Button
-        android:id="@+id/btn_addMedia"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginRight="@dimen/margin_large"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:background="@drawable/rounded_button"
-        android:text="Thêm hình ảnh hoăc video"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_very_small"
-        android:textStyle="bold"
-        app:backgroundTint="@color/pink"
-        app:layout_constraintBottom_toTopOf="@id/btn_save"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+
 
     <Button
         android:id="@+id/btn_save"
