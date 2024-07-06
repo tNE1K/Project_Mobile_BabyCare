@@ -53,4 +53,5 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.androidplot:androidplot-core:1.5.9")
     implementation("androidx.appcompat:appcompat:1.3.1")
+    implementation("com.google.firebase:firebase-storage")
 }

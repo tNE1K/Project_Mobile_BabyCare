@@ -55,117 +55,83 @@
         app:layout_constraintStart_toEndOf="@id/logo_container"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/label_add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_small"
-        android:layout_marginTop="@dimen/margin_small"
-        android:text="Thêm hình ảnh"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@color/pink"
+        app:layout_constraintBottom_toTopOf="@id/note"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/body" />
 
-    <ImageView
-        android:id="@+id/logo_camera"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginRight="@dimen/margin_super_large"
-        android:src="@drawable/camera"
-        app:layout_constraintBottom_toTopOf="@id/add"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toLeftOf="@id/logo_folder"
-        app:layout_constraintTop_toBottomOf="@id/label_add"
-        app:tint="@color/pink" />
-
-    <ImageView
-        android:id="@+id/logo_folder"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginRight="@dimen/margin_super_large"
-        android:src="@drawable/folder"
-        app:layout_constraintBottom_toBottomOf="@id/logo_camera"
-        app:layout_constraintLeft_toRightOf="@id/logo_camera"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintTop_toTopOf="@id/logo_camera"
-        app:tint="@color/pink" />
-
-    <View
-        android:id="@+id/add"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_super_large"
-        android:layout_marginBottom="@dimen/margin_standard"
-        android:background="@drawable/img_border"
-        android:backgroundTint="@color/pink"
-        app:layout_constraintBottom_toTopOf="@id/input_field"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintTop_toBottomOf="@id/logo_camera" />
-
     <EditText
-        android:id="@+id/input_field"
+        android:id="@+id/note"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/margin_super_large"
-        android:layout_marginRight="@dimen/margin_super_large"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@color/light_gray"
-        android:gravity="top"
-        android:hint="Nhập ghi chú"
-        android:inputType="textMultiLine"
-        android:padding="@dimen/padding_standard"
-        android:textColorHint="@color/grey"
-        app:layout_constraintBottom_toTopOf="@id/btn_save"
-        app:layout_constraintLeft_toLeftOf="@id/main"
-        app:layout_constraintRight_toRightOf="@id/main"
-        app:layout_constraintTop_toBottomOf="@id/add" />
+        android:hint="Nhập ghi chú cho khoảnh khắc này nhé!"
+        android:paddingLeft="@dimen/padding_small"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/btn_addMedia"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view" />
 
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_addMedia"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:background="@drawable/rounded_button"
+        android:text="Thêm hình ảnh hoăc video"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_very_small"
+        android:textStyle="bold"
+        app:backgroundTint="@color/pink"
+        app:layout_constraintBottom_toTopOf="@id/btn_add"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Thêm"
-        android:textSize="@dimen/text_very_small"
         android:textColor="@color/white"
+        android:textSize="@dimen/text_very_small"
         android:textStyle="bold"
         app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toTopOf="@id/btn_back"
-        app:layout_constraintLeft_toLeftOf="@id/input_field"
-        app:layout_constraintRight_toRightOf="@id/input_field"
-        app:layout_constraintTop_toBottomOf="@id/input_field" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/btn_back"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
         android:text="Quay về"
-        android:textSize="@dimen/text_very_small"
         android:textColor="@color/black"
+        android:textSize="@dimen/text_very_small"
         android:textStyle="bold"
         app:backgroundTint="@color/light_blue"
-        app:layout_constraintBottom_toBottomOf="@id/main"
-        app:layout_constraintLeft_toLeftOf="@id/input_field"
-        app:layout_constraintRight_toRightOf="@id/input_field"
-        app:layout_constraintTop_toBottomOf="@id/btn_save" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+"
-        android:textColor="@color/black"
-        android:textSize="100dp"
-        app:layout_constraintBottom_toBottomOf="@id/add"
-        app:layout_constraintLeft_toLeftOf="@id/add"
-        app:layout_constraintRight_toRightOf="@id/add"
-        app:layout_constraintTop_toTopOf="@id/add" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
