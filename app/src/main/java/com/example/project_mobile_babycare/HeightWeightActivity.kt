@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class HeightWeightActivity : AppCompatActivity() {
     lateinit var BTN_back: Button
@@ -20,6 +23,9 @@ class HeightWeightActivity : AppCompatActivity() {
     lateinit var heightWeight: HeightWeight
     lateinit var heightWeightAdapter: HeightWeightAdapter
     lateinit var heightWeightList: ArrayList<HeightWeight>
+    val auth = Firebase.auth
+    val user = auth.currentUser
+    val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +44,10 @@ class HeightWeightActivity : AppCompatActivity() {
         heightWeightAdapter = HeightWeightAdapter(this, heightWeightList)
         lvHeightWeight.adapter = heightWeightAdapter
 
+        val intent = intent
+        val userUID = intent.getStringExtra("userUID")
+        val currentBabyUID = intent.getStringExtra("babyUID")
+
 
         BTN_back.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -46,11 +56,16 @@ class HeightWeightActivity : AppCompatActivity() {
         }
         BTN_add.setOnClickListener {
             val intent = Intent(this, Weight_and_Height_Input::class.java)
+            intent.putExtra("userUID", user?.uid)
+            intent.putExtra("babyUID", currentBabyUID)
             startActivity(intent)
+            finish()
         }
         btn_ssheightweight = findViewById(R.id.btn_ssheightweight)
         btn_ssheightweight.setOnClickListener {
             val intent = Intent(this, HeightWeightWhoTestActivity::class.java)
+            intent.putExtra("userUID", user?.uid)
+            intent.putExtra("babyUID", currentBabyUID)
             startActivity(intent)
             finish()
         }
