@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -43,8 +44,10 @@ class MedicalHistoryView : AppCompatActivity() {
         val userUID = intent.getStringExtra("userUID")
         val currentBabyUID = intent.getStringExtra("babyUID")
 
+        val userPath = db.collection("users").document(userUID!!).collection("baby").document(currentBabyUID!!).collection("babyMedicalHistory")
+
+
         user?.let {
-            val userPath = db.collection("users").document(userUID!!).collection("baby").document(currentBabyUID!!).collection("babyMedicalHistory")
             userPath.addSnapshotListener { snapshots, e ->
                 if (e != null) {
                     Log.w("MainActivity", "listen:error", e)
@@ -75,6 +78,38 @@ class MedicalHistoryView : AppCompatActivity() {
             intent.putExtra("babyUID", currentBabyUID)
             startActivity(intent)
             finish()
+        }
+
+        lvMedical.setOnItemClickListener{ parent, view, position, id ->
+
+            // Show a toast with the clicked item value
+            userPath.get()
+                .addOnSuccessListener{ documents ->
+                    // Kiểm tra nếu vị trí mong muốn nằm trong phạm vi của danh sách kết quả
+                    if (position in 0 until documents.size()) {
+                        // Lấy tài liệu ở vị trí mong muốn
+                        val targetDocument = documents.documents[position]
+
+                        // Lấy UID từ tài liệu
+                        val documentId = targetDocument.id
+                        Log.d("Firestore", "Document ID at position $position: $documentId")
+                        val intent = Intent(this, medicalHistoryEditActivity::class.java)
+                        intent.putExtra("userUID", userUID)
+                        intent.putExtra("babyUID", currentBabyUID)
+                        intent.putExtra("medicalUID", documentId)
+                        startActivity(intent)
+
+//                        // Xử lý dữ liệu khác từ tài liệu nếu cần
+//                        val data = targetDocument.data
+//                        Log.d("Firestore", "Document Data: $data")
+                    } else {
+                        Log.d("Firestore", "Position $position is out of bounds")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("Firestore", "Error getting documents: ", exception)
+                }
+
         }
 
     }

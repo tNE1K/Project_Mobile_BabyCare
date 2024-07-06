@@ -82,6 +82,11 @@ class MedicalHistoryInput : AppCompatActivity() {
                     Toast.makeText(this, "Thêm thông tin thành công!", Toast.LENGTH_SHORT).show()
                 }
             }
+            val back = Intent(this, MedicalHistoryView::class.java)
+            back.putExtra("userUID", userUID)
+            back.putExtra("babyUID", currentBabyUID)
+            startActivity(back)
+            finish()
         }
 
         btnBack.setOnClickListener {

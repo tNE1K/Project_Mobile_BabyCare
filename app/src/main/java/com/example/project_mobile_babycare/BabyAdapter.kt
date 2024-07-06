@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -80,6 +81,7 @@ class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
                 .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
                 .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
             dialog.dismiss()
+            Toast.makeText(context, "Xóa thành công!", Toast.LENGTH_SHORT).show()
         }
         btnThoat.setOnClickListener {
             dialog.dismiss()

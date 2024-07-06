@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/margin_small"
-        app:layout_constraintBottom_toTopOf="@id/btn_back_medical"
+        app:layout_constraintBottom_toTopOf="@id/btn_delete"
         app:layout_constraintTop_toTopOf="@id/body">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -186,28 +186,28 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btn_back_medical"
+        android:id="@+id/btn_delete"
         android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginLeft="@dimen/margin_super_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        android:text="Quay về"
+        android:text="Xóa"
         android:textSize="@dimen/text_very_small"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        app:backgroundTint="@color/light_blue"
+        app:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_save"
         android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginRight="@dimen/margin_super_large"
         android:layout_marginBottom="@dimen/margin_large"
         android:background="@drawable/rounded_button"
-        android:text="Thêm"
+        android:text="Lưu"
         android:textSize="@dimen/text_very_small"
         android:textColor="@color/white"
         android:textStyle="bold"

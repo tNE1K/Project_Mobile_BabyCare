@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="10dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XÓA"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_standard"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Xóa thông tin tiền sử bệnh lý?"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_small" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_thoat"
+                android:layout_width="150dp"
+                android:layout_height="56dp"
+                android:layout_marginRight="@dimen/margin_small"
+                android:background="@drawable/rounded_button"
+                android:text="Thoát"
+                android:textSize="@dimen/text_very_small"
+                android:textStyle="bold"
+                app:backgroundTint="@color/blue" />
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="150dp"
+                android:layout_height="56dp"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:background="@drawable/rounded_button"
+                android:text="Xóa"
+                android:textSize="@dimen/text_very_small"
+                android:textStyle="bold"
+                app:backgroundTint="@color/red" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
