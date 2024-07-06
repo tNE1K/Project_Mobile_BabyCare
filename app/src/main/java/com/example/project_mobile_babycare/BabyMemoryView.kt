@@ -81,6 +81,39 @@ class BabyMemoryView : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        gvMemory.setOnItemClickListener{ parent, view, position, id ->
+
+            // Show a toast with the clicked item value
+            userPath.get()
+                .addOnSuccessListener{ documents ->
+                    // Kiểm tra nếu vị trí mong muốn nằm trong phạm vi của danh sách kết quả
+                    if (position in 0 until documents.size()) {
+                        // Lấy tài liệu ở vị trí mong muốn
+                        val targetDocument = documents.documents[position]
+
+                        // Lấy UID từ tài liệu
+                        val documentId = targetDocument.id
+                        Log.d("Firestore", "Document ID at position $position: $documentId")
+                        val intent = Intent(this, MemoryAlbumEdit::class.java)
+                        intent.putExtra("userUID", userUID)
+                        intent.putExtra("babyUID", currentBabyUID)
+                        intent.putExtra("memoryUID", documentId)
+                        startActivity(intent)
+                        finish()
+
+//                        // Xử lý dữ liệu khác từ tài liệu nếu cần
+//                        val data = targetDocument.data
+//                        Log.d("Firestore", "Document Data: $data")
+                    } else {
+                        Log.d("Firestore", "Position $position is out of bounds")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("Firestore", "Error getting documents: ", exception)
+                }
+
+        }
     }
 
     //enable full screen mode
