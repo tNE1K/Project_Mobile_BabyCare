@@ -70,6 +70,13 @@ class Weight_and_Height_Input : AppCompatActivity() {
         btnSave.setOnClickListener {
             saveDataToFirebase()
         }
+        btnBack.setOnClickListener {
+            val back = Intent(this, HeightWeightActivity::class.java)
+            back.putExtra("userUID", userUID)
+            back.putExtra("babyUID", babyUID)
+            startActivity(back)
+            finish()
+        }
 
         loadBabyInfo()
     }

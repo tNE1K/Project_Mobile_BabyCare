@@ -23,6 +23,7 @@ class HeightWeightActivity : AppCompatActivity() {
     lateinit var lvHeightWeight: ListView
     lateinit var heightWeightAdapter: HeightWeightAdapter
     lateinit var heightWeightList: ArrayList<HeightWeight>
+    lateinit var heightweightwhoList: ArrayList<HeightWeightWho>
     val auth = Firebase.auth
     val user = auth.currentUser
     val db = Firebase.firestore
@@ -61,13 +62,13 @@ class HeightWeightActivity : AppCompatActivity() {
             finish()
         }
         btn_ssheightweight.setOnClickListener {
-            val intent = Intent(this, HeightWeightWhoTestActivity::class.java)
+            val intent = Intent(this, HeightWeightWhoActivity::class.java)
+            intent.putParcelableArrayListExtra("heightweightwhoList", heightweightwhoList)
             intent.putExtra("userUID", userUID)
             intent.putExtra("babyUID", currentBabyUID)
             startActivity(intent)
             finish()
         }
-
 
     }
 
@@ -80,12 +81,15 @@ class HeightWeightActivity : AppCompatActivity() {
             docRef.get().addOnSuccessListener { result ->
                 heightWeightList.clear()
                 val tempList = ArrayList<HeightWeight>()
+                val hwwhoList = ArrayList<HeightWeightWho>()
                 for (document in result) {
                     val dateInput = document.getString("dateInput")
                     val height = document.getLong("height").toString()
                     val weight = document.getDouble("weight").toString()
-                    if (dateInput != null && height != null && weight != null) {
+                    val months = document.getLong("monthsOld")?.toInt()
+                    if (dateInput != null && height != null && weight != null&& months != null) {
                         tempList.add(HeightWeight(dateInput, "$height/$weight"))
+                        hwwhoList.add(HeightWeightWho(months, height.toDouble(), weight.toDouble()))
                         Log.d("HeightWeightData", "dateInput: $dateInput, height: $height, weight: $weight")
                     }
                 }
@@ -93,9 +97,18 @@ class HeightWeightActivity : AppCompatActivity() {
                 // Sắp xếp tempList theo ngày nhập
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 tempList.sortBy { dateFormat.parse(it.start) }
-
+                hwwhoList.sortBy { it.months }
                 // Cập nhật heightWeightList
                 heightWeightList.addAll(tempList)
+                heightweightwhoList = hwwhoList
+                if (heightweightwhoList != null) {
+                    for (item in heightweightwhoList) {
+                        // Xử lý từng item trong heightweightwhoList
+                        Log.d("HeightWeightWhoData", "months: ${item.months}, height: ${item.height}, weight: ${item.weight}")
+                    }
+                } else {
+                    Log.e("HeightWeightWhoData", "heightweightwhoList is null")
+                }
                 heightWeightAdapter.notifyDataSetChanged()
             }.addOnFailureListener { exception ->
                 Log.d("HeightWeightData", "Error getting documents: ", exception)

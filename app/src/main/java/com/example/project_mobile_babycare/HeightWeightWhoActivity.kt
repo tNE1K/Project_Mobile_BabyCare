@@ -20,18 +20,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.DecimalFormat
 
-data class MonthData(
-    val month: Int,
-    val weightMin: Double? = null,
-    val weightMax: Double? = null,
-    val weight: Double? = null,
-    val heightMin: Double? = null,
-    val heightMax: Double? = null,
-    val height: Double? = null,
-    val bmiMin: Double? = null,
-    val bmiMax: Double? = null,
-    val bmi: Double? = null
-)
 
 class HeightWeightWhoActivity : AppCompatActivity() {
     private lateinit var linechartWeight: XYPlot
@@ -41,6 +29,7 @@ class HeightWeightWhoActivity : AppCompatActivity() {
     val auth = Firebase.auth
     val user = auth.currentUser
     val db = Firebase.firestore
+    lateinit var heightWeightWhoList: ArrayList<HeightWeightWho>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,40 +41,50 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             insets
         }
 
+        heightWeightWhoList = intent.getParcelableArrayListExtra("heightweightwhoList")!!
+
+        if (heightWeightWhoList != null) {
+            for (item in heightWeightWhoList) {
+                Log.d(
+                    "HeightWeightWhoDataHWA",
+                    "months: ${item.months}, height: ${item.height}, weight: ${item.weight}"
+                )
+            }
+        } else {
+            Log.e("HeightWeightWhoData", "heightweightwhoList is null")
+        }
+
+
         linechartWeight = findViewById(R.id.linechart_weight)
         linechartHeight = findViewById(R.id.linechart_height)
         linechartBmi = findViewById(R.id.linechart_bmi)
         btn_back = findViewById(R.id.btnBack_hw_who)
-        val auth = Firebase.auth
-        val user = auth.currentUser
-        val db = Firebase.firestore
+        val intent = intent
         val userUID = intent.getStringExtra("userUID")
         val babyUID = intent.getStringExtra("babyUID")
-
         btn_back.setOnClickListener {
             val intent = Intent(this, HeightWeightActivity::class.java)
-            intent.putExtra("userUID", user?.uid)
+            intent.putExtra("userUID", userUID)
             intent.putExtra("babyUID", babyUID)
             startActivity(intent)
             finish()
         }
 
+
         fetchDataFromFirestore()
+
     }
 
     private fun fetchDataFromFirestore() {
-        val db = Firebase.firestore
+//        Log.d("FirestoreData", "userUID: $userUID, babyUID: $babyUID")
+
         val docRefWho = db.collection("who_standards").document("male").collection("month")
-        val docRefBaby = db.collection("users")
-            .document("BgSxyiynxdg6JDAkWPgwLLssAmB2")
-            .collection("baby")
-            .document("kien")
-            .collection("weightheight")
+        val whoData = mutableListOf<MonthData>()
 
         docRefWho.get().addOnSuccessListener { whoDocuments ->
-            val whoData = mutableListOf<MonthData>()
-
+            Log.d("FirestoreData", "WHO documents fetched: ${whoDocuments.size()}")
             for (document in whoDocuments) {
+                Log.d("FirestoreData", "WHO document: ${document.data}")
                 whoData.add(
                     MonthData(
                         month = document.getLong("month")!!.toInt(),
@@ -97,27 +96,60 @@ class HeightWeightWhoActivity : AppCompatActivity() {
                 )
             }
 
-            docRefBaby.get().addOnSuccessListener { babyDocuments ->
-                val babyData = mutableListOf<MonthData>()
+            Log.d("FirestoreData", "WHO data processed: $whoData")
 
-                for (document in babyDocuments) {
+            if (heightWeightWhoList != null) {
+                val babyData = mutableListOf<MonthData>()
+                for (data in heightWeightWhoList) {
+                    Log.d("IntentData", "Intent data: $data")
                     babyData.add(
                         MonthData(
-                            month = document.getLong("month")!!.toInt(),
-                            weight = document.getDouble("weight"),
-                            height = document.getDouble("height")
+                            month = data.months.toInt(),
+                            weight = data.weight.toDouble(),
+                            height = data.height.toDouble()
                         )
                     )
                 }
 
+                Log.d("IntentData", "Baby data processed: $babyData")
+
                 val combinedData = combineData(whoData, babyData)
                 updateCharts(combinedData)
-            }.addOnFailureListener { exception ->
-                // Xử lý lỗi
+            } else {
+                Log.e("IntentError", "heightweightwhoList is null")
             }
-        }.addOnFailureListener { exception ->
-            // Xử lý lỗi
         }
+
+
+//        docRefBaby.get().addOnSuccessListener { babyDocuments ->
+//            val babyData = mutableListOf<MonthData>()
+//
+//            for (document in babyDocuments) {
+//                babyData.add(
+//                    MonthData(
+//                        month = document.getLong("month")!!.toInt(),
+//                        weight = document.getDouble("weight"),
+//                        height = document.getDouble("height")
+//                    )
+//                )
+//            }
+//        }
+//
+//        if (heightWeightWhoList != null) {
+//            for (data in heightWeightWhoList) {
+//                babyData.add(
+//                    MonthData(
+//                        month = data.months.toInt(),
+//                        weight = data.weight.toDouble(),
+//                        height = data.height.toDouble()
+//                    )
+//                )
+//            }
+//        } else {
+//            Log.e("IntentError", "heightweightwhoList is null")
+//        }
+//        val combinedData = combineData(whoData, babyData)
+//        updateCharts(combinedData)
     }
 
     private fun combineData(whoData: List<MonthData>, babyData: List<MonthData>): List<MonthData> {
@@ -128,6 +160,11 @@ class HeightWeightWhoActivity : AppCompatActivity() {
         for (month in combinedMonths) {
             val whoMonthData = whoData.find { it.month == month }
             val babyMonthData = babyData.find { it.month == month }
+
+            Log.d(
+                "CombineData",
+                "Month: $month, WHO Data: $whoMonthData, Baby Data: $babyMonthData"
+            )
 
             combinedData.add(
                 MonthData(
@@ -152,10 +189,14 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             )
         }
 
+        Log.d("CombineData", "Combined Data: $combinedData")
+
         return combinedData
     }
 
+
     private fun updateCharts(data: List<MonthData>) {
+        Log.d("UpdateCharts", "Received data: $data")
         val months = data.map { it.month }.toTypedArray()
         val weightWhoMin = data.map { it.weightMin }.toTypedArray()
         val weightWhoMax = data.map { it.weightMax }.toTypedArray()
@@ -169,7 +210,12 @@ class HeightWeightWhoActivity : AppCompatActivity() {
         val bmiWhoMax = data.map { it.bmiMax }.toTypedArray()
         val bmiWhoAvg = data.map { (it.bmiMin!! + it.bmiMax!!) / 2 }.toTypedArray()
         val bmiBaby = data.map { it.bmi }.toTypedArray()
+        Log.d("UpdateCharts", "Received data: $data")
 
+        // Ensure no null values
+        data.forEach {
+            Log.d("UpdateCharts", "Month: ${it.month}, Weight: ${it.weight}, Height: ${it.height}")
+        }
         Log.d("MyActivity", "months: ${months}")
         Log.d("MyActivity", "weightWhoMin: ${weightWhoMin.joinToString()}")
         Log.d("MyActivity", "weightWhoMax: ${weightWhoMax.joinToString()}")
@@ -216,18 +262,14 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             isLegendIconEnabled = false
             interpolationParams =
                 CatmullRomInterpolator.Params(3000, CatmullRomInterpolator.Type.Uniform)
-
         }
-//        val formatterWhoMax = LineAndPointFormatter(Color.BLUE, null, null, null)
+
         val formatterWhoAvg = LineAndPointFormatter(Color.GREEN, null, null, null)
         val formatterBaby = LineAndPointFormatter(Color.MAGENTA, null, null, null)
 
         formatterWhoAvg.linePaint.strokeWidth = 5f
         formatterBaby.linePaint.strokeWidth = 10f
 
-//        Tạo đường dut khuc
-//        formatterWhoMin.linePaint.pathEffect = DashPathEffect(floatArrayOf(10f, 10f), 0f)
-//        formatterWhoMax.linePaint.pathEffect = DashPathEffect(floatArrayOf(10f, 10f), 0f)
         formatterWhoAvg.linePaint.pathEffect = DashPathEffect(floatArrayOf(10f, 10f), 0f)
 
         linechartWeight.clear()
@@ -237,20 +279,14 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             addSeries(seriesWeightWhoAvg, formatterWhoAvg)
             addSeries(seriesWeightBaby, formatterBaby)
 
-            // Cài đặt các tiêu đề trục
             setDomainLabel("Tháng")
             setRangeLabel("Cân nặng (kg)")
-//            title.text = "Biểu đồ cân nặng theo tháng"
 
-            // Tắt chú thích toàn bộ đồ thị
             layoutManager.remove(linechartWeight.legend)
-            // Định dạng nhãn trục thành số nguyên
             graph.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).format = DecimalFormat("0")
             graph.getLineLabelStyle(XYGraphWidget.Edge.LEFT).format = DecimalFormat("0")
-//            PanZoom.attach(linechartWeight)
             outerLimits.set(0.0, 100.0, 0.0, 100.0)
         }
-
 
         linechartHeight.clear()
         linechartHeight.apply {
@@ -259,20 +295,14 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             addSeries(seriesHeightWhoAvg, formatterWhoAvg)
             addSeries(seriesHeightBaby, formatterBaby)
 
-            // Cài đặt các tiêu đề trục
             setDomainLabel("Tháng")
             setRangeLabel("Chiều cao (cm)")
-//            title.text = "Biểu đồ chiều cao theo tháng"
 
-            // Tắt chú thích toàn bộ đồ thị
             layoutManager.remove(linechartHeight.legend)
-            // Định dạng nhãn trục thành số nguyên
             graph.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).format = DecimalFormat("0")
             graph.getLineLabelStyle(XYGraphWidget.Edge.LEFT).format = DecimalFormat("0")
-//            PanZoom.attach(linechartWeight)
             outerLimits.set(0.0, 100.0, 0.0, 100.0)
         }
-
 
         linechartBmi.clear()
         linechartBmi.apply {
@@ -281,25 +311,20 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             addSeries(seriesBmiWhoAvg, formatterWhoAvg)
             addSeries(seriesBmiBaby, formatterBaby)
 
-            // Cài đặt các tiêu đề trục
             setDomainLabel("Tháng")
             setRangeLabel("BMI")
-//            title.text = "Biểu đồ cân nặng theo tháng"
 
-            // Tắt chú thích toàn bộ đồ thị
             layoutManager.remove(linechartBmi.legend)
-            // Định dạng nhãn trục thành số nguyên
             graph.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).format = DecimalFormat("0")
             graph.getLineLabelStyle(XYGraphWidget.Edge.LEFT).format = DecimalFormat("0")
-//            PanZoom.attach(linechartWeight)
             outerLimits.set(0.0, 100.0, 0.0, 100.0)
         }
-
 
         linechartWeight.redraw()
         linechartHeight.redraw()
         linechartBmi.redraw()
     }
+
 
     private fun calculateBMI(weight: Double?, height: Double?): Double? {
         return if (weight != null && height != null) {

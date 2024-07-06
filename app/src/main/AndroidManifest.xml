@@ -102,6 +102,9 @@
         <activity
             android:name=".HeightWeightWhoTestActivity"
             android:exported="false" />
+        <activity
+            android:name=".HeightWeightWhoActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
