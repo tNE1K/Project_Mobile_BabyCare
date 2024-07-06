@@ -2,6 +2,7 @@ package com.example.project_mobile_babycare
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -12,6 +13,8 @@ import android.view.Window
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -22,6 +25,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
@@ -39,6 +43,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var builder: AlertDialog.Builder
     lateinit var db: FirebaseFirestore
     lateinit var currentBabyUID: String
+    lateinit var day: TextView
+    lateinit var month: TextView
+    lateinit var year: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         db = Firebase.firestore
@@ -49,6 +56,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         enableFullscreenMode()
 
+        day = findViewById(R.id.TVshowDays)
+        month = findViewById(R.id.TVshowMonths)
+        year = findViewById(R.id.TVshowYears)
         btnBabyInfo = findViewById(R.id.BTNbabyInfo)
         btnBabyWnH = findViewById(R.id.BTNbabyWH)
         btnBabyMedicalHistory = findViewById(R.id.BTNbabyMedicalHistory)
@@ -89,15 +99,82 @@ class MainActivity : AppCompatActivity() {
             ) {
                 // Handle item selection
                 currentBabyUID = babyList.get(position).uid
+                if (currentBabyUID == "") {
+                    return
+                }
+                Log.d(TAG, currentBabyUID)
+                user?.let {
+                    val babyInfoPath = db.collection("users").document(user.uid)
+                        .collection("baby").document(currentBabyUID)
+                        .collection("babyInfo")
+                    babyInfoPath.addSnapshotListener { snapshot, e ->
+                        for (doc in snapshot!!) {
+                            val dateStr = doc.getString("birth").toString()
+                            val (dayStr, monthStr, yearStr) = dateStr.split("/")
+                            val day_ = dayStr.toInt()
+                            val month_ = monthStr.toInt()
+                            val year_ = yearStr.toInt()
+
+                            // Calculate age
+                            val birthDate = Calendar.getInstance()
+                            birthDate.set(
+                                year_,
+                                month_ - 1,
+                                day_
+                            ) // month is zero-based in Calendar
+
+                            val currentDate = Calendar.getInstance()
+
+                            var years =
+                                currentDate.get(Calendar.YEAR) - birthDate.get(Calendar.YEAR)
+                            var months =
+                                currentDate.get(Calendar.MONTH) - birthDate.get(Calendar.MONTH)
+                            var days =
+                                currentDate.get(Calendar.DAY_OF_MONTH) - birthDate.get(Calendar.DAY_OF_MONTH)
+
+                            // Adjust negative days
+                            if (days < 0) {
+                                months--
+                                val copyBirthDate = birthDate.clone() as Calendar
+                                copyBirthDate.add(Calendar.MONTH, 1)
+                                days += copyBirthDate.getActualMaximum(Calendar.DAY_OF_MONTH)
+                            }
+
+                            // Adjust negative months
+                            if (months < 0) {
+                                years--
+                                months += 12
+                            }
+
+                            // Update your UI or log the result
+                            Log.d(TAG, "Age: $years years, $months months, $days days")
+
+                            // Example of updating EditText fields
+                            day.setText(days.toString())
+                            month.setText(months.toString())
+                            year.setText(years.toString())
+                        }
+                    }
+                }
             }
+
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // Handle no item selected
                 currentBabyUID = babyList.get(0).uid
+                user?.let {
+                    val userPath = db.collection("users").document(user.uid).collection("baby")
+                    val babyPath = userPath.document(currentBabyUID)
+                    Log.d(TAG, babyPath.get().toString())
+                }
             }
         }
 
         btnBabyInfo.setOnClickListener {
+            if (currentBabyUID == "") {
+                Toast.makeText(this, "Bạn chưa em bé để xem thông tin", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val intent = Intent(this, BabyInfo::class.java)
             intent.putExtra("userUID", user?.uid)
             intent.putExtra("babyUID", currentBabyUID)
