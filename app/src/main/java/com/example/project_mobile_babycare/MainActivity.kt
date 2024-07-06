@@ -150,9 +150,9 @@ class MainActivity : AppCompatActivity() {
                             Log.d(TAG, "Age: $years years, $months months, $days days")
 
                             // Example of updating EditText fields
-                            day.setText(days.toString())
-                            month.setText(months.toString())
-                            year.setText(years.toString())
+                            day.setText(days.toString() + " ngày")
+                            month.setText(months.toString() + " tháng")
+                            year.setText(years.toString() + " năm")
                         }
                     }
                 }
