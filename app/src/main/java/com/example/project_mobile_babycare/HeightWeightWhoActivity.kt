@@ -288,7 +288,7 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             layoutManager.remove(linechartWeight.legend)
             graph.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).format = DecimalFormat("0")
             graph.getLineLabelStyle(XYGraphWidget.Edge.LEFT).format = DecimalFormat("0")
-            outerLimits.set(0.0, 100.0, 0.0, 100.0)
+            outerLimits.set(0.0, 100.0, 0.0, 150.0)
         }
 
         linechartHeight.clear()
@@ -304,7 +304,7 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             layoutManager.remove(linechartHeight.legend)
             graph.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).format = DecimalFormat("0")
             graph.getLineLabelStyle(XYGraphWidget.Edge.LEFT).format = DecimalFormat("0")
-            outerLimits.set(0.0, 100.0, 0.0, 100.0)
+            outerLimits.set(0.0, 100.0, 0.0, 150.0)
         }
 
         linechartBmi.clear()
@@ -320,7 +320,7 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             layoutManager.remove(linechartBmi.legend)
             graph.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).format = DecimalFormat("0")
             graph.getLineLabelStyle(XYGraphWidget.Edge.LEFT).format = DecimalFormat("0")
-            outerLimits.set(0.0, 100.0, 0.0, 100.0)
+            outerLimits.set(0.0, 100.0, 0.0, 150.0)
         }
 
         linechartWeight.redraw()

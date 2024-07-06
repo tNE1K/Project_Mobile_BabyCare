@@ -126,7 +126,7 @@ class HeightWeightActivity : AppCompatActivity() {
 
                 // Sắp xếp tempList theo ngày nhập
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                tempList.sortBy { dateFormat.parse(it.start) }
+                //tempList.sortBy { dateFormat.parse(it.start) }
                 hwwhoList.sortBy { it.months }
                 // Cập nhật heightWeightList
                 heightWeightList.addAll(tempList)

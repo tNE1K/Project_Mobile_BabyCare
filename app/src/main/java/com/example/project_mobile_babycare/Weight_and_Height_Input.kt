@@ -39,6 +39,7 @@ class Weight_and_Height_Input : AppCompatActivity() {
     private var babyUID: String? = null
     private var babyInfoUID: String? = null
     lateinit var auth: FirebaseAuth
+    private var birthDate: LocalDate? = null  // Biến lưu trữ ngày sinh
 
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,6 +82,7 @@ class Weight_and_Height_Input : AppCompatActivity() {
         loadBabyInfo()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun loadBabyInfo() {
         if (userUID.isNullOrEmpty() || babyUID.isNullOrEmpty()) {
             Toast.makeText(this, "User or baby information missing", Toast.LENGTH_SHORT).show()
@@ -96,8 +98,9 @@ class Weight_and_Height_Input : AppCompatActivity() {
                 if (querySnapshot.documents.isNotEmpty()) {
                     val document = querySnapshot.documents[0]
                     babyInfoUID = document.id
+                    birthDate = document.getString("birth")?.let { formatDateString(it) }?.let { LocalDate.parse(it, DateTimeFormatter.ofPattern("dd/MM/yyyy")) }
                     Log.d("Firestore", "BabyInfo Document ID: $babyInfoUID")
-                    // You can now use babyInfoUID as needed
+                    Log.d("Firestore", "Baby birthDate: $birthDate")
                 } else {
                     Toast.makeText(this, "No babyInfo document found", Toast.LENGTH_SHORT).show()
                 }
@@ -118,8 +121,13 @@ class Weight_and_Height_Input : AppCompatActivity() {
             return
         }
 
-        val height = heightStr.toLong()
-        val weight = weightStr.toDouble()
+        val height = heightStr.toLongOrNull()
+        val weight = weightStr.toDoubleOrNull()
+
+        if (height == null || weight == null) {
+            Toast.makeText(this, "Invalid height or weight", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         if (userUID.isNullOrEmpty() || babyUID.isNullOrEmpty()) {
             Toast.makeText(this, "User or baby information missing", Toast.LENGTH_SHORT).show()
@@ -238,7 +246,6 @@ class Weight_and_Height_Input : AppCompatActivity() {
         return monthsBetween
     }
 
-
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getMonthYear(dateString: String): String {
         val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
@@ -268,9 +275,16 @@ class Weight_and_Height_Input : AppCompatActivity() {
             return DatePickerDialog(requireContext(), this, year, month, day)
         }
 
+        @RequiresApi(Build.VERSION_CODES.O)
         override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
             val activity = activity as? Weight_and_Height_Input
-            activity?.findViewById<Button>(R.id.btn_dateinput)?.text = "$day/${month + 1}/$year"
+            val selectedDate = LocalDate.of(year, month + 1, day)
+
+            if (activity?.birthDate != null && selectedDate.isBefore(activity.birthDate)) {
+                Toast.makeText(activity, "The selected date cannot be before the birth date.", Toast.LENGTH_SHORT).show()
+            } else {
+                activity?.findViewById<Button>(R.id.btn_dateinput)?.text = "${day.toString().padStart(2, '0')}/${(month + 1).toString().padStart(2, '0')}/$year"
+            }
         }
     }
 }
