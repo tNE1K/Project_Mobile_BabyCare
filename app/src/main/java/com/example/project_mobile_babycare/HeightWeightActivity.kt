@@ -47,6 +47,8 @@ class HeightWeightActivity : AppCompatActivity() {
         val userUID = intent.getStringExtra("userUID")
         val currentBabyUID = intent.getStringExtra("babyUID")
 
+        val whpath = db.collection("users").document(userUID!!).collection("baby").document(currentBabyUID!!).collection("babyweightheight")
+
         loadHeightWeightData(userUID, currentBabyUID)
 
         BTN_back.setOnClickListener {
@@ -69,6 +71,34 @@ class HeightWeightActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        lvHeightWeight.setOnItemClickListener { parent, view, position, id ->
+            whpath.get()
+                .addOnSuccessListener{ documents ->
+                    // Kiểm tra nếu vị trí mong muốn nằm trong phạm vi của danh sách kết quả
+                    if (position in 0 until documents.size()) {
+                        // Lấy tài liệu ở vị trí mong muốn
+                        val targetDocument = documents.documents[position]
+
+                        // Lấy UID từ tài liệu
+                        val documentId = targetDocument.id
+                        Log.d("Firestore", "Document ID at position $position: $documentId")
+                        val intent = Intent(this, weightAndHeightEditActivity::class.java)
+                        intent.putExtra("userUID", userUID)
+                        intent.putExtra("babyUID", currentBabyUID)
+                        intent.putExtra("babyWH", documentId)
+                        startActivity(intent)
+
+//                        // Xử lý dữ liệu khác từ tài liệu nếu cần
+//                        val data = targetDocument.data
+//                        Log.d("Firestore", "Document Data: $data")
+                    } else {
+                        Log.d("Firestore", "Position $position is out of bounds")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("Firestore", "Error getting documents: ", exception)
+                }
+        }
 
     }
 
@@ -84,7 +114,7 @@ class HeightWeightActivity : AppCompatActivity() {
                 val hwwhoList = ArrayList<HeightWeightWho>()
                 for (document in result) {
                     val dateInput = document.getString("dateInput")
-                    val height = document.getLong("height").toString()
+                    val height = document.getDouble("height").toString()
                     val weight = document.getDouble("weight").toString()
                     val months = document.getLong("monthsOld")?.toInt()
                     if (dateInput != null && height != null && weight != null&& months != null) {

@@ -268,10 +268,10 @@ class HeightWeightWhoActivity : AppCompatActivity() {
         }
 
         val formatterWhoAvg = LineAndPointFormatter(Color.GREEN, null, null, null)
-        val formatterBaby = LineAndPointFormatter(Color.MAGENTA, null, null, null)
+        val formatterBaby = LineAndPointFormatter(Color.MAGENTA, Color.BLUE, null, null)
 
         formatterWhoAvg.linePaint.strokeWidth = 5f
-        formatterBaby.linePaint.strokeWidth = 10f
+        formatterBaby.linePaint.strokeWidth = 5f
 
         formatterWhoAvg.linePaint.pathEffect = DashPathEffect(floatArrayOf(10f, 10f), 0f)
 
