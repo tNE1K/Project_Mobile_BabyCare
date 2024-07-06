@@ -54,4 +54,5 @@ dependencies {
     implementation("com.androidplot:androidplot-core:1.5.9")
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("com.google.firebase:firebase-storage")
+    implementation("com.github.bumptech.glide:glide:4.15.0")  // Cập nhật với phiên bản mới nhất
 }
