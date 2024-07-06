@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,8 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.DialogFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -28,15 +31,20 @@ import java.util.Calendar
 class Weight_and_Height_Input : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private lateinit var btnSave: Button
+    private lateinit var btnBack: Button
     private lateinit var edtHeight: EditText
     private lateinit var edtWeight: EditText
     private lateinit var btnDateInput: Button
     private var userUID: String? = null
     private var babyUID: String? = null
     private var babyInfoUID: String? = null
+    lateinit var auth: FirebaseAuth
 
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
+        db = Firebase.firestore
+        auth = Firebase.auth
+        val user = auth.currentUser
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weight_and_height_input)
         enableFullscreenMode()
@@ -45,6 +53,7 @@ class Weight_and_Height_Input : AppCompatActivity() {
         db = Firebase.firestore
 
         btnSave = findViewById(R.id.btnSave_hwip)
+        btnBack = findViewById(R.id.btnBack_hwip)
         edtHeight = findViewById(R.id.edtCc_hwip)
         edtWeight = findViewById(R.id.edt_cannang)
         btnDateInput = findViewById(R.id.btn_dateinput)
@@ -189,6 +198,11 @@ class Weight_and_Height_Input : AppCompatActivity() {
                 Toast.makeText(this, "Error getting babyInfo: ${e.message}", Toast.LENGTH_SHORT)
                     .show()
             }
+        val back = Intent(this, HeightWeightActivity::class.java)
+        back.putExtra("userUID", userUID)
+        back.putExtra("babyUID", babyUID)
+        startActivity(back)
+        finish()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -211,8 +225,12 @@ class Weight_and_Height_Input : AppCompatActivity() {
         val dob = LocalDate.parse(formattedDobString, formatter)
         val inputDate = LocalDate.parse(formattedDateInput, formatter)
 
-        return ChronoUnit.MONTHS.between(dob, inputDate)
+        // Tính số tháng giữa dob và inputDate
+        val monthsBetween = ChronoUnit.MONTHS.between(dob.withDayOfMonth(1), inputDate.withDayOfMonth(1))
+
+        return monthsBetween
     }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getMonthYear(dateString: String): String {

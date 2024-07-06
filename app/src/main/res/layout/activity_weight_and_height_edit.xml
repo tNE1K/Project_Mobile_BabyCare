@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/margin_small"
-        app:layout_constraintBottom_toTopOf="@id/btnDelete_hwip"
+        app:layout_constraintBottom_toTopOf="@id/btn_del"
         app:layout_constraintTop_toTopOf="@id/body_hwinput">
 
         <androidx.constraintlayout.widget.ConstraintLayout
