@@ -68,8 +68,8 @@ class AddBaby : AppCompatActivity() {
                 if (user != null) {
                     var babyCount: Int
                     val name = ETname.text.toString()
-                    val height = ETheight.text.toString().toInt()
-                    val weight = ETweight.text.toString().toInt()
+                    val height = ETheight.text.toString().toLong()
+                    val weight = ETweight.text.toString().toDouble()
                     val birth = BTNdateOfBirth.text.toString()
                     val babyData = hashMapOf(
                         "name" to name,
