@@ -7,6 +7,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.widget.Button
 import android.widget.DatePicker
@@ -58,6 +59,10 @@ class Weight_and_Height_Input : AppCompatActivity() {
         edtHeight = findViewById(R.id.edtCc_hwip)
         edtWeight = findViewById(R.id.edt_cannang)
         btnDateInput = findViewById(R.id.btn_dateinput)
+
+        // Set input type for height and weight
+        edtHeight.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
+        edtWeight.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
 
         // Get userUID and babyUID from Intent
         userUID = intent.getStringExtra("userUID")
@@ -281,7 +286,7 @@ class Weight_and_Height_Input : AppCompatActivity() {
             val selectedDate = LocalDate.of(year, month + 1, day)
 
             if (activity?.birthDate != null && selectedDate.isBefore(activity.birthDate)) {
-                Toast.makeText(activity, "The selected date cannot be before the birth date.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Ngày nhập không thể sớm hơn ngày sinh.", Toast.LENGTH_SHORT).show()
             } else {
                 activity?.findViewById<Button>(R.id.btn_dateinput)?.text = "${day.toString().padStart(2, '0')}/${(month + 1).toString().padStart(2, '0')}/$year"
             }

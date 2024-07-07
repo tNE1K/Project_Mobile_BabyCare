@@ -4,10 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.DashPathEffect
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -22,7 +25,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.DecimalFormat
-
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class HeightWeightWhoActivity : AppCompatActivity() {
     private lateinit var linechartWeight: XYPlot
@@ -33,7 +37,10 @@ class HeightWeightWhoActivity : AppCompatActivity() {
     val user = auth.currentUser
     val db = Firebase.firestore
     lateinit var heightWeightWhoList: ArrayList<HeightWeightWho>
+    private var userUID: String? = null
+    private var babyUID: String? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableFullscreenMode()
@@ -57,14 +64,13 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             Log.e("HeightWeightWhoData", "heightweightwhoList is null")
         }
 
-
         linechartWeight = findViewById(R.id.linechart_weight)
         linechartHeight = findViewById(R.id.linechart_height)
         linechartBmi = findViewById(R.id.linechart_bmi)
         btn_back = findViewById(R.id.btnBack_hw_who)
         val intent = intent
-        val userUID = intent.getStringExtra("userUID")
-        val babyUID = intent.getStringExtra("babyUID")
+        userUID = intent.getStringExtra("userUID")
+        babyUID = intent.getStringExtra("babyUID")
         btn_back.setOnClickListener {
             val intent = Intent(this, HeightWeightActivity::class.java)
             intent.putExtra("userUID", userUID)
@@ -73,15 +79,43 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             finish()
         }
 
-
-        fetchDataFromFirestore()
-
+        loadBabyInfo()
     }
 
-    private fun fetchDataFromFirestore() {
-//        Log.d("FirestoreData", "userUID: $userUID, babyUID: $babyUID")
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun loadBabyInfo() {
+        if (userUID.isNullOrEmpty() || babyUID.isNullOrEmpty()) {
+            Toast.makeText(this, "User or baby information missing", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        val docRefWho = db.collection("who_standards").document("male").collection("month")
+        val babyInfor = db.collection("users").document(userUID!!)
+            .collection("baby").document(babyUID!!)
+            .collection("babyInfo")
+
+        babyInfor.get()
+            .addOnSuccessListener { querySnapshot ->
+                if (querySnapshot.documents.isNotEmpty()) {
+                    val document = querySnapshot.documents[0]
+                    val isMale = document.getBoolean("male") ?: true // Default to true if null
+
+                    Log.d("Firestore", "BabyInfo Document ID: ${document.id}")
+                    Log.d("Firestore", "Baby is male: $isMale")
+
+                    fetchDataFromFirestore(isMale)
+                } else {
+                    Toast.makeText(this, "No babyInfo document found", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error getting babyInfo: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun fetchDataFromFirestore(isMale: Boolean) {
+        val genderDoc = if (isMale) "male" else "female"
+
+        val docRefWho = db.collection("who_standards").document(genderDoc).collection("month")
         val whoData = mutableListOf<MonthData>()
 
         docRefWho.get().addOnSuccessListener { whoDocuments ->
@@ -122,37 +156,6 @@ class HeightWeightWhoActivity : AppCompatActivity() {
                 Log.e("IntentError", "heightweightwhoList is null")
             }
         }
-
-
-//        docRefBaby.get().addOnSuccessListener { babyDocuments ->
-//            val babyData = mutableListOf<MonthData>()
-//
-//            for (document in babyDocuments) {
-//                babyData.add(
-//                    MonthData(
-//                        month = document.getLong("month")!!.toInt(),
-//                        weight = document.getDouble("weight"),
-//                        height = document.getDouble("height")
-//                    )
-//                )
-//            }
-//        }
-//
-//        if (heightWeightWhoList != null) {
-//            for (data in heightWeightWhoList) {
-//                babyData.add(
-//                    MonthData(
-//                        month = data.months.toInt(),
-//                        weight = data.weight.toDouble(),
-//                        height = data.height.toDouble()
-//                    )
-//                )
-//            }
-//        } else {
-//            Log.e("IntentError", "heightweightwhoList is null")
-//        }
-//        val combinedData = combineData(whoData, babyData)
-//        updateCharts(combinedData)
     }
 
     private fun combineData(whoData: List<MonthData>, babyData: List<MonthData>): List<MonthData> {
@@ -196,7 +199,6 @@ class HeightWeightWhoActivity : AppCompatActivity() {
 
         return combinedData
     }
-
 
     private fun updateCharts(data: List<MonthData>) {
         Log.d("UpdateCharts", "Received data: $data")
@@ -338,9 +340,6 @@ class HeightWeightWhoActivity : AppCompatActivity() {
         linechartBmi.redraw()
     }
 
-
-
-
     private fun calculateBMI(weight: Double?, height: Double?): Double? {
         return if (weight != null && height != null) {
             weight * 10000 / (height * height)
@@ -348,6 +347,7 @@ class HeightWeightWhoActivity : AppCompatActivity() {
             null
         }
     }
+
     private fun Activity.enableFullscreenMode() {
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
 
