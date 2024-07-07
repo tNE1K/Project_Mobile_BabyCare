@@ -45,6 +45,7 @@
                 android:layout_marginRight="@dimen/margin_small"
                 android:background="@drawable/rounded_button"
                 android:text="Thoát"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_very_small"
                 android:textStyle="bold"
                 app:backgroundTint="@color/blue" />
@@ -56,6 +57,7 @@
                 android:layout_marginLeft="@dimen/margin_small"
                 android:background="@drawable/rounded_button"
                 android:text="Xóa"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_very_small"
                 android:textStyle="bold"
                 app:backgroundTint="@color/red" />

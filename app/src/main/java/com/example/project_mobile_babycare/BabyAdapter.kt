@@ -82,6 +82,9 @@ class BabyAdapter(val context: Activity, val list: ArrayList<Baby>) :
                 .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
             dialog.dismiss()
             Toast.makeText(context, "Xóa thành công!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+            context.finish()
         }
         btnThoat.setOnClickListener {
             dialog.dismiss()
